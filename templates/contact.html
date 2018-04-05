@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+            <h1>CONTACT US</h1>
+            <hr>
+            <br>
+            <div class="form-wrapper"
+            <p><strong>Share an article, share your feedback, or just say hi.</strong></p>
+            <br>
+            <br>
+            <div class="form-group">
+                <form action='' method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <input type='submit' value='Send'/>
+                </form>
+            </div>
+        </div>
+    {% include 'footer.html' %}
+    {%  endblock %}
