@@ -1,1 +1,2 @@
-web: gunicorn slant.wsgi --log-file -
+release: python manage.py migrate
+web: gunicorn slant.wsgi:application --log-file -
