@@ -145,7 +145,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "slantapp/static"),
 ]
 
-MEDIA_ROOT = 'slantapp/media/'
+MEDIA_ROOT = '/media/'
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
