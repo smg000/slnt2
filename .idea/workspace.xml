@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slant/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slantapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +19,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slant/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="117" column="17" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
+            <state relative-caret-position="251">
+              <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
               <folding>
                 <element signature="e#306#315#0" expanded="true" />
               </folding>
@@ -183,7 +180,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="11" />
     <option name="y" value="122" />
-    <option name="width" value="815" />
+    <option name="width" value="1230" />
     <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -366,7 +363,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="122" width="815" height="772" extended-state="0" />
+    <frame x="11" y="122" width="1230" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896462" />
@@ -377,7 +374,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32896462" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32896462" />
       <window_info active="true" anchor="bottom" id="manage.py@slant" order="7" sideWeight="0.4991119" visible="true" weight="0.35959885" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2809816" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18617886" />
       <window_info anchor="right" id="R Packages" order="3" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="3" />
@@ -737,8 +734,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/slant/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="117" column="17" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
+        <state relative-caret-position="251">
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
           <folding>
             <element signature="e#306#315#0" expanded="true" />
           </folding>

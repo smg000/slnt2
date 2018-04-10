@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'slant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'slantapp',
-        'USER': 'seangraber',
-        'PASSWORD': 'sgrab813',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dcui4ahpisv020',
+        'USER': 'vjasnqzfxycrjp',
+        'PASSWORD': '2840c6caa910675254c8983cc878a1879fa2c3c8e713194fb3d60449fd3d8061',
+        'HOST': 'ec2-54-163-240-54.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
