@@ -4,7 +4,7 @@ class IssueAdmin(admin.ModelAdmin):
     list_display = ('issue', 'date')
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('issue', 'publication_name', 'title', 'date', 'bias')
+    list_display = ('issue', 'publication_name', 'title', 'date', 'bias', 'display')
 
 class PublicationAdmin(admin.ModelAdmin):
     list_display = ('publication_name', 'publication_logo')

@@ -24,6 +24,7 @@ class Article(models.Model):
     date = models.DateField(default=datetime.date(1900, 1, 1))
     url = models.URLField(max_length=250)
     bias = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    display = models.BooleanField(default=False)
     # Add include/do not include field
     def __str__(self):
         return "%s" % (self.title)
