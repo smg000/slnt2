@@ -20,10 +20,12 @@ from django.urls import path
 from slantapp.views import index
 from slantapp.views import about
 from slantapp.views import contact_form
+from slantapp.views import index_test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^about/$', about),
     url(r'^contact/$', contact_form),
+    url(r'^index_test/$', index_test),
 ]

@@ -5,13 +5,22 @@ from .models import Issue, Article
 from .forms import ContactForm
 
 def index(request):
-    issues = Issue.objects.filter(date=datetime.date.today())
-    articles = Article.objects.filter(date=datetime.date.today(), issue__in=issues)
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
         'issues': issues,
         'articles': articles,
     }
     return render(request, 'index.html', context)
+
+def index_test(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+    }
+    return render(request, 'index_test.html', context)
 
 def about(request):
     return render(request, 'about.html')

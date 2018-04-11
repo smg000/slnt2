@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ('issue', 'date')
+    list_display = ('issue', 'date', 'display')
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('issue', 'publication_name', 'title', 'date', 'bias', 'display')
