@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import dj_database_url
 import django_heroku
+# import django-storages
+# import boto
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'slantapp.apps.SlantappConfig',
-    # 'storages',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -139,7 +141,7 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "slantapp/static"),
@@ -156,3 +158,31 @@ django_heroku.settings(locals())
 
 # Django-Storages for media files
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Google Cloud Storage
+# http://django-storages.readthedocs.org/en/latest/backends/apache_libcloud.html
+# LIBCLOUD_PROVIDERS = {
+#     'google': {
+#         'type'  : 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
+#         'user'  : 'GOOGVQSOULERCXQG6HOX',
+#         'key'   : 'NNpTyMwlxfdKIxPJ1xAhdxygNeAUdEQ8GDIKvl0D',
+#         'bucket': 'slantappstorage',
+#     }
+# }
+#
+# DEFAULT_LIBCLOUD_PROVIDER = 'google'
+# DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
+# STATICFILES_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
+
+AWS_STORAGE_BUCKET_NAME = 'slantappbucket'
+AWS_ACCESS_KEY_ID = 'AKIAJAVNYR4SWQJGYZNQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

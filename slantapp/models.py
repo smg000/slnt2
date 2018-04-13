@@ -6,6 +6,7 @@ class Issue(models.Model):
     issue = models.CharField(max_length=100)
     date = models.DateField(default=datetime.date(1900, 1, 1))
     display = models.BooleanField(default=False)
+    order = models.IntegerField(default=0)
     # Add include/do not include field
     def __str__(self):
         return "%s" % (self.issue)

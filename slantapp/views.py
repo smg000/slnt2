@@ -5,7 +5,7 @@ from .models import Issue, Article
 from .forms import ContactForm
 
 def index(request):
-    issues = Issue.objects.filter(display=True)
+    issues = Issue.objects.filter(display=True).order_by('order')
     articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
         'issues': issues,
