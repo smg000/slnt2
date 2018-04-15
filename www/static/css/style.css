@@ -22,11 +22,11 @@ p {
 }
 
 a {
-    color: #00a680;
+    color: purple;
 }
 
 a:hover {
-    color: #00a680;
+    color: purple;
 }
 
 html, body {
@@ -36,11 +36,14 @@ html, body {
 }
 
 .navbar {
-    padding: 4px 10px 0px 10px;
+    padding: 5px 10px 5px 10px;
     background-color: white;
-    color: #7D00A1;
     margin-bottom: 50px;
-    border-bottom: 1px solid #404040;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.navbar-toggler {
+    padding: 0px;
 }
 
 /*.navbar {*/
@@ -55,18 +58,18 @@ html, body {
 /*}*/
 
 .navbar-brand {
-    color: #00a680 !important;
+    color: purple !important;
     font-size: 1.25em;
     font-weight: 900;
 }
 
 .nav-link {
-    color: #00a680 !important;
+    color: purple !important;
 }
 
 .nav-link:hover {
     /*font-weight: 600;*/
-    color: #00cc9c !important;
+    color: #990099 !important;
 }
 
 .navbar-toggler {
@@ -75,14 +78,14 @@ html, body {
 
 .wrapper {
     width: 100%;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
     /*max-width: 1000px;*/
 }
 
 .title-wrapper{
     max-width: 400px;
-    background-color: #00a680;
+    background-color: purple;
     color: white;
     text-align: center;
     margin: 0 auto !important;
@@ -93,7 +96,7 @@ html, body {
 .row-header {
     height: 2em !important;
     margin-bottom: 1.5em;
-    border-bottom: 1px solid #404040;
+    border-bottom: 1px solid #bfbfbf;
     margin-top: 65px;
 }
 
@@ -102,13 +105,12 @@ html, body {
     margin-bottom: 1em;
     padding-left: 0px;
     padding-right: 0px;
-    /*background-color: #00a680;*/
+    /*background: linear-gradient(to right, blue , red);*/
     color: black;
     vertical-align: middle;
 }
 
 .row {
-    height: 4em;
     width: 100%;
     /*border: 1px solid black;*/
     margin-left: 0px;
@@ -117,10 +119,19 @@ html, body {
 .row-table {
     /*display: table;*/
     width: 100%;
+    height: 6em;
 }
 
 hr {
-    border-top: #00a680 1px solid;
+    border-top: #bfbfbf 1px solid;
+}
+
+.row-table-text-issue {
+    display: table-cell;
+    align: center;
+    vertical-align: middle;
+    padding: 0px;
+    height: 2em;
 }
 
 .row-table-text {
@@ -132,18 +143,24 @@ hr {
 }
 
 .row-title {
-    position: absolute;
+    /*position: absolute;*/
+    display: block;
+    margin: auto;
+    align: center;
+    text-align: center;
     top: 1em;
     bottom: 1em;
-    /*background: linear-gradient(to right, red , yellow);*/
-    color: black;
-    /*font-weight: bold;*/
+    /*background-color: #00a680;*/
+    background: linear-gradient(to right, blue , red);
+    color: white;
     line-height: 2em;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    border-radius: 10px;
 }
 
 .logo {
     position: absolute;
-    top: 1em;
     bottom: 1em;
     height: 2em;
     width: 2em;
@@ -154,13 +171,13 @@ hr {
 }
 
 .tooltip-inner {
-    background-color: #00a680;
+    background-color: purple;
     color: white;
     opacity: 1 !important;
 }
 
 .tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-top .arrow::before {
-    border-top-color: #00a680;
+    border-top-color: purple;
 }
 
 .form {
@@ -177,7 +194,7 @@ hr {
 }
 
 input {
-    background-color: #00a680;
+    background-color: purple;
     color: white;
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
@@ -186,9 +203,9 @@ input {
     cursor: pointer;
 }
 
-input:hover {
-    background-color: #00cc9c;
-}
+/*input:hover {*/
+    /*background-color: purple;*/
+/*}*/
 
 input[type=text] {
   max-width: 500px;
@@ -219,7 +236,7 @@ select {
     bottom: 100px;
     left: 0;
     height: 25px;
-    margin-top: 150px;
+    margin-top: 100px;
     background-color: white;
 }
 
@@ -232,13 +249,14 @@ select {
     text-align: center;
     display: table;
     width: 100%;
-    border-top: 1px solid #404040;
+    border-top: 1px solid #bfbfbf;
 }
 
 .footer p {
-  display: table-cell;
-  vertical-align: middle;
-  color: #404040;
+    display: table-cell;
+    vertical-align: middle;
+    color: black;
+    font-size: 1em;
 }
 
 /*.pre-footer {*/
