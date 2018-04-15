@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-MODE = 'dev' # 'dev' or 'prod' changes static file path
+MODE = 'prod' # 'dev' or 'prod' changes static file path
 
 import os
 import dj_database_url
@@ -24,7 +24,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ba2o@qve&byxq4bx=dt212r+m*57z)g6=0+dq%bac_s7o!ged!'
+SECRET_KEY = os.environ.get('SLNT_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

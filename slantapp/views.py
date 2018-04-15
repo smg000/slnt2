@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template import loader
 from .models import Issue, Article
 from .forms import ContactForm
+from django.core.mail import send_mail
 
 def index(request):
     issues = Issue.objects.filter(display=True).order_by('order')
@@ -35,7 +36,7 @@ def contact_form(request):
       message = form.cleaned_data['message']
       try:
         send_mail(
-            'Message from a Colligio User',
+            'Email from THE SLNT',
             str(message + '\n\n' + "Sender email: " + from_email),
 			to_email,
             [to_email,],
@@ -43,14 +44,14 @@ def contact_form(request):
             )
       except BadHeaderError:
         return HttpResponse('Invalid header found.')
-      return render(request, 'contact-form-thank-you.html')
+      return render(request, 'thank-you.html')
   else:
     form = ContactForm
   return render(request, 'contact.html', {'form': form})
 
 def contact_form_thank_you(request):
-  return HttpResponse('Thank you for your message.')
-  return render(request, 'contact-form-thank-you.html')
+  return HttpResponse('Thank you!')
+  return render(request, 'thank-you.html')
 
 def thankyou(request):
     return render(request, 'thank-you.html')
