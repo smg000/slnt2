@@ -154,8 +154,8 @@ if MODE == 'dev':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 elif MODE == 'prod':
     AWS_STORAGE_BUCKET_NAME = 'slantappbucket'
-    AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY'),
-    AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET'),
+    AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_LOCATION = 'static'
@@ -166,6 +166,7 @@ elif MODE == 'prod':
 else:
     pass
 
+# EMAIL
 if MODE == 'dev':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 elif MODE == 'prod':
@@ -173,7 +174,7 @@ elif MODE == 'prod':
     EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
     EMAIL_PORT = 587
     EMAIL_HOST_USER = os.environ.get('AMAZON_SMTP_USERNAME'),
-    EMAIL_HOST_PASSWORD = os.environ.get('AMAZON_SMTP_PASSWORD'),
+    EMAIL_HOST_PASSWORD = os.environ.get('AMAZON_SMTP_PASSWORD')
     EMAIL_USE_TLS = True
 else:
     pass
