@@ -15,7 +15,7 @@ MODE = 'prod' # 'dev' or 'prod' changes static file path
 import os
 import dj_database_url
 import django_heroku
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -155,9 +155,9 @@ if MODE == 'dev':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 elif MODE == 'prod':
     AWS_STORAGE_BUCKET_NAME = 'slantappbucket'
-    s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
-    # AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
-    # AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
+    # s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+    AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_LOCATION = 'static'
