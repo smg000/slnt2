@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+MODE = 'dev' # 'dev' or 'prod' changes static file path
+
 import os
 import dj_database_url
 import django_heroku
-# import django-storages
-# import boto
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'slant.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -88,9 +87,9 @@ WSGI_APPLICATION = 'slant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dcui4ahpisv020',
-        'USER': 'vjasnqzfxycrjp',
-        'PASSWORD': '2840c6caa910675254c8983cc878a1879fa2c3c8e713194fb3d60449fd3d8061',
+        'NAME': os.environ.get('SLNT_DB_NAME'),
+        'USER': os.environ.get('SLNT_DB_USER'),
+        'PASSWORD': os.environ.get('SLNT_DB_PASSWORD'),
         'HOST': 'ec2-54-163-240-54.compute-1.amazonaws.com',
         'PORT': '5432',
     }
@@ -141,7 +140,6 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
-# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "slantapp/static"),
@@ -149,40 +147,33 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = '/media/'
 
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals()) # Activate Django-Heroku.
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+if MODE == 'dev':
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+elif MODE == 'prod':
+    AWS_STORAGE_BUCKET_NAME = 'slantappbucket'
+    AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY'),
+    AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET'),
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+else:
+    pass
 
-# Django-Storages for media files
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Google Cloud Storage
-# http://django-storages.readthedocs.org/en/latest/backends/apache_libcloud.html
-# LIBCLOUD_PROVIDERS = {
-#     'google': {
-#         'type'  : 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
-#         'user'  : 'GOOGVQSOULERCXQG6HOX',
-#         'key'   : 'NNpTyMwlxfdKIxPJ1xAhdxygNeAUdEQ8GDIKvl0D',
-#         'bucket': 'slantappstorage',
-#     }
-# }
-#
-# DEFAULT_LIBCLOUD_PROVIDER = 'google'
-# DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
-# STATICFILES_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
-
-AWS_STORAGE_BUCKET_NAME = 'slantappbucket'
-AWS_ACCESS_KEY_ID = 'AKIAJAVNYR4SWQJGYZNQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+if MODE == 'dev':
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+elif MODE == 'prod':
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = os.environ.get('AMAZON_SMTP_USERNAME'),
+    EMAIL_HOST_PASSWORD = os.environ.get('AMAZON_SMTP_PASSWORD'),
+    EMAIL_USE_TLS = True
+else:
+    pass

@@ -51,3 +51,6 @@ def contact_form(request):
 def contact_form_thank_you(request):
   return HttpResponse('Thank you for your message.')
   return render(request, 'contact-form-thank-you.html')
+
+def thankyou(request):
+    return render(request, 'thank-you.html')

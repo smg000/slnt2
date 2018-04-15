@@ -135,6 +135,7 @@ hr {
     position: absolute;
     top: 1em;
     bottom: 1em;
+    /*background: linear-gradient(to right, red , yellow);*/
     color: black;
     /*font-weight: bold;*/
     line-height: 2em;
