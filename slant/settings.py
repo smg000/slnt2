@@ -142,15 +142,18 @@ ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "slantapp/static"),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "slantapp/static"),
+# ]
 
 MEDIA_ROOT = '/media/'
 
 django_heroku.settings(locals()) # Activate Django-Heroku.
 
 if MODE == 'dev':
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "www/static"),
+    ]
     STATIC_URL = '/static/'
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 elif MODE == 'prod':
@@ -175,7 +178,7 @@ elif MODE == 'prod':
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
     EMAIL_PORT = 587
-    EMAIL_HOST_USER = os.environ.get('AMAZON_SMTP_USERNAME'),
+    EMAIL_HOST_USER = os.environ.get('AMAZON_SMTP_USERNAME')
     EMAIL_HOST_PASSWORD = os.environ.get('AMAZON_SMTP_PASSWORD')
     EMAIL_USE_TLS = True
 else:

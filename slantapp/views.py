@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template import loader
 from .models import Issue, Article
 from .forms import ContactForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 
 def index(request):
     issues = Issue.objects.filter(display=True).order_by('order')
@@ -27,7 +27,7 @@ def about(request):
     return render(request, 'about.html')
 
 def contact_form(request):
-  to_email = '<sean.graber@gmail.com>'
+  to_email = 'sean.graber@gmail.com'
   if request.method == 'POST':
     form = ContactForm(request.POST)
     if form.is_valid():
@@ -37,8 +37,8 @@ def contact_form(request):
       try:
         send_mail(
             'Email from THE SLNT',
-            str(message + '\n\n' + "Sender email: " + from_email),
-			to_email,
+            message,
+			from_email,
             [to_email,],
             fail_silently = False,
             )

@@ -232,6 +232,10 @@ select {
   max-width: 300px;
 }
 
+#thank-you {
+    text-align: center;
+}
+
 .pre-footer {
     bottom: 100px;
     left: 0;
