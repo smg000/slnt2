@@ -1,5 +1,5 @@
 * {
-    font-family: "PT Sans", Helvetica, Arial !important;
+    font-family: "Avenir", "PT Sans", Helvetica, Arial !important;
     line-height: 1.5;
     margin: 0px;
     padding: 0px;
@@ -36,9 +36,9 @@ html, body {
 }
 
 .navbar {
-    padding: 5px 10px 5px 10px;
+    padding: 4px 4px 4px 4px;
     background-color: white;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #bfbfbf;
 }
 
@@ -58,18 +58,20 @@ html, body {
 /*}*/
 
 .navbar-brand {
-    color: purple !important;
+    color: black !important;
     font-size: 1.25em;
     font-weight: 900;
+    padding: 0px;
 }
 
 .nav-link {
-    color: purple !important;
+    color: black !important;
+    padding: 0px;
 }
 
 .nav-link:hover {
     /*font-weight: 600;*/
-    color: #990099 !important;
+    color: #black !important;
 }
 
 .navbar-toggler {
@@ -83,10 +85,16 @@ html, body {
     /*max-width: 1000px;*/
 }
 
+.page-heading {
+    margin-top: 50px;
+    font-size: 2em;
+    font-weight: 900;
+}
+
 .title-wrapper{
-    max-width: 400px;
-    background-color: purple;
-    color: white;
+    max-width: 75%;
+    /*background-color: purple;*/
+    color: black;
     text-align: center;
     margin: 0 auto !important;
     padding: 10px 10px 10px 10px;
@@ -161,9 +169,9 @@ hr {
 
 .logo {
     position: absolute;
-    bottom: 1em;
-    height: 2em;
-    width: 2em;
+    bottom: 0.5em;
+    height: 3em;
+    width: 3em;
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 0px;

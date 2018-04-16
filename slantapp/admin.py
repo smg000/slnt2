@@ -2,12 +2,15 @@ from django.contrib import admin
 
 class IssueAdmin(admin.ModelAdmin):
     list_display = ('issue', 'date', 'display', 'order')
+    ordering = ('display', 'issue', 'date',)
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('issue', 'publication_name', 'title', 'date', 'bias', 'display')
+    ordering = ('display', 'issue', 'title', 'date',)
 
 class PublicationAdmin(admin.ModelAdmin):
     list_display = ('publication_name', 'publication_logo')
+    ordering = ('publication_name',)
 
 from .models import Issue
 admin.site.register(Issue, IssueAdmin)
