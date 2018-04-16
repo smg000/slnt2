@@ -61,7 +61,8 @@ html, body {
     color: black !important;
     font-size: 1.25em;
     font-weight: 900;
-    padding: 0px;
+    padding: 0px 0px 0px 0px;
+    line-height: normal !important;
 }
 
 .nav-link {
@@ -169,9 +170,9 @@ hr {
 
 .logo {
     position: absolute;
-    bottom: 0.5em;
-    height: 3em;
-    width: 3em;
+    bottom: 1em;
+    height: 2em;
+    width: 2em;
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 0px;
