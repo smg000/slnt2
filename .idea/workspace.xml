@@ -44,10 +44,10 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2580">
-              <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+            <state relative-caret-position="497">
+              <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
               <folding>
-                <marker date="1523850749000" expanded="true" signature="3015:3055" ph="..." />
+                <marker date="1523853903000" expanded="true" signature="3015:3055" ph="..." />
               </folding>
             </state>
           </provider>
@@ -66,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="373" selection-start-line="26" selection-start-column="373" selection-end-line="26" selection-end-column="373" />
+              <caret line="26" column="83" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#h2#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -523,7 +523,7 @@
         <state relative-caret-position="540">
           <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
-            <marker date="1523850749000" expanded="true" signature="3015:3055" ph="..." />
+            <marker date="1523853903000" expanded="true" signature="3015:3055" ph="..." />
           </folding>
         </state>
       </provider>
@@ -689,7 +689,7 @@
         <state relative-caret-position="285">
           <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
-            <marker date="1523850749000" expanded="true" signature="3015:3055" ph="..." />
+            <marker date="1523853903000" expanded="true" signature="3015:3055" ph="..." />
           </folding>
         </state>
       </provider>
@@ -799,7 +799,7 @@
         <state relative-caret-position="1385">
           <caret line="205" selection-start-line="205" selection-start-column="2" selection-end-line="207" selection-end-column="3" />
           <folding>
-            <marker date="1523850749000" expanded="true" signature="3015:3055" ph="..." />
+            <marker date="1523853903000" expanded="true" signature="3015:3055" ph="..." />
           </folding>
         </state>
       </provider>
@@ -869,10 +869,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+        <state relative-caret-position="497">
+          <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding>
-            <marker date="1523850749000" expanded="true" signature="3015:3055" ph="..." />
+            <marker date="1523853903000" expanded="true" signature="3015:3055" ph="..." />
           </folding>
         </state>
       </provider>
@@ -880,7 +880,7 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="373" selection-start-line="26" selection-start-column="373" selection-end-line="26" selection-end-column="373" />
+          <caret line="26" column="83" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
           <folding>
             <element signature="n#style#0;n#span#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#h2#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
