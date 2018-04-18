@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-MODE = 'dev' # 'dev' or 'prod' changes static file path
+MODE = 'prod' # 'dev' or 'prod' changes static file path
 
 import os
 import dj_database_url
@@ -177,7 +177,8 @@ elif MODE == 'prod':
 
     MEDIAFILES_LOCATION = 'media'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    # STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    STATIC_URL = '/static/'
 else:
     pass
 
