@@ -177,12 +177,15 @@ hr {
     margin-bottom: 0px;
     padding: 0px;
     transform: translateX(-50%);
+    border: 1px solid #bfbfbf;
+    border-radius: 50%;
 }
 
 .tooltip-inner {
     background-color: purple;
     color: white;
     opacity: 1 !important;
+    font-size: .75em;
 }
 
 .tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-top .arrow::before {
