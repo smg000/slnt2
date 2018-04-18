@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-MODE = 'prod' # 'dev' or 'prod' changes static file path
+MODE = 'dev' # 'dev' or 'prod' changes static file path
 
 import os
 import dj_database_url
