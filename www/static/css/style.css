@@ -22,11 +22,11 @@ p {
 }
 
 a {
-    color: purple;
+    color: black;
 }
 
 a:hover {
-    color: purple;
+    color: black;
 }
 
 html, body {
