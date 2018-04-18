@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-MODE = 'dev' # 'dev' or 'prod' changes static file path
+MODE = 'prod' # 'dev' or 'prod' changes static file path
 
 import os
 import dj_database_url
@@ -162,9 +162,19 @@ elif MODE == 'prod':
     AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
     AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_LOCATION = 'static'
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    # Static files settings from prod that don't work.
+    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    # STATICFILES_LOCATION = 'static'
+    # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    # Static files settings from dev that work.
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "www/static"),
+    ]
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
     MEDIAFILES_LOCATION = 'media'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
