@@ -38,4 +38,4 @@ class Site(models.Model):
     url_keys_include = models.TextField()
     url_keys_exclude = models.TextField()
     def __str__(self):
-        return "%s" % (self.title)
+        return "%s" % (self.publication_name)
