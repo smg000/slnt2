@@ -185,7 +185,7 @@ hr {
     background-color: purple;
     color: white;
     opacity: 1 !important;
-    font-size: .75em;
+    font-size: 1em;
 }
 
 .tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-top .arrow::before {

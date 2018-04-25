@@ -30,3 +30,12 @@ class Article(models.Model):
     # Add include/do not include field
     def __str__(self):
         return "%s" % (self.title)
+
+class Site(models.Model):
+    publication_name = models.CharField(max_length=250)
+    url_root = models.URLField(max_length=500)
+    url_full = models.URLField(max_length=500)
+    url_keys_include = models.TextField()
+    url_keys_exclude = models.TextField()
+    def __str__(self):
+        return "%s" % (self.title)
