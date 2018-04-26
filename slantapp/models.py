@@ -35,7 +35,7 @@ class Site(models.Model):
     publication_name = models.CharField(max_length=250)
     url_root = models.URLField(max_length=500)
     url_full = models.URLField(max_length=500)
-    url_keys_include = models.TextField()
+    url_keys_include = models.TextField(blank=True)
     url_keys_exclude = models.TextField()
     url_prepend = models.URLField(max_length=500, blank=True, null=True, default='')
     def __str__(self):
