@@ -37,5 +37,6 @@ class Site(models.Model):
     url_full = models.URLField(max_length=500)
     url_keys_include = models.TextField()
     url_keys_exclude = models.TextField()
+    url_prepend = models.URLField(max_length=500 null=True, default='')
     def __str__(self):
         return "%s" % (self.publication_name)
