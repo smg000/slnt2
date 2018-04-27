@@ -17,19 +17,56 @@ from urllib.request import urlopen
 file_sites = '~/Desktop/SLNT/Python/sites.csv'
 sites_db = pandas.read_csv(file_sites, header=None, keep_default_na=False)
 
-def TBD(tbd):
+def TBD():
     # Environment variables
     SLNT_DB_NAME = os.environ.get('SLNT_DB_NAME')
     SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
     SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
 
     # Establish connection
-    conn = psycopg2.connect(host='ec2-54-163-240-54.compute-1.amazonaws.com', dbname=SLNT_DB_NAME, user=SLNT_DB_USER, password=SLNT_DB_PASSWORD, sslmode='require')
+    conn = psycopg2.connect(
+        host='ec2-54-163-240-54.compute-1.amazonaws.com',
+        dbname=SLNT_DB_NAME,
+        user=SLNT_DB_USER,
+        password=SLNT_DB_PASSWORD,
+        sslmode='require'
+    )
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM slantapp_article")
+    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_site")
     records = cursor.fetchall()
+    urls = []
+
+    datetime_stamp = datetime.datetime.now()
+    datetime_stamp = datetime_stamp.strftime("%m-%d_%H-%M")
+    date_stamp = datetime.datetime.now()
+    date_stamp = date_stamp.strftime("%m-%d-%Y")
+
     for record in records:
-        print(record[1])
+        publication_name = record[0]
+        url_full = record[1]
+        keywords_include = record[2].split(',')
+        keywords_exclude = record[3].split(',')
+        url_prepend = record[4]
+        try:
+            webpage = urlopen(url_full)
+            soup = BeautifulSoup(webpage, 'html5lib')
+            site_urls = []
+            a_tags = soup.find_all('a')
+            for a_tag in a_tags:
+                href = a_tag.get('href')
+                if href is not None and href not in site_urls:
+                    site_urls.append(href)
+            for site_url in site_urls:
+                if any(keyword_include in site_url for keyword_include in keywords_include) and not any(keyword_exclude in site_url for keyword_exclude in keywords_exclude):
+                    if site_url[0] == '/' and url_prepend != '':
+                        site_url = url_prepend + site_url
+                    urls.append([publication_name, site_url, date_stamp])
+        except:
+            print("Unable to scrape articles from %s.") % (publication_name)
+            pass
+    print(urls)
+
+TBD()
 
 def get_links(sites_db):
     urls = []
@@ -73,7 +110,7 @@ def get_links(sites_db):
         writer.writerows(urls)
     print('Success! Your URLs have been scraped!')
 
-get_links(sites_db)
+# get_links(sites_db)
 
 file_links = '~/PycharmProjects/slant/get_articles_folder/urls_04-19_08-45.csv'
 urls = pandas.read_csv(file_links, header=None, keep_default_na=False)
