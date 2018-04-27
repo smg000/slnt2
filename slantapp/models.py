@@ -14,7 +14,11 @@ class Issue(models.Model):
 class Publication(models.Model):
     publication_name = models.CharField(max_length=250)
     publication_logo = models.ImageField()
-    # Add include/do not include field
+    url_root = models.URLField(max_length=500, default='')
+    url_full = models.URLField(max_length=500, default='')
+    url_keys_include = models.TextField(blank=True)
+    url_keys_exclude = models.TextField(default='somenonsensestring')
+    url_prepend = models.URLField(max_length=500, blank=True, null=True, default='')
     def __str__(self):
         return "%s" % (self.publication_name)
 
@@ -25,9 +29,9 @@ class Article(models.Model):
     byline = models.CharField(max_length=100)
     date = models.DateField(default=datetime.date(1900, 1, 1))
     url = models.URLField(max_length=250)
+    text = models.TextField(blank=True)
     bias = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)])
     display = models.BooleanField(default=False)
-    # Add include/do not include field
     def __str__(self):
         return "%s" % (self.title)
 
