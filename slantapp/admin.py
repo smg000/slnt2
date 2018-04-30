@@ -9,7 +9,7 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('-display', 'issue', 'title', 'date',)
 
 class PublicationAdmin(admin.ModelAdmin):
-    list_display = ('publication_name', 'publication_logo')
+    list_display = ('publication_name', 'url_full', 'publication_logo')
     ordering = ('publication_name',)
 
 class SiteAdmin(admin.ModelAdmin):
