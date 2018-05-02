@@ -23,7 +23,7 @@ class Publication(models.Model):
         return "%s" % (self.publication_name)
 
 class Article(models.Model):
-    issue = models.ForeignKey(Issue, default=None, on_delete=models.PROTECT)
+    issue = models.ForeignKey(Issue, blank=True, default=None, on_delete=models.PROTECT)
     publication_name = models.ForeignKey(Publication, blank=True, null=True, default='', on_delete=models.PROTECT)
     title = models.CharField(max_length=250)
     byline = models.CharField(max_length=100, blank=True)

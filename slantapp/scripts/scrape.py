@@ -40,7 +40,7 @@ def run():
 
     # Fetch existing urls
     cursor.execute("SELECT url FROM slantapp_article")
-    article_urls = cursor.fetchall()
+    article_urls = [item[0] for item in cursor.fetchall()]
 
     urls = []
 
@@ -74,35 +74,33 @@ def run():
                     site_url = url_prepend + site_url
 
                 if site_url not in article_urls:
-                    try:
-                        # Parse article
-                        article = n_Article(site_url)
-                        article.download()
-                        article.parse()
+                    # try:
+                    # Parse article
+                    article = n_Article(site_url)
+                    article.download()
+                    article.parse()
 
-                        # Extract data
-                        title = article.title
-                        authors = article.authors
-                        publish_date = article.publish_date
-                        text = article.text
+                    # Extract data
+                    title = article.title
+                    authors = article.authors
+                    publish_date = article.publish_date
+                    text = article.text
 
-                        # Create instance of Article class
-                        a = Article(
-                            publication_name=publication_name_fk,
-                            title=title,
-                            byline=authors,
-                            date=publish_date,
-                            url=site_url,
-                            text=text,
-                            scrape_date=datetime.date.today(),
-                            bias=50,
-                            display=False,
-                        )
-                        print(a.date)
-                        print(type(a.date))
-                        # Write to database
-                        # a.save()
-                        # print("Got text for %s." % title)
-                        # print(a)
-                    except:
-                        pass
+                    # Create instance of Article class
+                    a = Article(
+                        publication_name=publication_name_fk,
+                        title=title,
+                        byline=authors,
+                        date=publish_date,
+                        url=site_url,
+                        text=text,
+                        scrape_date=datetime.date.today(),
+                        bias=50,
+                        display=False,
+                    )
+
+                    # Write to database
+                    a.save()
+                    print("Committed article to database: %s..." % title[:20])
+                    # except:
+                    #     pass
