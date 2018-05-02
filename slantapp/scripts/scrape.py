@@ -51,11 +51,11 @@ def run():
         keywords_include = publication[2].split(',')
         keywords_exclude = publication[3].split(',')
         url_prepend = publication[4]
+        site_urls = []
 
         try:
             webpage = urlopen(url_full)
             soup = BeautifulSoup(webpage, 'html5lib')
-            site_urls = []
             a_tags = soup.find_all('a')
 
             for a_tag in a_tags:
