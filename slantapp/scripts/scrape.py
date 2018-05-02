@@ -1,21 +1,21 @@
 from bs4 import BeautifulSoup
-import csv
 import datetime
-import math
 from newspaper import Article as n_Article # To avoid ambiguity with slantapp.models.Article
-import numpy
 import os
-import pandas
 import psycopg2
-import re
-import requests
-import scrapy
-import spacy
-import textblob
-import time
 from urllib.request import urlopen
 from slantapp.models import Article, Publication
 
+# import csv
+# import math
+# import numpy
+# import pandas
+# import re
+# import requests
+# import scrapy
+# import spacy
+# import textblob
+# import time
 
 def run():
 
@@ -70,37 +70,37 @@ def run():
 
         for site_url in site_urls:
             if any(keyword_include in site_url for keyword_include in keywords_include) and not any(keyword_exclude in site_url for keyword_exclude in keywords_exclude):
-                if site_url[0] == '/' and url_prepend not in ('', None):
+                if len(site_url) > 0 and site_url[0] == '/' and url_prepend not in ('', None):
                     site_url = url_prepend + site_url
 
                 if site_url not in article_urls:
-                    # try:
-                    # Parse article
-                    article = n_Article(site_url)
-                    article.download()
-                    article.parse()
+                    try:
+                        # Parse article
+                        article = n_Article(site_url)
+                        article.download()
+                        article.parse()
 
-                    # Extract data
-                    title = article.title
-                    authors = article.authors
-                    publish_date = article.publish_date
-                    text = article.text
+                        # Extract data
+                        title = article.title
+                        authors = article.authors
+                        publish_date = article.publish_date
+                        text = article.text
 
-                    # Create instance of Article class
-                    a = Article(
-                        publication_name=publication_name_fk,
-                        title=title,
-                        byline=authors,
-                        date=publish_date,
-                        url=site_url,
-                        text=text,
-                        scrape_date=datetime.date.today(),
-                        bias=50,
-                        display=False,
-                    )
+                        # Create instance of Article class
+                        a = Article(
+                            publication_name=publication_name_fk,
+                            title=title,
+                            byline=authors,
+                            date=publish_date,
+                            url=site_url,
+                            text=text,
+                            scrape_date=datetime.date.today(),
+                            bias=50,
+                            display=False,
+                        )
 
-                    # Write to database
-                    a.save()
-                    print("Committed article: %s..." % title[:40])
-                    # except:
-                    #     pass
+                        # Write to database
+                        a.save()
+                        print("Committed article: %s..." % title[:40])
+                    except:
+                        pass

@@ -20,10 +20,11 @@ jmespath = "==0.9.3"
 python-dateutil = "==2.6.1"
 s3transfer = "==0.1.13"
 django-extensions = "==2.0.7"
-
-
+beautifulsoup4 = "==4.6.0"
+newspaper3k = "==0.2.6"
 
 [dev-packages]
+
 
 [requires]
 python_version = "3.6"
