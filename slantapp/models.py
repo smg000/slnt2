@@ -26,7 +26,7 @@ class Article(models.Model):
     issue = models.ForeignKey(Issue, blank=True, null=True, default=None, on_delete=models.PROTECT)
     publication_name = models.ForeignKey(Publication, blank=True, null=True, default='', on_delete=models.PROTECT)
     title = models.CharField(max_length=250)
-    byline = models.CharField(max_length=100, blank=True)
+    byline = models.CharField(max_length=250, blank=True)
     date = models.DateField(blank=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
     url = models.URLField(max_length=250)
     text = models.TextField(blank=True)
