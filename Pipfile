@@ -19,7 +19,7 @@ docutils = "==0.14"
 jmespath = "==0.9.3"
 python-dateutil = "==2.6.1"
 s3transfer = "==0.1.13"
-
+django-extensions = "==2.0.7"
 
 
 

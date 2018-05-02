@@ -7,7 +7,6 @@ class Issue(models.Model):
     date = models.DateField(default=datetime.date(1900, 1, 1))
     display = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
-    # Add include/do not include field
     def __str__(self):
         return "%s" % (self.issue)
 
@@ -27,22 +26,14 @@ class Article(models.Model):
     issue = models.ForeignKey(Issue, default=None, on_delete=models.PROTECT)
     publication_name = models.ForeignKey(Publication, blank=True, null=True, default='', on_delete=models.PROTECT)
     title = models.CharField(max_length=250)
-    byline = models.CharField(max_length=100)
-    date = models.DateField(default=datetime.date(1900, 1, 1))
+    byline = models.CharField(max_length=100, blank=True)
+    date = models.DateField(blank=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
     url = models.URLField(max_length=250)
     text = models.TextField(blank=True)
+    scrape_date = models.DateField(blank=True, default=datetime.date(1900, 1, 1))
+    # TODO: add topics
+    # TODO: add entities_sentiment
     bias = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)], help_text='Select a number between 0 and 100, where 0 is extremely liberal, and 100 is extremely conservative.')
     display = models.BooleanField(default=False)
     def __str__(self):
         return "%s" % (self.title)
-
-# OBSOLETE CLASS
-class Site(models.Model):
-    publication_name = models.CharField(max_length=250)
-    url_root = models.URLField(max_length=500)
-    url_full = models.URLField(max_length=500)
-    url_keys_include = models.TextField(blank=True)
-    url_keys_exclude = models.TextField()
-    url_prepend = models.URLField(max_length=500, blank=True, null=True, default='')
-    def __str__(self):
-        return "%s" % (self.publication_name)

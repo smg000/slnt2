@@ -12,9 +12,6 @@ class PublicationAdmin(admin.ModelAdmin):
     list_display = ('publication_name', 'url_root', 'publication_logo', 'scrape')
     ordering = ('publication_name',)
 
-class SiteAdmin(admin.ModelAdmin):
-    list_display =  ('publication_name', 'url_full')
-
 from .models import Issue
 admin.site.register(Issue, IssueAdmin)
 
@@ -23,6 +20,3 @@ admin.site.register(Article, ArticleAdmin)
 
 from .models import Publication
 admin.site.register(Publication, PublicationAdmin)
-
-from .models import Site
-admin.site.register(Site, SiteAdmin)
