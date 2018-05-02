@@ -35,7 +35,7 @@ def run():
     cursor = conn.cursor()
 
     # Fetch sites to be scraped
-    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE publication_name='Politico' AND scrape=TRUE")
+    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE scrape=TRUE")
     publications = cursor.fetchall()
 
     # Fetch existing urls
@@ -101,6 +101,6 @@ def run():
 
                     # Write to database
                     a.save()
-                    print("Committed article to database: %s..." % title[:20])
+                    print("Committed article: %s..." % title[:40])
                     # except:
                     #     pass

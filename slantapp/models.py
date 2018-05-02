@@ -26,11 +26,11 @@ class Article(models.Model):
     issue = models.ForeignKey(Issue, blank=True, null=True, default=None, on_delete=models.PROTECT)
     publication_name = models.ForeignKey(Publication, blank=True, null=True, default='', on_delete=models.PROTECT)
     title = models.CharField(max_length=250)
-    byline = models.CharField(max_length=250, blank=True)
-    date = models.DateField(blank=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
+    byline = models.CharField(max_length=250, blank=True, null=True)
+    date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
     url = models.URLField(max_length=250)
-    text = models.TextField(blank=True)
-    scrape_date = models.DateField(blank=True, default=datetime.date(1900, 1, 1))
+    text = models.TextField(blank=True, null=True)
+    scrape_date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1))
     # TODO: add topics
     # TODO: add entities_sentiment
     bias = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)], help_text='Select a number between 0 and 100, where 0 is extremely liberal, and 100 is extremely conservative.')
