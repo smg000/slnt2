@@ -53,38 +53,24 @@ def run():
         url_prepend = publication[4]
         site_urls = []
 
-        #FROM HERE
+        try:
+            print('pre-webpage')
+            webpage = urlopen(url_full)
+            print('webpage, pre-soup')
+            soup = BeautifulSoup(webpage, 'html5lib')
+            print('soup, pre-a_tags')
+            a_tags = soup.find_all('a')
+            print('a_tags')
 
-        webpage = urlopen(url_full)
-        soup = BeautifulSoup(webpage, 'html5lib')
-        a_tags = soup.find_all('a')
+            for a_tag in a_tags:
+                href = a_tag.get('href')
+                if href is not None and href not in site_urls:
+                    site_urls.append(href)
+            print("Scraping articles from: %s." % publication_name)
 
-        for a_tag in a_tags:
-            href = a_tag.get('href')
-            if href is not None and href not in site_urls:
-                site_urls.append(href)
-        print("Scraping articles from: %s." % publication_name)
-
-        #TO HERE
-
-        # try:
-        #     print('pre-webpage')
-        #     webpage = urlopen(url_full)
-        #     print('webpage, pre-soup')
-        #     soup = BeautifulSoup(webpage, 'html5lib')
-        #     print('soup, pre-a_tags')
-        #     a_tags = soup.find_all('a')
-        #     print('a_tags')
-        #
-        #     for a_tag in a_tags:
-        #         href = a_tag.get('href')
-        #         if href is not None and href not in site_urls:
-        #             site_urls.append(href)
-        #     print("Scraping articles from: %s." % publication_name)
-        #
-        # except:
-        #     print("Unable to scrape articles from: %s." % publication_name)
-        #     pass
+        except:
+            print("Unable to scrape articles from: %s." % publication_name)
+            pass
 
         for site_url in site_urls:
             if any(keyword_include in site_url for keyword_include in keywords_include) and not any(keyword_exclude in site_url for keyword_exclude in keywords_exclude):
