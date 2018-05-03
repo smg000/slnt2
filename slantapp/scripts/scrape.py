@@ -56,7 +56,7 @@ def run():
         #FROM HERE
 
         webpage = urlopen(url_full)
-        soup = BeautifulSoup(webpage, 'html.parser')
+        soup = BeautifulSoup(webpage, 'html5lib')
         a_tags = soup.find_all('a')
 
         for a_tag in a_tags:

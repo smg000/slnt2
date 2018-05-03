@@ -24,6 +24,8 @@ beautifulsoup4 = "==4.6.0"
 newspaper3k = "==0.2.6"
 lxml = "==4.2.1"
 six = "==1.11.0"
+html5lib = "==1.0.1"
+webencodings = "==0.5.1"
 
 [dev-packages]
 
