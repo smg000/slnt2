@@ -55,13 +55,9 @@ def run():
 
         #FROM HERE
 
-        print('pre-webpage')
         webpage = urlopen(url_full)
-        print('webpage, pre-soup')
-        soup = BeautifulSoup(webpage, 'html5lib')
-        print('soup, pre-a_tags')
+        soup = BeautifulSoup(webpage, 'html.parser')
         a_tags = soup.find_all('a')
-        print('a_tags')
 
         for a_tag in a_tags:
             href = a_tag.get('href')
