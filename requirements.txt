@@ -21,6 +21,5 @@ lxml==4.2.1
 html5lib==1.0.1
 webencodings==0.5.1
 spacy==2.0.11
-en-core-web-sm==2.0.0
 spacy-nightly==2.0.0rc2
 ftfy==4.4.3
