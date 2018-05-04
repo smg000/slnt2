@@ -53,11 +53,8 @@
       <file leaf-file-name="nlp.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/nlp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -790,11 +787,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/scripts/nlp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>

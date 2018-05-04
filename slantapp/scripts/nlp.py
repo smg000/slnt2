@@ -1,5 +1,6 @@
 from collections import Counter
 import datetime
+import en_core_web_sm
 import os
 import psycopg2
 import spacy
