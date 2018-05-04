@@ -25,7 +25,7 @@ def run():
 
     # Get article text
     today = datetime.date.today()
-    cursor.execute("SELECT title, text, url FROM slantapp_article WHERE topic_keywords IS NULL LIMIT 5;")
+    cursor.execute("SELECT title, text, url FROM slantapp_article WHERE topic_keywords IS NULL;")
     data = cursor.fetchall()
 
     # nlp = spacy.load('en')
