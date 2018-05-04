@@ -3,6 +3,7 @@ import datetime
 import os
 import psycopg2
 import spacy
+from slantapp.models import Article
 
 def run():
 
