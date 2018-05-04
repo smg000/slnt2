@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slantapp/scripts/nlp.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/nlp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/attrs.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/attrs.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/gold.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/gold.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/lexeme.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/lexeme.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/matcher.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/matcher.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/morphology.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/morphology.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/parts_of_speech.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/parts_of_speech.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/pipeline.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/pipeline.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/strings.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/strings.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/symbols.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/symbols.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/_beam_utils.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/_beam_utils.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/_state.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/_state.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/arc_eager.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/arc_eager.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/ner.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/ner.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/nn_parser.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/nn_parser.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/nonproj.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/nonproj.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/stateclass.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/stateclass.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/transition_system.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/syntax/transition_system.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokenizer.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokenizer.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/doc.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/doc.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/span.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/span.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/token.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/tokens/token.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/vectors.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/vectors.cpython-36m-darwin.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/vocab.cpython-36m-darwin.so" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/spacy/vocab.cpython-36m-darwin.so" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nlp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nlp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/nlp.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
@@ -85,6 +58,24 @@
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pipfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Pipfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" selection-start-line="25" selection-end-line="25" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -809,6 +800,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/scripts/nlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -818,18 +819,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Pipfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/scripts/nlp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
         </state>
       </provider>
     </entry>
