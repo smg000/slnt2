@@ -43,6 +43,7 @@ def run():
     article_urls = [item[0] for item in cursor.fetchall()]
 
     urls = []
+    counter = 0
 
     for publication in publications:
         publication_name = publication[0]
@@ -54,13 +55,9 @@ def run():
         site_urls = []
 
         try:
-            print('pre-webpage')
             webpage = urlopen(url_full)
-            print('webpage, pre-soup')
             soup = BeautifulSoup(webpage, 'html5lib')
-            print('soup, pre-a_tags')
             a_tags = soup.find_all('a')
-            print('a_tags')
 
             for a_tag in a_tags:
                 href = a_tag.get('href')
@@ -105,6 +102,8 @@ def run():
 
                         # Write to database
                         a.save()
+                        counter += 1
                         print("Committed article: %s..." % title[:40])
                     except:
                         pass
+    print("Committed %d articles." % (counter))
