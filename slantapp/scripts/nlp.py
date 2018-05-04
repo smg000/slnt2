@@ -30,7 +30,8 @@ def run():
 
     # nlp = spacy.load('en')
     # Possible alternative
-    nlp = en_core_web_sm.load()
+    # nlp = en_core_web_sm.load()
+    nlp = spacy.load('en_core_web_sm')
 
     for title, text, url in data:
 

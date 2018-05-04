@@ -29,6 +29,7 @@ webencodings = "==0.5.1"
 spacy = "==2.0.11"
 spacy-nightly = "==2.0.0rc2"
 ftfy = "==4.4.3"
+en_core_web_en = { file = 'https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz' }
 
 [dev-packages]
 
