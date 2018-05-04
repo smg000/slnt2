@@ -27,9 +27,9 @@ def run():
     cursor.execute("SELECT title, text, url FROM slantapp_article WHERE topic_keywords IS NULL LIMIT 5;")
     data = cursor.fetchall()
 
-    nlp = spacy.load('en')
+    # nlp = spacy.load('en')
     # Possible alternative
-    # nlp = en_core_web_sm.load()
+    nlp = en_core_web_sm.load()
 
     for title, text, url in data:
 
