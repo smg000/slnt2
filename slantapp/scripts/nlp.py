@@ -28,6 +28,8 @@ def run():
     data = cursor.fetchall()
 
     nlp = spacy.load('en')
+    # Possible alternative
+    # nlp = en_core_web_sm.load()
 
     for title, text, url in data:
 
