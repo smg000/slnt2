@@ -13,7 +13,7 @@ def run():
     SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
     SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
 
-    # Establish connection
+    # Establish connection 1
     conn = psycopg2.connect(
         host='ec2-54-163-240-54.compute-1.amazonaws.com',
         dbname=SLNT_DB_NAME,
@@ -26,6 +26,18 @@ def run():
     # Delete duplicate articles in database
     cursor.execute("DELETE FROM slantapp_article a USING slantapp_article b WHERE a.id < b.id AND a.url = b.url;")
     print('Deleted duplicate entries.')
+
+    conn.close()
+
+    # Establish connection 2
+    conn = psycopg2.connect(
+        host='ec2-54-163-240-54.compute-1.amazonaws.com',
+        dbname=SLNT_DB_NAME,
+        user=SLNT_DB_USER,
+        password=SLNT_DB_PASSWORD,
+        sslmode='require'
+    )
+    cursor = conn.cursor()
 
     # Get article text
     cursor.execute("SELECT title, text, url FROM slantapp_article WHERE topic_keywords IS NULL;")
