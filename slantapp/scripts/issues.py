@@ -24,13 +24,12 @@ def run():
     cursor = conn.cursor()
 
     # Get article text
-    today = datetime.date.today()
     cursor.execute("""
         SELECT topic_keywords
         FROM slantapp_article
         WHERE
             topic_keywords IS NOT NULL
-            AND scrape_date > current_date - interval '1' day
+            AND scrape_date > current_date - interval '2' day
         ;
         """)
     data = cursor.fetchall()
