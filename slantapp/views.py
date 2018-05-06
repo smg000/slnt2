@@ -23,8 +23,8 @@ def index_test(request):
     }
     return render(request, 'index_test.html', context)
 
-def about(request):
-    return render(request, 'about.html')
+def why(request):
+    return render(request, 'why.html')
 
 def contact_form(request):
   to_email = 'sean.graber@gmail.com'

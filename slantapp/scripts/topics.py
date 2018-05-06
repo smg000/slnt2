@@ -1,5 +1,5 @@
 from collections import Counter
-import datetime
+# import datetime
 import en_core_web_sm
 import os
 import psycopg2
@@ -23,14 +23,14 @@ def run():
     )
     cursor = conn.cursor()
 
+    # Delete duplicate articles in database
+    cursor.execute("DELETE FROM slantapp_article a USING slantapp_article b WHERE a.id < b.id AND a.url = b.url;")
+    print('Deleted duplicate entries.')
+
     # Get article text
-    today = datetime.date.today()
     cursor.execute("SELECT title, text, url FROM slantapp_article WHERE topic_keywords IS NULL;")
     data = cursor.fetchall()
 
-    # nlp = spacy.load('en')
-    # Possible alternative
-    # nlp = en_core_web_sm.load()
     nlp = spacy.load('en_core_web_sm')
 
     for title, text, url in data:
@@ -87,4 +87,4 @@ def run():
         article.topic_keywords = topics_combined
         article.save()
 
-run()
+    conn.close()

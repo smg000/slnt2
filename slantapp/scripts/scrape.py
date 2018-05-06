@@ -6,17 +6,6 @@ import psycopg2
 from urllib.request import urlopen
 from slantapp.models import Article, Publication
 
-# import csv
-# import math
-# import numpy
-# import pandas
-# import re
-# import requests
-# import scrapy
-# import spacy
-# import textblob
-# import time
-
 def run():
 
     # Environment variables
@@ -37,6 +26,9 @@ def run():
     # Fetch sites to be scraped
     cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE scrape=TRUE")
     publications = cursor.fetchall()
+
+    # Delete duplicate articles from database
+    cursor.execute("DELETE FROM slantapp_article a USING slantapp_article b WHERE a.id < b.id AND a.url = b.url");
 
     # Fetch existing urls
     cursor.execute("SELECT url FROM slantapp_article")
@@ -107,3 +99,5 @@ def run():
                     except:
                         pass
     print("Committed %d articles." % (counter))
+
+    conn.close()

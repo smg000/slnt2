@@ -18,14 +18,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
 from slantapp.views import index
-from slantapp.views import about
+from slantapp.views import why
 from slantapp.views import contact_form
 from slantapp.views import thankyou
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index),
-    url(r'^about/$', about),
+    url(r'^why/$', why),
     url(r'^contact/$', contact_form),
     url(r'^thank-you/$', thankyou),
 ]

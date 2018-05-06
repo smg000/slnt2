@@ -5,8 +5,14 @@ class IssueAdmin(admin.ModelAdmin):
     ordering = ('-display', 'issue', 'date',)
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('issue', 'publication_name', 'title', 'date', 'bias', 'display')
-    ordering = ('-display', 'issue', 'title', 'date',)
+    list_display = ('issue', 'publication_name', 'title', 'scrape_date', 'bias', 'topic_keywords', 'display')
+    ordering = ('-scrape_date', '-display', 'issue', 'title',)
+    list_filter = (
+        ('display', admin.BooleanFieldListFilter),
+        ('date', admin.DateFieldListFilter),
+        ('issue', admin.RelatedFieldListFilter),
+    )
+    search_fields = ['topic_keywords']
 
 class PublicationAdmin(admin.ModelAdmin):
     list_display = ('publication_name', 'url_root', 'publication_logo', 'scrape')
