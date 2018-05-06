@@ -62,7 +62,7 @@ def run():
             pass
 
         # Remove duplicates, which should not be there anyway.
-        site_url = list(set(site_url))
+        site_urls = list(set(site_url))
 
         for site_url in site_urls:
             if any(keyword_include in site_url for keyword_include in keywords_include) and not any(keyword_exclude in site_url for keyword_exclude in keywords_exclude):
