@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slantapp/scripts/scrape.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/scrape.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slantapp/scripts/topics.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/topics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slantapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scrape.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scrape.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/scrape.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
@@ -56,8 +53,8 @@
       <file leaf-file-name="delete_duplicates.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="149">
+              <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -77,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slantapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+            <state relative-caret-position="446">
+              <caret line="30" column="74" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
               </folding>
@@ -140,7 +137,6 @@
         <option value="$PROJECT_DIR$/scripts/__init__.py" />
         <option value="$PROJECT_DIR$/scripts/scrape.py" />
         <option value="$PROJECT_DIR$/slant/settings.py" />
-        <option value="$PROJECT_DIR$/slantapp/models.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/Pipfile" />
         <option value="$PROJECT_DIR$/slantapp/scripts/nlp.py" />
@@ -154,9 +150,10 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/slantapp/admin.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/issues.py" />
-        <option value="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/topics.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/scrape.py" />
+        <option value="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" />
+        <option value="$PROJECT_DIR$/slantapp/models.py" />
       </list>
     </option>
   </component>
@@ -752,16 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slant/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -782,16 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/scripts/topics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -808,6 +785,26 @@
           <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="30" column="74" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
           </folding>
         </state>
       </provider>

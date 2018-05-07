@@ -28,7 +28,7 @@ class Article(models.Model):
     title = models.CharField(max_length=250)
     byline = models.CharField(max_length=250, blank=True, null=True)
     date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
-    url = models.URLField(max_length=250)
+    url = models.URLField(max_length=250, unique=True) # Added unique=True
     text = models.TextField(blank=True, null=True)
     scrape_date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1))
     topic_keywords = models.TextField(blank=True, null=True)

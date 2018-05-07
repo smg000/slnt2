@@ -8,7 +8,7 @@ def run():
     SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
     SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
 
-    # Establish connection 1
+    # Establish connection
     conn = psycopg2.connect(
         host='ec2-54-163-240-54.compute-1.amazonaws.com',
         dbname=SLNT_DB_NAME,
