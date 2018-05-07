@@ -76,7 +76,10 @@ def run():
                         # Extract data
                         title = article.title
                         authors = article.authors
-                        publish_date = article.publish_date
+                        if article.publish_date == '':
+                            publish_date = datetime.date.today()
+                        else:
+                            publish_date = article.publish_date
                         text = article.text
 
                         # Create instance of Article class

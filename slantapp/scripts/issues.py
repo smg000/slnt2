@@ -3,6 +3,7 @@ import datetime
 # import en_core_web_sm
 import os
 import psycopg2
+import re
 # import spacy
 # from slantapp.models import Article
 
@@ -29,7 +30,7 @@ def run():
         FROM slantapp_article
         WHERE
             topic_keywords IS NOT NULL
-            AND scrape_date > current_date - interval '2' day
+            AND scrape_date >= CURRENT_DATE - 1
         ;
         """)
     data = cursor.fetchall()
@@ -37,15 +38,23 @@ def run():
     aggregated_topics = []
     num_results = 50
 
-    list_of_list_of_topics = [eval(item[0]) for item in data]
-    for list_of_topics in list_of_list_of_topics:
-        for topic in list_of_topics:
-            for i in range(0,topic[1]):
-                aggregated_topics.append(topic[0])
+    pattern = "('[a-z\s\.'-]+',\s\d+)"
+    regex = re.compile(pattern)
+
+    for tuple in data:
+        string = str(tuple) # Convert tuple to string
+        list = regex.findall(string) # Find regex matches
+        for item in list:
+            item_list = item.split(',') # Split string into list
+            topic = item_list[0][1:-1] # Get rid of single quotes
+            frequency = int(item_list[1][1:]) # Convert string to integer
+            for i in range(0, frequency):
+                aggregated_topics.append(topic) # Add topic to list, frequency number of times
 
     aggregated_topics_most_common = Counter(aggregated_topics).most_common(num_results)
+    aggregated_topics_most_common_sorted = sorted(aggregated_topics_most_common, key=lambda topic: topic[1], reverse=True)
 
-    for topic in aggregated_topics_most_common:
+    for topic in aggregated_topics_most_common_sorted:
         print(topic)
 
     conn.close()
