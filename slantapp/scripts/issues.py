@@ -16,7 +16,7 @@ def run():
 
     # Establish connection
     conn = psycopg2.connect(
-        host='ec2-54-163-240-54.compute-1.amazonaws.com',
+        host='ec2-54-235-206-118.compute-1.amazonaws.com',
         dbname=SLNT_DB_NAME,
         user=SLNT_DB_USER,
         password=SLNT_DB_PASSWORD,
@@ -36,7 +36,7 @@ def run():
     data = cursor.fetchall()
 
     aggregated_topics = []
-    num_results = 50
+    num_results = 25
 
     pattern = "('[a-z\s\.'-]+',\s\d+)"
     regex = re.compile(pattern)
