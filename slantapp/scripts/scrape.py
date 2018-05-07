@@ -24,14 +24,11 @@ def run():
     cursor = conn.cursor()
 
     # Fetch sites to be scraped
-    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE scrape=TRUE")
+    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE scrape=TRUE;")
     publications = cursor.fetchall()
 
-    # Delete duplicate articles from database
-    cursor.execute("DELETE FROM slantapp_article a USING slantapp_article b WHERE a.id < b.id AND a.url = b.url");
-
     # Fetch existing urls
-    cursor.execute("SELECT url FROM slantapp_article")
+    cursor.execute("SELECT url FROM slantapp_article;")
     article_urls = [item[0] for item in cursor.fetchall()]
 
     urls = []
