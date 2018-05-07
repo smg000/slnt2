@@ -24,7 +24,7 @@
                             <div class="col-12 justify-content-start row-table-text">
                                 {% for article in articles %}
                                     {% if article.issue == issue %}
-                                        <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> By {{ article.byline }} <br> {{ article.date }}"></a>
+                                        <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
                                     {% endif %}
                                 {% endfor %}
                             </div>
