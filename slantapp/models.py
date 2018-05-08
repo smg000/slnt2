@@ -17,6 +17,8 @@ class Publication(models.Model):
     url_full = models.URLField(max_length=500, default='')
     url_keys_include = models.TextField(blank=True, help_text='Separate keywords with a comma, no space.')
     url_keys_exclude = models.TextField(default='somenonsensestring')
+    regex = models.TextField(blank=True, null=True)
+    prepend = models.BooleanField(default=False)
     url_prepend = models.URLField(max_length=500, blank=True, null=True, default='', help_text='Add URL without trailing slash.')
     scrape = models.BooleanField(default=False)
     def __str__(self):

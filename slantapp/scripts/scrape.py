@@ -3,6 +3,7 @@ import datetime
 from newspaper import Article as n_Article # To avoid ambiguity with slantapp.models.Article
 import os
 import psycopg2
+from urllib.request import Request
 from urllib.request import urlopen
 from slantapp.models import Article, Publication
 
@@ -44,8 +45,20 @@ def run():
         site_urls = []
 
         try:
-            webpage = urlopen(url_full)
-            soup = BeautifulSoup(webpage, 'html5lib')
+
+            try:
+                # This definitely works
+                webpage = urlopen(url_full)
+                soup = BeautifulSoup(webpage, 'html5lib') # Possible parsers: html5lib, lxml
+                print('Used urlopen to scrape %s.' % (url_full))
+
+            except:
+                # This may or may not work
+                req = Request(url_full, headers={'User-Agent': 'Mozilla/5.0'})
+                webpage = urlopen(req).read()
+                soup = BeautifulSoup(webpage, 'html5lib')
+                print('Used Request to scrape %s.' % (url_full))
+
             a_tags = soup.find_all('a')
 
             for a_tag in a_tags:
