@@ -20,7 +20,7 @@ class Publication(models.Model):
     regex = models.TextField(blank=True, null=True)
     url_blacklist = models.TextField(blank=True, null=True)
     prepend = models.BooleanField(default=False)
-    url_prepend = models.URLField(max_length=500, blank=True, null=True, default='', help_text='Add URL without trailing slash.')
+    url_prepend = models.TextField(blank=True, null=True, default='', help_text='Add URL without trailing slash.')
     scrape = models.BooleanField(default=False)
     def __str__(self):
         return "%s" % (self.publication_name)
