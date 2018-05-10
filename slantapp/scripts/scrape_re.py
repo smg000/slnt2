@@ -35,10 +35,10 @@ def run():
     cursor.execute("SELECT url FROM slantapp_article;")
     article_urls = [item[0] for item in cursor.fetchall()]
 
-    urls = []
     counter = 0
 
     for publication in publications:
+
         publication_name = publication[0]
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
@@ -47,7 +47,7 @@ def run():
         prepend = publication[4]
         url_prepend = publication[5]
 
-        print(publication)
+        urls = []
 
         try:
 
@@ -70,7 +70,7 @@ def run():
 
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
-                if re.match(regex, url) and url not in url_blacklist and url not in urls:
+                if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
                     if prepend == True:
                         url = url_prepend + url
                     urls.append(url)
@@ -81,46 +81,48 @@ def run():
             print("Unable to scrape articles from: %s." % publication_name)
             pass
 
-    for url in urls:
+        for url in urls:
 
-        try:
+            try:
 
-            # Parse article
-            article = n_Article(url)
-            article.download()
-            article.parse()
+                # Parse article
+                article = n_Article(url)
+                article.download()
+                article.parse()
 
-            # Extract data
-            title = article.title
-            authors = article.authors
-            if article.publish_date == '':
-                publish_date = datetime.date.today()
-            else:
-                publish_date = article.publish_date
-            text = article.text
+                # Extract data
+                title = article.title
+                authors = article.authors
+                if article.publish_date == '':
+                    publish_date = datetime.date.today()
+                else:
+                    publish_date = article.publish_date
+                text = article.text
 
-            # Create instance of Article class
-            a = Article(
-                publication_name=publication_name_fk,
-                title=title,
-                byline=authors,
-                date=publish_date,
-                url=site_url,
-                text=text,
-                scrape_date=datetime.date.today(),
-                bias=50,
-                display=False,
-            )
+                # Create instance of Article class
+                a = Article(
+                    publication_name=publication_name_fk,
+                    title=title,
+                    byline=authors,
+                    date=publish_date,
+                    url=site_url,
+                    text=text,
+                    scrape_date=datetime.date.today(),
+                    bias=50,
+                    display=False,
+                )
 
-            # Write to database
-            a.save()
-            counter += 1
-            print("Committed article: %s..." % title[:40])
+                # Write to database
+                a.save()
+                counter += 1
+                print("Committed article: %s..." % title[:40])
 
-        except:
+            except:
 
-            pass
+                pass
 
     print("Committed %d articles." % (counter))
 
     conn.close()
+
+run()
