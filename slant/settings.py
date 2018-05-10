@@ -93,7 +93,7 @@ DATABASES = {
         'NAME': os.environ.get('SLNT_DB_NAME'),
         'USER': os.environ.get('SLNT_DB_USER'),
         'PASSWORD': os.environ.get('SLNT_DB_PASSWORD'),
-        'HOST': 'ec2-54-235-206-118.compute-1.amazonaws.com',
+        'HOST': os.environ.get('SLNT_DB_HOST'),
         'PORT': '5432',
     }
 }

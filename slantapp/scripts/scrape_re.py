@@ -3,6 +3,7 @@ import datetime
 from newspaper import Article as n_Article # To avoid ambiguity with slantapp.models.Article
 import os
 import psycopg2
+import re
 from urllib.request import Request
 from urllib.request import urlopen
 from slantapp.models import Article, Publication
@@ -39,35 +40,47 @@ def run():
         publication_name = publication[0]
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
-        keywords_include = publication[2].split(',')
-        keywords_exclude = publication[3].split(',')
+        # keywords_include = publication[2].split(',')
+        # keywords_exclude = publication[3].split(',')
+        # prepend =
         url_prepend = publication[4]
-        site_urls = []
+        pattern = regex[0]
+        # url_blacklist =
+
+        print(publication)
+
+        """
 
         try:
 
             try:
-                # This definitely works
-                webpage = urlopen(url_full)
-                soup = BeautifulSoup(webpage, 'html5lib') # Possible parsers: html5lib, lxml
-                print('Used urlopen to scrape %s.' % (url_full))
 
-            except:
-                # This may or may not work
+                # More robust
                 req = Request(url_full, headers={'User-Agent': 'Mozilla/5.0'})
                 webpage = urlopen(req).read()
-                soup = BeautifulSoup(webpage, 'html5lib')
+                soup = BeautifulSoup(webpage, 'html5lib') # Possible parsers: html5lib, lxml
                 print('Used Request to scrape %s.' % (url_full))
 
-            a_tags = soup.find_all('a')
+            except:
 
-            for a_tag in a_tags:
-                href = a_tag.get('href')
-                if href is not None and href not in site_urls:
-                    site_urls.append(href)
-            print("Scraping articles from: %s." % publication_name)
+                # Less robust
+                webpage = urlopen(url_full)
+                soup = BeautifulSoup(webpage, 'html5lib')
+                print('Used urlopen to scrape %s.' % (url_full))
+
+        a_tags = soup.find_all('a')
+
+        #TODO Add URL_BLACKLIST
+        for a_tag in a_tags:
+            url = str(a_tag.get('href'))
+            if re.match(pattern, url) and url not in url_blacklist and url not in urls:
+                if prepend == True:
+                    url = url_prepend + url
+                urls.append(url)
+                counter += 1
 
         except:
+
             print("Unable to scrape articles from: %s." % publication_name)
             pass
 
@@ -115,5 +128,7 @@ def run():
                     except:
                         pass
     print("Committed %d articles." % (counter))
+
+    """
 
     conn.close()
