@@ -66,15 +66,15 @@ def run():
                 soup = BeautifulSoup(webpage, 'html5lib')
                 print('Used urlopen to scrape %s.' % (url_full))
 
-        a_tags = soup.find_all('a')
+            a_tags = soup.find_all('a')
 
-        for a_tag in a_tags:
-            url = str(a_tag.get('href'))
-            if re.match(regex, url) and url not in url_blacklist and url not in urls:
-                if prepend == True:
-                    url = url_prepend + url
-                urls.append(url)
-                counter += 1
+            for a_tag in a_tags:
+                url = str(a_tag.get('href'))
+                if re.match(regex, url) and url not in url_blacklist and url not in urls:
+                    if prepend == True:
+                        url = url_prepend + url
+                    urls.append(url)
+                    counter += 1
 
         except:
 
