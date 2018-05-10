@@ -27,10 +27,11 @@ def run():
     cursor = conn.cursor()
 
     # Fetch sites to be scraped
-    cursor.execute("SELECT publication_name, url_full, url_keys_include, url_keys_exclude, url_prepend FROM slantapp_publication WHERE scrape=TRUE;")
+    cursor.execute("SELECT publication_name, url_full, regex, url_blacklist, prepend, url_prepend FROM slantapp_publication WHERE scrape=TRUE;")
     publications = cursor.fetchall()
 
     # Fetch existing urls
+    # TODO Restrict query to the last week to cut down query runtime
     cursor.execute("SELECT url FROM slantapp_article;")
     article_urls = [item[0] for item in cursor.fetchall()]
 
@@ -41,12 +42,10 @@ def run():
         publication_name = publication[0]
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
-        # keywords_include = publication[2].split(',')
-        # keywords_exclude = publication[3].split(',')
-        # prepend =
-        url_prepend = publication[4]
-        pattern = regex[0]
-        # url_blacklist =
+        regex = publication[2]
+        url_blacklist = publication[3]
+        prepend = publication[4]
+        url_prepend = publication[5]
 
         print(publication)
 
@@ -71,10 +70,9 @@ def run():
 
         a_tags = soup.find_all('a')
 
-        #TODO Add URL_BLACKLIST
         for a_tag in a_tags:
             url = str(a_tag.get('href'))
-            if re.match(pattern, url) and url not in url_blacklist and url not in urls:
+            if re.match(regex, url) and url not in url_blacklist and url not in urls:
                 if prepend == True:
                     url = url_prepend + url
                 urls.append(url)
