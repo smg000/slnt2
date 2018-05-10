@@ -11,6 +11,7 @@ from slantapp.models import Article, Publication
 def run():
 
     # Environment variables
+    SLNT_DB_HOST = os.environ.get('SLNT_DB_HOST')
     SLNT_DB_NAME = os.environ.get('SLNT_DB_NAME')
     SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
     SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
