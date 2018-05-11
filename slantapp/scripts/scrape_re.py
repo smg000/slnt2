@@ -70,7 +70,6 @@ def run():
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
-                    counter += 1
         except:
             try:
                 # Less robust
@@ -85,49 +84,51 @@ def run():
                         if prepend is True:
                             url = url_prepend + url
                         urls.append(url)
-                        counter += 1
             except:
                 print("Unable to scrape articles from: %s." % publication_name)
                 pass
 
         urls_unique = list(set(urls))
 
+        print(publication)  # REMOVE
+        print(len(urls))  # REMOVE
+
         for url in urls_unique:
 
-            try:
-                # Parse article
-                article = n_Article(url)
-                article.download()
-                article.parse()
+            # try:
+            # Parse article
+            article = n_Article(url)
+            article.download()
+            article.parse()
 
-                # Extract data
-                title = article.title
-                authors = article.authors
-                if article.publish_date == '':
-                    publish_date = datetime.date.today()
-                else:
-                    publish_date = article.publish_date
-                text = article.text
+            # Extract data
+            title = article.title
+            authors = article.authors
+            if article.publish_date == '':
+                publish_date = datetime.date.today()
+            else:
+                publish_date = article.publish_date
+            text = article.text
 
-                # Create instance of Article class
-                a = Article(
-                    publication_name=publication_name_fk,
-                    title=title,
-                    byline=authors,
-                    date=publish_date,
-                    url=site_url,
-                    text=text,
-                    scrape_date=datetime.date.today(),
-                    bias=50,
-                    display=False,
-                )
+            # Create instance of Article class
+            a = Article(
+                publication_name=publication_name_fk,
+                title=title,
+                byline=authors,
+                date=publish_date,
+                url=site_url,
+                text=text,
+                scrape_date=datetime.date.today(),
+                bias=50,
+                display=False,
+            )
 
-                # Write to database
-                a.save()
-                counter += 1
-                print("Committed article: %s..." % title[:40])
-            except:
-                pass
+            # Write to database
+            a.save()
+            counter += 1
+            print("Committed article: %s..." % title[:40])
+            # except:
+            #     pass
 
     print("Committed %d articles." % (counter))
 
