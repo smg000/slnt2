@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import datetime
-from newspaper import Article as n_Article # To avoid ambiguity with slantapp.models.Article
+from newspaper import Article as n_Article  # To avoid ambiguity with slantapp.models.Article
 import os
 import psycopg2
 import re
@@ -8,26 +8,32 @@ from urllib.request import Request
 from urllib.request import urlopen
 from slantapp.models import Article, Publication
 
+
 def run():
 
     # Environment variables
-    SLNT_DB_HOST = os.environ.get('SLNT_DB_HOST')
-    SLNT_DB_NAME = os.environ.get('SLNT_DB_NAME')
-    SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
-    SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
+    slnt_db_host = os.environ.get('SLNT_DB_HOST')
+    slnt_db_name = os.environ.get('SLNT_DB_NAME')
+    slnt_db_user = os.environ.get('SLNT_DB_USER')
+    slnt_db_password = os.environ.get('SLNT_DB_PASSWORD')
 
     # Establish connection
     conn = psycopg2.connect(
-        host=SLNT_DB_HOST,
-        dbname=SLNT_DB_NAME,
-        user=SLNT_DB_USER,
-        password=SLNT_DB_PASSWORD,
+        host=slnt_db_host,
+        dbname=slnt_db_name,
+        user=slnt_db_user,
+        password=slnt_db_password,
         sslmode='require'
     )
     cursor = conn.cursor()
 
     # Fetch sites to be scraped
-    cursor.execute("SELECT publication_name, url_full, regex, url_blacklist, prepend, url_prepend FROM slantapp_publication WHERE scrape=TRUE;")
+    cursor.execute("""
+        SELECT publication_name, url_full, regex, url_blacklist, prepend, url_prepend
+        FROM slantapp_publication
+        WHERE scrape = TRUE
+        ;
+        """)
     publications = cursor.fetchall()
 
     # Fetch existing urls
@@ -50,41 +56,43 @@ def run():
         urls = []
 
         try:
+            # More robust
+            req = Request(url_full, headers={'User-Agent': 'Mozilla/5.0'})
+            webpage = urlopen(req).read()
+            soup = BeautifulSoup(webpage, 'html5lib')  # Possible parsers: html5lib, lxml
+            print('Used Request to scrape %s.' % (url_full))
 
+            # TODO Refactor to remove repetitive code
+            a_tags = soup.find_all('a')
+            for a_tag in a_tags:
+                url = str(a_tag.get('href'))
+                if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
+                    if prepend is True:
+                        url = url_prepend + url
+                    urls.append(url)
+                    counter += 1
+        except:
             try:
-
-                # More robust
-                req = Request(url_full, headers={'User-Agent': 'Mozilla/5.0'})
-                webpage = urlopen(req).read()
-                soup = BeautifulSoup(webpage, 'html5lib') # Possible parsers: html5lib, lxml
-                print('Used Request to scrape %s.' % (url_full))
-
-            except:
-
                 # Less robust
                 webpage = urlopen(url_full)
                 soup = BeautifulSoup(webpage, 'html5lib')
                 print('Used urlopen to scrape %s.' % (url_full))
 
-            a_tags = soup.find_all('a')
-
-            for a_tag in a_tags:
-                url = str(a_tag.get('href'))
-                if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
-                    if prepend == True:
-                        url = url_prepend + url
-                    urls.append(url)
-                    counter += 1
-
-        except:
-
-            print("Unable to scrape articles from: %s." % publication_name)
-            pass
+                a_tags = soup.find_all('a')
+                for a_tag in a_tags:
+                    url = str(a_tag.get('href'))
+                    if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
+                        if prepend is True:
+                            url = url_prepend + url
+                        urls.append(url)
+                        counter += 1
+            except:
+                print("Unable to scrape articles from: %s." % publication_name)
+                pass
 
         for url in urls:
 
             try:
-
                 # Parse article
                 article = n_Article(url)
                 article.download()
@@ -116,13 +124,9 @@ def run():
                 a.save()
                 counter += 1
                 print("Committed article: %s..." % title[:40])
-
             except:
-
                 pass
 
     print("Committed %d articles." % (counter))
 
     conn.close()
-
-run()
