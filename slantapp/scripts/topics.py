@@ -9,16 +9,17 @@ from slantapp.models import Article
 def run():
 
     # Environment variables
-    SLNT_DB_NAME = os.environ.get('SLNT_DB_NAME')
-    SLNT_DB_USER = os.environ.get('SLNT_DB_USER')
-    SLNT_DB_PASSWORD = os.environ.get('SLNT_DB_PASSWORD')
+    slnt_db_host = os.environ.get('SLNT_DB_HOST')
+    slnt_db_name = os.environ.get('SLNT_DB_NAME')
+    slnt_db_user = os.environ.get('SLNT_DB_USER')
+    slnt_db_password = os.environ.get('SLNT_DB_PASSWORD')
 
     # Establish connection
     conn = psycopg2.connect(
-        host=SLNT_DB_HOST,
-        dbname=SLNT_DB_NAME,
-        user=SLNT_DB_USER,
-        password=SLNT_DB_PASSWORD,
+        host=slnt_db_host,
+        dbname=slnt_db_name,
+        user=slnt_db_user,
+        password=slnt_db_password,
         sslmode='require'
     )
     cursor = conn.cursor()
