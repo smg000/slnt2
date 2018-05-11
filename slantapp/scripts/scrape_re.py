@@ -90,7 +90,9 @@ def run():
                 print("Unable to scrape articles from: %s." % publication_name)
                 pass
 
-        for url in urls:
+        urls_unique = list(set(urls))
+
+        for url in urls_unique:
 
             try:
                 # Parse article
