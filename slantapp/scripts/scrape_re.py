@@ -90,8 +90,8 @@ def run():
 
         urls_unique = list(set(urls))
 
-        print(publication)  # REMOVE
-        print(len(urls))  # REMOVE
+        print(publication)
+        print("Scraped %d articles." % (len(urls)))
 
         for url in urls_unique:
 
@@ -116,7 +116,7 @@ def run():
                 title=title,
                 byline=authors,
                 date=publish_date,
-                url=site_url,
+                url=url,
                 text=text,
                 scrape_date=datetime.date.today(),
                 bias=50,
