@@ -106,16 +106,6 @@ def run():
 
             for url in new_urls_unique:
 
-                publication_name=publication_name_fk
-                title = ''
-                byline = ''
-                date=''
-                url=url
-                text=''
-                scrape_date=datetime.date.today()
-                bias=50
-                display=False
-
                 try:
                     # Parse article
                     article = n_Article(url)
@@ -133,28 +123,28 @@ def run():
 
                     newspaper3k_counter += 1
 
+                    # Create instance of Article class
+                    # Article should be committed even if article.download() fails
+                    a = Article(
+                        publication_name=publication_name,
+                        title=title,
+                        byline=byline,
+                        date=date,
+                        url=url,
+                        text=text,
+                        scrape_date=scrape_date,
+                        bias=bias,
+                        display=display,
+                    )
+
+                    # Write to database
+                    a.save()
+                    counter += 1
+                    print("Committed article: %s..." % (url))
+
                 except:
                     print("Unable to scrape from %s." % (publication_name))
-                    pass
-
-                # Create instance of Article class
-                # Article should be committed even if article.download() fails
-                a = Article(
-                    publication_name=publication_name,
-                    title=title,
-                    byline=byline,
-                    date=date,
-                    url=url,
-                    text=text,
-                    scrape_date=scrape_date,
-                    bias=bias,
-                    display=display,
-                )
-
-                # Write to database
-                a.save()
-                counter += 1
-                print("Committed article: %s..." % (url))
+                    continue
 
             print("Downloaded %d articles with Newspaper3k." % newspaper3k_counter)
             print("Committed %d articles for %s." % (article_counter, publication_name))
