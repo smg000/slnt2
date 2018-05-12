@@ -106,7 +106,7 @@ def run():
 
             for url in new_urls_unique:
 
-                # publication_name=publication_name_fk
+                publication_name=publication_name_fk
                 title = ''
                 byline = ''
                 date=''
