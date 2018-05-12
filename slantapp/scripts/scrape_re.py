@@ -38,9 +38,10 @@ def run():
 
     # Fetch existing urls
     cursor.execute("SELECT url FROM slantapp_article WHERE scrape_date >= CURRENT_DATE - 3;")
-    article_urls = [item[0] for item in cursor.fetchall()]
+    article_urls = sorted([item[0] for item in cursor.fetchall()])
 
-    counter = 0
+    article_counter = 0
+    unable_to_scrape_counter = 0
 
     for publication in publications:
 
@@ -51,6 +52,9 @@ def run():
         url_blacklist = publication[3]
         prepend = publication[4]
         url_prepend = publication[5]
+        print("\n")
+        print(publication_name)
+        print("-" * len(publication_name))
 
         urls = []
 
@@ -63,12 +67,15 @@ def run():
 
             # TODO Refactor to remove repetitive code
             a_tags = soup.find_all('a')
+            url_counter = 0
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
-                if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
+                if re.match(regex, url):
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
+                    url_counter += 1
+            print('Added %d urls to list of urls.' % (url_counter))
         except:
             try:
                 # Less robust
@@ -79,68 +86,81 @@ def run():
                 a_tags = soup.find_all('a')
                 for a_tag in a_tags:
                     url = str(a_tag.get('href'))
-                    if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
+                    if re.match(regex, url):
                         if prepend is True:
                             url = url_prepend + url
                         urls.append(url)
+                print('Added urls to url.')
             except:
+                unable_to_scrape_counter += 1
                 print("Unable to scrape articles from: %s." % publication_name)
                 pass
 
-        urls_unique = list(set(urls))
+        try:
+            new_urls = [url for url in urls if url not in article_urls and url not in url_blacklist]
+            new_urls_unique = sorted(list(set(new_urls)))
 
-        print(publication)
-        print("Scraped %d articles." % (len(urls_unique)))
+            print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
 
-        for url in urls_unique:
+            newspaper3k_counter = 0
 
-            publication_name=publication_name_fk
-            title = ''
-            byline = ''
-            date=''
-            url=url
-            text=''
-            scrape_date=datetime.date.today()
-            bias=50
-            display=False
+            for url in new_urls_unique:
 
-            try:
-                # Parse article
-                article = n_Article(url)
-                article.download()
-                article.parse()
+                # publication_name=publication_name_fk
+                title = ''
+                byline = ''
+                date=''
+                url=url
+                text=''
+                scrape_date=datetime.date.today()
+                bias=50
+                display=False
 
-                # Extract data
-                title = article.title
-                byline = article.authors
-                if article.publish_date == '':
-                    date = datetime.date.today()
-                else:
-                    date = article.publish_date
-                text = article.text
+                try:
+                    # Parse article
+                    article = n_Article(url)
+                    article.download()
+                    article.parse()
 
-            except:
-                pass
+                    # Extract data
+                    title = article.title
+                    byline = article.authors
+                    if article.publish_date == '':
+                        date = datetime.date.today()
+                    else:
+                        date = article.publish_date
+                    text = article.text
 
-            # Create instance of Article class
-            # Article should be committed even if article.download() fails
-            a = Article(
-                publication_name=publication_name,
-                title=title,
-                byline=byline,
-                date=date,
-                url=url,
-                text=text,
-                scrape_date=scrape_date,
-                bias=bias,
-                display=display,
-            )
+                    newspaper3k_counter += 1
 
-            # Write to database
-            a.save()
-            counter += 1
-            print("Committed article: %s..." % (url))
+                except:
+                    print("Unable to scrape from %s." % (publication_name))
+                    pass
 
-    print("Committed %d articles." % (counter))
+                # Create instance of Article class
+                # Article should be committed even if article.download() fails
+                a = Article(
+                    publication_name=publication_name,
+                    title=title,
+                    byline=byline,
+                    date=date,
+                    url=url,
+                    text=text,
+                    scrape_date=scrape_date,
+                    bias=bias,
+                    display=display,
+                )
+
+                # Write to database
+                a.save()
+                counter += 1
+                print("Committed article: %s..." % (url))
+
+            print("Downloaded %d articles with Newspaper3k." % newspaper3k_counter)
+            print("Committed %d articles for %s." % (article_counter, publication_name))
+
+        except:
+            print("Failed to generate a list of urls for %s." % (publication_name))
+            continue
 
     conn.close()
