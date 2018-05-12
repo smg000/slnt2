@@ -37,8 +37,7 @@ def run():
     publications = cursor.fetchall()
 
     # Fetch existing urls
-    # TODO Restrict query to the last week to cut down query runtime
-    cursor.execute("SELECT url FROM slantapp_article;")
+    cursor.execute("SELECT url FROM slantapp_article WHERE scrape_date >= CURRENT_DATE - 3;")
     article_urls = [item[0] for item in cursor.fetchall()]
 
     counter = 0
@@ -91,7 +90,7 @@ def run():
         urls_unique = list(set(urls))
 
         print(publication)
-        print("Scraped %d articles." % (len(urls)))
+        print("Scraped %d articles." % (len(urls_unique)))
 
         for url in urls_unique:
 
