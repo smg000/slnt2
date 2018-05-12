@@ -94,40 +94,40 @@ def run():
 
         for url in urls_unique:
 
-            try:
+            # try:
                 # Parse article
-                article = n_Article(url)
-                article.download()
-                article.parse()
+            article = n_Article(url)
+            article.download()
+            article.parse()
 
-                # Extract data
-                title = article.title
-                authors = article.authors
-                if article.publish_date == '':
-                    publish_date = datetime.date.today()
-                else:
-                    publish_date = article.publish_date
-                text = article.text
+            # Extract data
+            title = article.title
+            authors = article.authors
+            if article.publish_date == '':
+                publish_date = datetime.date.today()
+            else:
+                publish_date = article.publish_date
+            text = article.text
 
-                # Create instance of Article class
-                a = Article(
-                    publication_name=publication_name_fk,
-                    title=title,
-                    byline=authors,
-                    date=publish_date,
-                    url=url,
-                    text=text,
-                    scrape_date=datetime.date.today(),
-                    bias=50,
-                    display=False,
-                )
+            # Create instance of Article class
+            a = Article(
+                publication_name=publication_name_fk,
+                title=title,
+                byline=authors,
+                date=publish_date,
+                url=url,
+                text=text,
+                scrape_date=datetime.date.today(),
+                bias=50,
+                display=False,
+            )
 
-                # Write to database
-                a.save()
-                counter += 1
-                print("Committed article: %s..." % title[:40])
-            except:
-                pass
+            # Write to database
+            a.save()
+            counter += 1
+            print("Committed article: %s..." % title[:40])
+            # except:
+            #     pass
 
     print("Committed %d articles." % (counter))
 
