@@ -94,40 +94,52 @@ def run():
 
         for url in urls_unique:
 
-            # try:
-                # Parse article
-            article = n_Article(url)
-            article.download()
-            article.parse()
+            publication_name=publication_name_fk
+            title = ''
+            byline = ''
+            date=''
+            url=url
+            text=''
+            scrape_date=datetime.date.today()
+            bias=50
+            display=False
 
-            # Extract data
-            title = article.title
-            authors = article.authors
-            if article.publish_date == '':
-                publish_date = datetime.date.today()
-            else:
-                publish_date = article.publish_date
-            text = article.text
+            try:
+                # Parse article
+                article = n_Article(url)
+                article.download()
+                article.parse()
+
+                # Extract data
+                title = article.title
+                byline = article.authors
+                if article.publish_date == '':
+                    date = datetime.date.today()
+                else:
+                    date = article.publish_date
+                text = article.text
+
+            except:
+                pass
 
             # Create instance of Article class
+            # Article should be committed even if article.download() fails
             a = Article(
-                publication_name=publication_name_fk,
+                publication_name=publication_name,
                 title=title,
-                byline=authors,
-                date=publish_date,
+                byline=byline,
+                date=date,
                 url=url,
                 text=text,
-                scrape_date=datetime.date.today(),
-                bias=50,
-                display=False,
+                scrape_date=scrape_date,
+                bias=bias,
+                display=display,
             )
 
             # Write to database
             a.save()
             counter += 1
-            print("Committed article: %s..." % title[:40])
-            # except:
-            #     pass
+            print("Committed article: %s..." % (url))
 
     print("Committed %d articles." % (counter))
 
