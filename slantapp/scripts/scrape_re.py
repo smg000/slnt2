@@ -107,10 +107,12 @@ def run():
             for url in new_urls_unique:
 
                 try:
+                    print("Trying #1.")
                     # Parse article
                     article = n_Article(url)
                     article.download()
                     article.parse()
+                    print("Parsed.")
 
                     # Extract data
                     title = article.title
@@ -120,6 +122,7 @@ def run():
                     else:
                         date = article.publish_date
                     text = article.text
+                    print("Extracted.")
 
                     newspaper3k_counter += 1
 
@@ -136,6 +139,7 @@ def run():
                         bias=bias,
                         display=display,
                     )
+                    print("Created class.")
 
                     # Write to database
                     a.save()
