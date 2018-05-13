@@ -70,7 +70,7 @@ def run():
             url_counter = 0
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
-                if re.match(regex, url) and url not in article_urls and url not in url_blacklist:
+                if re.match(regex, url) and not url in article_urls:
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
@@ -86,7 +86,7 @@ def run():
                 a_tags = soup.find_all('a')
                 for a_tag in a_tags:
                     url = str(a_tag.get('href'))
-                    if re.match(regex, url) and url not in article_urls and url not in url_blacklist:
+                    if re.match(regex, url) and not url in article_urls:
                         if prepend is True:
                             url = url_prepend + url
                         urls.append(url)
@@ -97,7 +97,7 @@ def run():
                 pass
 
         # try:
-        new_urls = [url for url in urls if url not in article_urls and url not in url_blacklist]
+        new_urls = [url for url in urls if url not in article_urls]
         new_urls_unique = sorted(list(set(new_urls)))
 
         print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
