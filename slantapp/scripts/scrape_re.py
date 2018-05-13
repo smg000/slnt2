@@ -31,7 +31,7 @@ def run():
     cursor.execute("""
         SELECT publication_name, url_full, regex, url_blacklist, prepend, url_prepend
         FROM slantapp_publication
-        WHERE scrape = TRUE AND id = 12
+        WHERE scrape = TRUE
         ;
         """)
     publications = cursor.fetchall()
