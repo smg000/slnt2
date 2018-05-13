@@ -115,13 +115,13 @@ def run():
                     print("Parsed.")
 
                     # Extract data
-                    title = article.title
-                    byline = article.authors
+                    article_title = article.title
+                    article_byline = article.authors
                     if article.publish_date == '':
-                        date = datetime.date.today()
+                        publish_date = datetime.date.today()
                     else:
-                        date = article.publish_date
-                    text = article.text
+                        publish_date = article.publish_date
+                    article_text = article.text
                     print("Extracted.")
 
                     newspaper3k_counter += 1
@@ -129,15 +129,15 @@ def run():
                     # Create instance of Article class
                     # Article should be committed even if article.download() fails
                     a = Article(
-                        publication_name=publication_name,
-                        title=title,
-                        byline=byline,
-                        date=date,
+                        publication_name=publication_name_fk,
+                        title=article_title,
+                        byline=article_byline,
+                        date=publish_date,
                         url=url,
-                        text=text,
-                        scrape_date=scrape_date,
-                        bias=bias,
-                        display=display,
+                        text=article_text,
+                        scrape_date=datetime.date.today(),
+                        bias=50,
+                        display=False,
                     )
                     print("Created class.")
 
