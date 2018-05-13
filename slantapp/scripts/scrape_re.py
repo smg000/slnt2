@@ -36,10 +36,6 @@ def run():
         """)
     publications = cursor.fetchall()
 
-    # Fetch existing urls
-    cursor.execute("SELECT url FROM slantapp_article WHERE scrape_date >= CURRENT_DATE - 3;")
-    article_urls = sorted([item[0] for item in cursor.fetchall()])
-
     article_counter = 0
     unable_to_scrape_counter = 0
 
@@ -56,6 +52,16 @@ def run():
         print(publication_name)
         print("-" * len(publication_name))
 
+        # Fetch existing urls
+        cursor.execute("""
+            SELECT url
+            FROM slantapp_article a
+            JOIN slantapp_publication p on a.publication_name_id = p.id
+            WHERE p.publication_name = '{0}'
+            ;
+            """.format(publication_name))
+        article_urls = sorted([item[0] for item in cursor.fetchall()])
+
         urls = []
 
         try:
@@ -70,7 +76,7 @@ def run():
             url_counter = 0
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
-                if re.match(regex, url) and not url in article_urls:
+                if re.match(regex, url) and url not in article_urls:
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
@@ -86,7 +92,7 @@ def run():
                 a_tags = soup.find_all('a')
                 for a_tag in a_tags:
                     url = str(a_tag.get('href'))
-                    if re.match(regex, url) and not url in article_urls:
+                    if re.match(regex, url) and url not in article_urls:
                         if prepend is True:
                             url = url_prepend + url
                         urls.append(url)
@@ -96,65 +102,65 @@ def run():
                 print("Unable to scrape articles from: %s." % publication_name)
                 pass
 
-        # try:
-        new_urls = [url for url in urls if url not in article_urls]
-        new_urls_unique = sorted(list(set(new_urls)))
+        try:
+            new_urls = [url for url in urls if url not in article_urls]
+            new_urls_unique = sorted(list(set(new_urls)))
 
-        print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
+            print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
 
-        newspaper3k_counter = 0
+            newspaper3k_counter = 0
 
-        for url in new_urls_unique:
+            for url in new_urls_unique:
 
-            # try:
-            print("Trying #1.")
-            # Parse article
-            article = n_Article(url)
-            article.download()
-            article.parse()
-            print("Parsed.")
+                try:
+                    print("Trying #1.")
+                    # Parse article
+                    article = n_Article(url)
+                    article.download()
+                    article.parse()
+                    print("Parsed.")
 
-            # Extract data
-            article_title = article.title
-            article_byline = article.authors
-            if article.publish_date == '':
-                publish_date = datetime.date.today()
-            else:
-                publish_date = article.publish_date
-            article_text = article.text
-            print("Extracted.")
+                    # Extract data
+                    article_title = article.title
+                    article_byline = article.authors
+                    if article.publish_date == '':
+                        publish_date = datetime.date.today()
+                    else:
+                        publish_date = article.publish_date
+                    article_text = article.text
+                    print("Extracted.")
 
-            newspaper3k_counter += 1
+                    newspaper3k_counter += 1
 
-            # Create instance of Article class
-            # Article should be committed even if article.download() fails
-            a = Article(
-                publication_name=publication_name_fk,
-                title=article_title,
-                byline=article_byline,
-                date=publish_date,
-                url=url,
-                text=article_text,
-                scrape_date=datetime.date.today(),
-                bias=50,
-                display=False,
-            )
-            print("Created class.")
+                    # Create instance of Article class
+                    # Article should be committed even if article.download() fails
+                    a = Article(
+                        publication_name=publication_name_fk,
+                        title=article_title,
+                        byline=article_byline,
+                        date=publish_date,
+                        url=url,
+                        text=article_text,
+                        scrape_date=datetime.date.today(),
+                        bias=50,
+                        display=False,
+                    )
+                    print("Created class.")
 
-            # Write to database
-            a.save()
-            counter += 1
-            print("Committed article: %s..." % (url))
+                    # Write to database
+                    a.save()
+                    counter += 1
+                    print("Committed article: %s..." % (url))
 
-            # except:
-            #     print("Unable to scrape from %s." % (publication_name))
-            #     continue
+                except:
+                    print("Unable to save article.")
+                    continue
 
-        print("Downloaded %d articles with Newspaper3k." % newspaper3k_counter)
-        print("Committed %d articles for %s." % (article_counter, publication_name))
+            print("Downloaded %d articles with Newspaper3k." % newspaper3k_counter)
+            print("Committed %d articles for %s." % (article_counter, publication_name))
 
-        # except:
-        #     print("Failed to generate a list of urls for %s." % (publication_name))
-        #     continue
+        except:
+            print("Failed to generate a list of urls for %s." % (publication_name))
+            continue
 
     conn.close()
