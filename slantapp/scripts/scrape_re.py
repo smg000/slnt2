@@ -103,8 +103,14 @@ def run():
                 pass
 
         # try:
+        print('URLS')
+        print(urls)
+        print('LEN NEW URLS')
         new_urls = [url for url in urls if url not in article_urls]
+        print(len(new_urls))
         new_urls_unique = sorted(list(set(new_urls)))
+        print("LEN NEW URLS UNIQUE")
+        print(len(new_urls_unique))
 
         print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
 
