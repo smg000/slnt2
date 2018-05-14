@@ -141,8 +141,6 @@ def run():
             #     print("Unable to save article.")
             #     continue
 
-        print("Downloaded %d articles with Newspaper3k." % newspaper3k_counter)
-        print("Committed %d articles for %s." % (article_counter, publication_name))
         #
         # except:
         #     print("Failed to generate a list of urls for %s." % (publication_name))
