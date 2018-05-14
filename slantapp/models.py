@@ -16,7 +16,7 @@ class Publication(models.Model):
     url_root = models.URLField(max_length=500, default='', help_text='Add URL without trailing slash.')
     url_full = models.URLField(max_length=500, default='')
     regex = models.TextField(blank=True, null=True)
-    url_blacklist = models.TextField(blank=True, null=True)
+    url_blacklist = models.TextField(blank=True, null=True, default='')
     prepend = models.BooleanField(default=False)
     url_prepend = models.TextField(blank=True, null=True, default='', help_text='Add URL without trailing slash.')
     scrape = models.BooleanField(default=False)

@@ -42,16 +42,15 @@ def run():
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
         regex = publication[2]
-        url_blacklist = publication[3].split(',')
+        if publication[3] == '':
+            url_blacklist = ''
+        else:
+            url_blacklist = publication[3].split(',')
         prepend = publication[4]
         url_prepend = publication[5]
         print("\n")
         print(publication_name)
         print("-" * len(publication_name))
-
-        print("blacklist")
-        print(url_blacklist)
-        print(type(url_blacklist))
 
         # Fetch existing urls
         cursor.execute("""
