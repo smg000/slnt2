@@ -36,9 +36,6 @@ def run():
         """)
     publications = cursor.fetchall()
 
-    article_counter = 0
-    unable_to_scrape_counter = 0
-
     for publication in publications:
 
         publication_name = publication[0]
@@ -66,12 +63,6 @@ def run():
             """.format(publication_name))
         article_urls = sorted([item[0] for item in cursor.fetchall()])
 
-        # Print articles
-        print("URLs already in database")
-        print(len(article_urls))
-        for article in article_urls:
-            print(article)
-
         urls = []
 
         try:
@@ -83,15 +74,12 @@ def run():
 
             # TODO Refactor to remove repetitive code
             a_tags = soup.find_all('a')
-            url_counter = 0
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
                 if re.match(regex, url) and url not in article_urls:
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
-                    url_counter += 1
-            print('Added %d urls to list of urls.' % (url_counter))
         except:
             try:
                 # Less robust
@@ -106,57 +94,30 @@ def run():
                         if prepend is True:
                             url = url_prepend + url
                         urls.append(url)
-                print('Added urls to url.')
             except:
-                unable_to_scrape_counter += 1
                 print("Unable to scrape articles from: %s." % publication_name)
-                pass
+                continue
 
-        # try:
-        print("URLs")
-        print(len(urls))
-        for url in sorted(urls):
-            print(url)
-        print("New URLs")
         new_urls = [url for url in urls if url not in sorted(article_urls)]
-        print(len(new_urls))
-        for new_url in new_urls:
-            print(new_url)
         new_urls_unique = sorted(list(set(new_urls)))
-        print(len(new_urls_unique))
-        for url in new_urls_unique:
-            print(url)
-
 
         print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
 
-        newspaper3k_counter = 0
-
         for url in new_urls_unique:
 
-            # try:
-            print("Trying #1.")
             # Parse article
             article = n_Article(url)
             article.download()
             article.parse()
-            print("Parsed.")
 
             # Extract data
             article_title = article.title
-            print(article_title[:40])
             article_byline = article.authors
-            print(article_byline[:40])
             if article.publish_date == '':
                 publish_date = datetime.date.today()
             else:
                 publish_date = article.publish_date
-            print(article_byline[:40])
             article_text = article.text
-            print(article_text[:40])
-            print("Extracted.")
-
-            newspaper3k_counter += 1
 
             # Create instance of Article class
             # Article should be committed even if article.download() fails
@@ -171,12 +132,9 @@ def run():
                 bias=50,
                 display=False,
             )
-            
-            print("Created class.")
 
             # Write to database
-            # a.save()
-            print(a)
+            a.save()
             print("Committed article: %s..." % (url))
 
             # except:
