@@ -6,7 +6,7 @@ import psycopg2
 import re
 from urllib.request import Request
 from urllib.request import urlopen
-from slantapp.models import Article, Publication
+# from slantapp.models import Article, Publication
 
 
 def run():
@@ -31,7 +31,7 @@ def run():
     cursor.execute("""
         SELECT publication_name, url_full, regex, url_blacklist, prepend, url_prepend
         FROM slantapp_publication
-        WHERE scrape = TRUE
+        WHERE scrape = TRUE and id in (5, 6, 7, 8)
         ;
         """)
     publications = cursor.fetchall()
@@ -42,15 +42,15 @@ def run():
     for publication in publications:
 
         publication_name = publication[0]
-        publication_name_fk = Publication.objects.get(publication_name=publication_name)
+        # publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
         regex = publication[2]
         url_blacklist = publication[3]
         prepend = publication[4]
         url_prepend = publication[5]
-        print("\n")
-        print(publication_name)
-        print("-" * len(publication_name))
+        # print("\n")
+        # print(publication_name)
+        # print("-" * len(publication_name))
 
         # Fetch existing urls
         cursor.execute("""
@@ -61,6 +61,12 @@ def run():
             ;
             """.format(publication_name))
         article_urls = sorted([item[0] for item in cursor.fetchall()])
+
+        # Print articles
+        print("URLs already in database")
+        print(len(article_urls))
+        for article in article_urls:
+            print(article)
 
         urls = []
 
@@ -103,14 +109,20 @@ def run():
                 pass
 
         # try:
-        print('URLS')
-        print(urls)
-        print('LEN NEW URLS')
-        new_urls = [url for url in urls if url not in article_urls]
+        print("URLs")
+        print(len(urls))
+        for url in sorted(urls):
+            print(url)
+        print("New URLs")
+        new_urls = [url for url in urls if url not in sorted(article_urls)]
         print(len(new_urls))
+        for new_url in new_urls:
+            print(new_url)
         new_urls_unique = sorted(list(set(new_urls)))
-        print("LEN NEW URLS UNIQUE")
         print(len(new_urls_unique))
+        for url in new_urls_unique:
+            print(url)
+
 
         print("Scraped %d articles from %s." % (len(new_urls_unique), publication_name))
 
@@ -128,12 +140,16 @@ def run():
 
             # Extract data
             article_title = article.title
+            print(article_title[:40])
             article_byline = article.authors
+            print(article_byline[:40])
             if article.publish_date == '':
                 publish_date = datetime.date.today()
             else:
                 publish_date = article.publish_date
+            print(article_byline[:40])
             article_text = article.text
+            print(article_text[:40])
             print("Extracted.")
 
             newspaper3k_counter += 1
@@ -151,10 +167,26 @@ def run():
                 bias=50,
                 display=False,
             )
+            
+                a = Article(
+                            publication_name=publication_name_fk,
+                            title=title,
+                            byline=authors,
+                            date=publish_date,
+                            url=site_url,
+                            text=text,
+                            scrape_date=datetime.date.today(),
+                            bias=50,
+                            display=False,
+                        )
+            
             print("Created class.")
 
             # Write to database
-            a.save()
+            # a.save()
+            print(a)
+            for item in a:
+                print(a)
             counter += 1
             print("Committed article: %s..." % (url))
 
@@ -169,4 +201,6 @@ def run():
         #     print("Failed to generate a list of urls for %s." % (publication_name))
         #     continue
 
-    conn.close()
+    # conn.close()
+
+run()
