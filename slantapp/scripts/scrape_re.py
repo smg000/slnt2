@@ -52,6 +52,7 @@ def run():
         # print(publication_name)
         # print("-" * len(publication_name))
 
+        print("blacklist")
         print(url_blacklist)
         print(type(url_blacklist))
 
