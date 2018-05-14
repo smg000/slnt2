@@ -173,7 +173,6 @@ def run():
             # Write to database
             # a.save()
             print(a)
-            counter += 1
             print("Committed article: %s..." % (url))
 
             # except:
