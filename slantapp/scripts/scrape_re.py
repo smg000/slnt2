@@ -42,8 +42,8 @@ def run():
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
         regex = publication[2]
-        if publication[3] == '':
-            url_blacklist = ''
+        if publication[3] == '' or publication[3] is None:
+            url_blacklist = ['']
         else:
             url_blacklist = publication[3].split(',')
         prepend = publication[4]
@@ -135,7 +135,7 @@ def run():
 
                 # Write to database
                 a.save()
-                print("Committed article: %s..." % (url))
+                print("Committed article: %s." % (url))
 
             except:
                 continue
