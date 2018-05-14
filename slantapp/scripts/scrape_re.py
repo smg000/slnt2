@@ -168,18 +168,6 @@ def run():
                 display=False,
             )
             
-                a = Article(
-                            publication_name=publication_name_fk,
-                            title=title,
-                            byline=authors,
-                            date=publish_date,
-                            url=site_url,
-                            text=text,
-                            scrape_date=datetime.date.today(),
-                            bias=50,
-                            display=False,
-                        )
-            
             print("Created class.")
 
             # Write to database
