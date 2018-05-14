@@ -42,12 +42,12 @@ def run():
         publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
         regex = publication[2]
-        url_blacklist = publication[3]
+        url_blacklist = publication[3].split(',')
         prepend = publication[4]
         url_prepend = publication[5]
-        # print("\n")
-        # print(publication_name)
-        # print("-" * len(publication_name))
+        print("\n")
+        print(publication_name)
+        print("-" * len(publication_name))
 
         print("blacklist")
         print(url_blacklist)
@@ -76,7 +76,7 @@ def run():
             a_tags = soup.find_all('a')
             for a_tag in a_tags:
                 url = str(a_tag.get('href'))
-                if re.match(regex, url) and url not in article_urls:
+                if re.match(regex, url) and url not in url_blacklist and url not in article_urls:
                     if prepend is True:
                         url = url_prepend + url
                     urls.append(url)
@@ -105,47 +105,40 @@ def run():
 
         for url in new_urls_unique:
 
-            # Parse article
-            article = n_Article(url)
-            article.download()
-            article.parse()
+            try:
+                # Parse article
+                article = n_Article(url)
+                article.download()
+                article.parse()
 
-            # Extract data
-            article_title = article.title
-            article_byline = article.authors
-            if article.publish_date == '':
-                publish_date = datetime.date.today()
-            else:
-                publish_date = article.publish_date
-            article_text = article.text
+                # Extract data
+                article_title = article.title
+                article_byline = article.authors
+                if article.publish_date == '':
+                    publish_date = datetime.date.today()
+                else:
+                    publish_date = article.publish_date
+                article_text = article.text
 
-            # Create instance of Article class
-            # Article should be committed even if article.download() fails
-            a = Article(
-                publication_name=publication_name_fk,
-                title=article_title,
-                byline=article_byline,
-                date=publish_date,
-                url=url,
-                text=article_text,
-                scrape_date=datetime.date.today(),
-                bias=50,
-                display=False,
-            )
+                # Create instance of Article class
+                # Article should be committed even if article.download() fails
+                a = Article(
+                    publication_name=publication_name_fk,
+                    title=article_title,
+                    byline=article_byline,
+                    date=publish_date,
+                    url=url,
+                    text=article_text,
+                    scrape_date=datetime.date.today(),
+                    bias=50,
+                    display=False,
+                )
 
-            # Write to database
-            a.save()
-            print("Committed article: %s..." % (url))
+                # Write to database
+                a.save()
+                print("Committed article: %s..." % (url))
 
-            # except:
-            #     print("Unable to save article.")
-            #     continue
+            except:
+                continue
 
-        #
-        # except:
-        #     print("Failed to generate a list of urls for %s." % (publication_name))
-        #     continue
-
-    # conn.close()
-
-run()
+    conn.close()
