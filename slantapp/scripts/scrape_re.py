@@ -6,7 +6,7 @@ import psycopg2
 import re
 from urllib.request import Request
 from urllib.request import urlopen
-# from slantapp.models import Article, Publication
+from slantapp.models import Article, Publication
 
 
 def run():
@@ -42,7 +42,7 @@ def run():
     for publication in publications:
 
         publication_name = publication[0]
-        # publication_name_fk = Publication.objects.get(publication_name=publication_name)
+        publication_name_fk = Publication.objects.get(publication_name=publication_name)
         url_full = publication[1]
         regex = publication[2]
         url_blacklist = publication[3]
