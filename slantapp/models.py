@@ -26,10 +26,10 @@ class Publication(models.Model):
 class Article(models.Model):
     issue = models.ForeignKey(Issue, blank=True, null=True, default=None, on_delete=models.PROTECT)
     publication_name = models.ForeignKey(Publication, blank=True, null=True, default='', on_delete=models.PROTECT)
-    title = models.CharField(max_length=250)
-    byline = models.CharField(max_length=250, blank=True, null=True)
+    title = models.TextField()
+    byline = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1)) # Date published; from newspaper
-    url = models.URLField(max_length=250, unique=True) # Added unique=True
+    url = models.URLField(max_length=500, unique=True) # Added unique=True
     text = models.TextField(blank=True, null=True)
     scrape_date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1))
     topic_keywords = models.TextField(blank=True, null=True)
