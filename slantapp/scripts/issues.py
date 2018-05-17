@@ -37,6 +37,7 @@ def run():
     data = cursor.fetchall()
 
     aggregated_topics = []
+    article_count = Counter()
     num_results = 40
 
     pattern = "('[a-z\s\.'-]+',\s\d+)"
@@ -48,6 +49,7 @@ def run():
         for item in list:
             item_list = item.split(',') # Split string into list
             topic = item_list[0][1:-1] # Get rid of single quotes
+            article_count[topic] += 1
             frequency = int(item_list[1][1:]) # Convert string to integer
             for i in range(0, frequency):
                 aggregated_topics.append(topic) # Add topic to list, frequency number of times
@@ -57,11 +59,12 @@ def run():
 
     column_width = max([len(topic[0]) for topic in aggregated_topics_most_common])
     print('\n')
-    print('#'.ljust (4) + 'KEYWORD'.ljust(column_width) + '\t' + 'COUNT')
-    print('-' * (17 + column_width))
+    print('#'.ljust (4) + 'KEYWORD'.ljust(column_width) + '\t' + 'COUNT' + '\t' + 'ARTICLES')
+    print('-' * (28 + column_width))
     counter = 1
     for topic in aggregated_topics_most_common_sorted:
-        print(str(counter).ljust(4) + topic[0].ljust(column_width) + '\t' + str(topic[1]))
+        if topic[0] in article_count:
+            print(str(counter).ljust(4) + topic[0].ljust(column_width) + '\t' + str(topic[1]) + '\t' + str(article_count[topic[0]]))
         counter += 1
     print('\n')
 

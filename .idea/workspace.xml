@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slantapp/scripts/issues.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/issues.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slantapp/scripts/scrape_re.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/scripts/scrape_re.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index_old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/thank-you.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/thank-you.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,19 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slantapp/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="240">
               <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
@@ -40,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scrape_re.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scrape_re.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/scrape_re.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+            <state relative-caret-position="376">
+              <caret line="126" column="60" selection-start-line="126" selection-start-column="60" selection-end-line="126" selection-end-column="60" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -52,10 +50,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="contact.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/contact.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thank-you.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/thank-you.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="topics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/topics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="225">
               <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -67,11 +83,38 @@
       <file leaf-file-name="issues.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/scripts/issues.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="33" column="47" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="47" />
+            <state relative-caret-position="199">
+              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="45" column="60" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/footer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/nav.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -120,9 +163,7 @@
         <option value="$PROJECT_DIR$/templates/index_test.html" />
         <option value="$PROJECT_DIR$/custom_storages.py" />
         <option value="$PROJECT_DIR$/slantapp/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/thank-you.html" />
         <option value="$PROJECT_DIR$/get_articles.py" />
-        <option value="$PROJECT_DIR$/templates/footer.html" />
         <option value="$PROJECT_DIR$/get_articles_folder/get_articles.py" />
         <option value="$PROJECT_DIR$/slantapp/scrape_articles.py" />
         <option value="$PROJECT_DIR$/slantapp/scrape.py" />
@@ -133,20 +174,22 @@
         <option value="$PROJECT_DIR$/slantapp/scripts/nlp.py" />
         <option value="$PROJECT_DIR$/templates/404.html" />
         <option value="$PROJECT_DIR$/templates/about.html" />
-        <option value="$PROJECT_DIR$/templates/nav.html" />
         <option value="$PROJECT_DIR$/slantapp/views.py" />
         <option value="$PROJECT_DIR$/slant/urls.py" />
         <option value="$PROJECT_DIR$/templates/contact.html" />
         <option value="$PROJECT_DIR$/www/static/css/style.css" />
         <option value="$PROJECT_DIR$/slantapp/admin.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/slant/settings.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/scrape.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/topics.py" />
-        <option value="$PROJECT_DIR$/slantapp/scripts/issues.py" />
         <option value="$PROJECT_DIR$/slantapp/models.py" />
+        <option value="$PROJECT_DIR$/slantapp/scripts/issues.py" />
         <option value="$PROJECT_DIR$/slantapp/scripts/scrape_re.py" />
+        <option value="$PROJECT_DIR$/templates/thank-you.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/footer.html" />
+        <option value="$PROJECT_DIR$/templates/nav.html" />
       </list>
     </option>
   </component>
@@ -157,8 +200,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="102" />
-    <option name="y" value="52" />
+    <option name="x" value="99" />
+    <option name="y" value="70" />
     <option name="width" value="1234" />
     <option name="height" value="830" />
   </component>
@@ -168,7 +211,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,6 +243,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,7 +436,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="102" y="52" width="1234" height="830" extended-state="0" />
+    <frame x="99" y="70" width="1234" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896462" />
@@ -408,7 +451,6 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -420,6 +462,7 @@
       <window_info active="true" anchor="bottom" id="manage.py@slant" order="10" sideWeight="0.49836868" visible="true" weight="0.40348694" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,13 +622,6 @@
         <state relative-caret-position="-5204" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index_old.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -604,20 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1385">
           <caret line="205" selection-start-line="205" selection-start-column="2" selection-end-line="207" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/thank-you.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="59" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -664,13 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -692,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="90" lean-forward="true" selection-start-line="8" selection-start-column="90" selection-end-line="8" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -714,27 +722,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/scripts/delete_duplicates.py" />
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/scripts/topics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,26 +739,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/scripts/scrape.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/scripts/issues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/scripts/scrape.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/psycopg2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1642">
@@ -777,7 +749,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="240">
           <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
           <folding>
             <element signature="e#0#71#0" expanded="true" />
@@ -785,13 +757,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/scripts/topics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/scripts/scrape_re.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        <state relative-caret-position="376">
+          <caret line="126" column="60" selection-start-line="126" selection-start-column="60" selection-end-line="126" selection-end-column="60" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/thank-you.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/scripts/issues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="45" column="60" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index_old.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
         </state>
       </provider>
     </entry>

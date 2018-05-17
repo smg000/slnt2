@@ -113,7 +113,7 @@ def run():
                 # Extract data
                 article_title = article.title
                 article_byline = article.authors
-                if article.publish_date == '':
+                if article.publish_date == '' or article.publish_date is None:
                     publish_date = datetime.date.today()
                 else:
                     publish_date = article.publish_date
@@ -124,6 +124,7 @@ def run():
                 a = Article(
                     publication_name=publication_name_fk,
                     title=article_title,
+                    # TODO Fix the byline in case it's blank
                     byline=article_byline,
                     date=publish_date,
                     url=url,
