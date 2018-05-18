@@ -5,6 +5,8 @@ import datetime
 class Issue(models.Model):
     issue = models.CharField(max_length=100)
     date = models.DateField(default=datetime.date(1900, 1, 1))
+    summary_left = models.TextField(blank=True, null=True, default='', help_text='Add summary of the left.')
+    summary_right = models.TextField(blank=True, null=True, default='', help_text='Add summary of the right.')
     display = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
     def __str__(self):

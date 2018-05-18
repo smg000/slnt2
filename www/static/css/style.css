@@ -192,6 +192,22 @@ hr {
     border-top-color: purple;
 }
 
+.card-body {
+    padding: 0px;
+}
+
+.summary-line {
+    margin-top: 0px;
+}
+
+.summary-text-left {
+    padding: 0em 1em 1em 1em;
+}
+
+.summary-text-right {
+    padding: 0em 1em 1em 1em;
+}
+
 .mailchimp-button {
     background-color: purple !important;
 }
