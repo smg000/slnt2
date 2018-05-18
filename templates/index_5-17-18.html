@@ -19,43 +19,20 @@
             </script>
 
             {% for issue in issues %}
-
-            <div id="accordion">
                 <div class="row row-table">
-                    <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
-                        <p class="row-title">{{ issue.issue }}</p>
-                    </div>
-                    <div class="col-12 justify-content-start row-table-text">
-                        {% for article in articles %}
-                            {% if article.issue == issue %}
-                                <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <hr class="summary-line">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-sm-6 summary-text-left">
-                                <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
-                                {{ issue.summary_left }}
+                    <div class="col-12 row-table-text-issue"><p class="row-title">{{ issue.issue }}</p></div>
+                            <div class="col-12 justify-content-start row-table-text">
+                                {% for article in articles %}
+                                    {% if article.issue == issue %}
+                                        <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            <div class="col-sm-6 summary-text-right">
-                                <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
-                                {{ issue.summary_right }}
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-
             {% endfor %}
 
             <hr>
-            <br>
-
+        <br>
             <!-- Begin MailChimp Signup Form -->
             <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
             <style type="text/css">
