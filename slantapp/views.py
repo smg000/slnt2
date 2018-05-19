@@ -23,6 +23,15 @@ def index_test(request):
     }
     return render(request, 'index_test.html', context)
 
+def rate(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+    }
+    return render(request, 'rate.html', context)
+
 def why(request):
     return render(request, 'why.html')
 

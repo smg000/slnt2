@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+
+                <h1 class="page-heading">Rate articles</i></h1>
+                <hr>
+                <br>
+
+
+
+
+            {% for issue in issues %}
+
+                <div class="row">
+
+                        <h2>{{ issue.issue }}</h2>
+                    
+                    <div class="col-12 justify-content-start row-table-text">
+                        {% for article in articles %}
+                            {% if article.issue == issue %}
+                                <p>{{ article.title }}</p><br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+            <hr>
+            <br>
+
+        </div>
+    {% include 'footer.html' %}
+    {%  endblock %}
