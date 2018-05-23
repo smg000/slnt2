@@ -1,0 +1,87 @@
+<body style="padding: 10px;">
+<! -- TABLE 1 -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable">
+    <tr>
+        <td align="center" valign="top">
+
+            <! -- TABLE 2 -->
+            <table border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#ffffff" id="emailContainer" style="font-family: Avenir, PT Sans, Helvetica, Arial;">
+
+                <! -- HEADER ROW -->
+                <tr>
+                    <td align="center" valign="top">
+
+                        <! -- TABLE 3 -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="emailHeader">
+                            <tr>
+                                <td align="center" valign="top">
+                                    <h1><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><b>the daily <i>skeww</i></b></span></h1>
+                                    <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">The best news commentary from the left, right, and center.</span></p>
+                                    <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ date|date:"l, F d, Y" }}</span></p>
+                                    <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="http://theskeww.com">theskeww.com</a></span></p>
+                                    <hr style="border-style: solid; border: 3px purple solid;">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <! -- CONTENT ROW -->
+                <tr>
+                    <td align="center" valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="emailBody">
+                            <tr>
+                                <td align="center" valign="top">
+                                    {% for issue in issues %}
+                                        <h2><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.issue }}</span></h2>
+                                        <table cellpadding="4" width="600">
+                                            <tr>
+                                                <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the left is saying:<br></strong>{{ issue.summary_left }}</span></p></td>
+                                                <td width="4%" valign="top"></td>
+                                                <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the right is saying:<br></strong>{{ issue.summary_right }}</span></p></td>
+                                            </tr>
+                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the left:</strong></span></p></td></tr>
+                                                {% for article in articles %}
+                                                        {% if article.issue == issue and article.bias < 40 %}
+                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                        {% endif %}
+                                                {% endfor %}
+                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the center:</strong></span></p></td></tr>
+                                                {% for article in articles %}
+                                                        {% if article.issue == issue and article.bias >= 40 and article.bias <= 60 %}
+                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                        {% endif %}
+                                                {% endfor %}
+                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the right:</strong></span></p></td></tr>
+                                                {% for article in articles %}
+                                                        {% if article.issue == issue and article.bias > 60 %}
+                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                        {% endif %}
+                                                {% endfor %}
+                                        </table>
+                                    <hr style="border-style: solid; border: 1px purple solid;">
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <! -- FOOTER ROW -->
+                <tr>
+                    <td align="center" valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="emailFooter">
+                            <tr><td align="center" valign="top"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">Proudly made in the Upper Valley.</span></td></tr>
+                                <tr><td align="center" valign="top"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">© 2018 the skeww</span></td></tr>
+                                <tr><td align="center" valign="top"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">8 Curtis Road</span></td></tr>
+                                <tr><td align="center" valign="top"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">Hopkinton, MA 01748</span></td></tr>
+                                <tr><td align="center" valign="top"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="https://theslnt.us18.list-manage.com/unsubscribe?u=eb4eb06d700162088aa250614&id=797ef6d1dc">Unsubscribe</a></span></td></tr>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>

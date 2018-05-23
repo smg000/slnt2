@@ -11,15 +11,12 @@
                 <div class="col-4 table-header"><span style="text-align: center;"><h2 style="text-align: center"><span style="color:purple;">Center</span></h2></span></div>
                 <div class="col-4 table-header"><h2 style="text-align: right"><span style="color:red;">Right</span></h2></div>
             </div>
-
             <script>
             $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();
             });
             </script>
-
             {% for issue in issues %}
-
                 <div class="row row-table">
                     <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
                         <p class="row-title">{{ issue.issue }} ▾</p>
@@ -37,27 +34,28 @@
                 {% else %}
                     <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"><!-- Collapse card for all other issues -->
                 {% endif %}
-                    <hr class="summary-line">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-sm-6 summary-text-left">
-                                <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
-                                {{ issue.summary_left }}
+                        <hr class="summary-line">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 summary-text-left">
+                                    <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
+                                    {{ issue.summary_left }}
+                                </div>
+                                <div class="col-sm-6 summary-text-right">
+                                    <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
+                                    {{ issue.summary_right }}
+                                </div>
                             </div>
-                            <div class="col-sm-6 summary-text-right">
-                                <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
-                                {{ issue.summary_right }}
+                            <hr>
+                            <div class="col-sm-12 comment-row">
+                                <p class="comment-text"><a href="/issue/?issue={{ issue.issue }}&date={{ date }}#disqus_thread">🗨️ Join the conversation ></a></p>
                             </div>
+                            <hr>
                         </div>
                     </div>
-                </div>
-
             {% endfor %}
-
             <hr>
             <br>
-
             <!-- Begin MailChimp Signup Form -->
             <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
             <style type="text/css">
@@ -76,9 +74,7 @@
                 </div>
             </form>
             </div>
-
             <!--End mc_embed_signup-->
-
         </div>
     {% include 'footer.html' %}
     {%  endblock %}

@@ -210,6 +210,14 @@ hr {
     padding: 0em 1em 1em 1em;
 }
 
+.comment-row {
+    padding: 0em 1em 0em 1em;
+}
+
+.comment-text {
+    font-weight: bold;
+}
+
 .mailchimp-button {
     background-color: purple !important;
 }

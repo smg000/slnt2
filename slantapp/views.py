@@ -11,8 +11,25 @@ def index(request):
     context = {
         'issues': issues,
         'articles': articles,
+        'date': datetime.date.today(),
     }
     return render(request, 'index.html', context)
+
+def issue(request):
+    issues = Issue.objects.filter(display=True).order_by('order')
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    issue_selected = Issue.objects.filter(display=True).filter(issue=request.GET.get('issue'))
+    url_issue = request.GET.get('issue')
+    context = {
+        'issues': issues,
+        'articles': articles,
+        'date': datetime.date.today(),
+        'url_date': datetime.date.today().strftime('%Y-%m-%d'),
+        'url_issue': url_issue,
+        'url_date': request.GET.get('date'),
+        'issue': issue_selected,
+    }
+    return render(request, 'issue.html', context)
 
 def index_test(request):
     issues = Issue.objects.filter(display=True)
@@ -35,8 +52,20 @@ def rate(request):
 def why(request):
     return render(request, 'why.html')
 
+def daily_email(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+        'date': datetime.date.today(),
+        'test_issue': 'U.S. Embassy in Jerusalem',
+        'test_date': datetime.date.today().strftime('%Y-%m-%d'),
+    }
+    return render(request, 'the-daily-skeww.html', context)
+
 def contact_form(request):
-  to_email = 'sean.graber@gmail.com'
+  to_email = 'hi@theskeww.com'
   if request.method == 'POST':
     form = ContactForm(request.POST)
     if form.is_valid():
@@ -45,7 +74,7 @@ def contact_form(request):
       message = form.cleaned_data['message']
       try:
         send_mail(
-            'Email from THE SLNT',
+            'Contact Form Email',
             message,
 			from_email,
             [to_email,],
