@@ -19,66 +19,66 @@
             {% for issue in issues %}
                 {% if issue.issue == url_issue %}
                     <div class="row row-table">
-                    <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
-                        <p class="row-title">{{ issue.issue }} ▾</p>
+                        <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
+                            <p class="row-title">{{ issue.issue }} ▾</p>
+                        </div>
+                        <div class="col-12 justify-content-start row-table-text">
+                            {% for article in articles %}
+                                {% if article.issue == issue %}
+                                    <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="col-12 justify-content-start row-table-text">
-                        {% for article in articles %}
-                            {% if article.issue == issue %}
-                                <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                {% if forloop.first %}
+                    {% if forloop.first %}
                     <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"></div><!-- Expand card for first issue -->
-                {% else %}
+                    {% else %}
                     <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"></div><!-- Collapse card for all other issues -->
-                {% endif %}
+                    {% endif %}
                     <hr class="summary-line">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6 summary-text-left">
-                                <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
-                                {{ issue.summary_left }}
-                            </div>
-                            <div class="col-sm-6 summary-text-right">
-                                <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
-                                {{ issue.summary_right }}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 summary-text-left">
+                                    <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
+                                    {{ issue.summary_left }}
+                                </div>
+                                <div class="col-sm-6 summary-text-right">
+                                    <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
+                                    {{ issue.summary_right }}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endif %}
             {% endfor %}
             <hr>
             <br>
 
-        <!-- DISQUS START -->
-        <div id="disqus_thread"></div>
-        <script>
+            <!-- DISQUS START -->
+            <div id="disqus_thread"></div>
+            <script>
 
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://http-theskeww-com.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <!-- DISQUS END -->
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://http-theskeww-com.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <!-- DISQUS END -->
 
-        <!-- INSIDE BODY TAG -->
-        <script id="dsq-count-scr" src="//http-theskeww-com.disqus.com/count.js" async></script>
+            <!-- INSIDE BODY TAG -->
+            <script id="dsq-count-scr" src="//http-theskeww-com.disqus.com/count.js" async></script>
 
         </div>
     {% include 'footer.html' %}

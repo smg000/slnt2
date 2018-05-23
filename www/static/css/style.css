@@ -210,6 +210,10 @@ hr {
     padding: 0em 1em 1em 1em;
 }
 
+#disqus_thread {
+    padding: 0em 2em 0em 2em;
+}
+
 .comment-row {
     padding: 0em 1em 0em 1em;
 }
