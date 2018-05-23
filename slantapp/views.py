@@ -18,16 +18,14 @@ def index(request):
 def issue(request):
     issues = Issue.objects.filter(display=True).order_by('order')
     articles = Article.objects.filter(display=True, issue__in=issues)
-    issue_selected = Issue.objects.filter(display=True).filter(issue=request.GET.get('issue'))
-    url_issue = request.GET.get('issue')
     context = {
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
         'url_date': datetime.date.today().strftime('%Y-%m-%d'),
-        'url_issue': url_issue,
+        'url_issue': request.GET.get('issue'),
         'url_date': request.GET.get('date'),
-        'issue': issue_selected,
+        'issue': Issue.objects.filter(display=True).filter(issue=request.GET.get('issue')),
     }
     return render(request, 'issue.html', context)
 
