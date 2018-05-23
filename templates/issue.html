@@ -19,8 +19,8 @@
             {% for issue in issues %}
                 {% if issue.issue == url_issue %}
                     <div class="row row-table">
-                        <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
-                            <p class="row-title">{{ issue.issue }} ▾</p>
+                        <div class="col-12 row-table-text-issue">
+                            <p class="row-title row-title-issue">{{ issue.issue }}</p>
                         </div>
                         <div class="col-12 justify-content-start row-table-text">
                             {% for article in articles %}
@@ -30,11 +30,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    {% if forloop.first %}
-                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"></div><!-- Expand card for first issue -->
-                    {% else %}
-                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"></div><!-- Collapse card for all other issues -->
-                    {% endif %}
+                    <div id="{{ issue.issue }}"></div>
                     <hr class="summary-line">
                         <div class="card-body">
                             <div class="row">

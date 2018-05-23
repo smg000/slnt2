@@ -170,6 +170,10 @@ hr {
     cursor: pointer;
 }
 
+.row-title-issue {
+    cursor: default !important;
+}
+
 .logo {
     position: absolute;
     bottom: 1em;
