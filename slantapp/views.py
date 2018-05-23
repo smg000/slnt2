@@ -22,7 +22,6 @@ def issue(request):
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
-        'url_date': datetime.date.today().strftime('%Y-%m-%d'),
         'url_issue': request.GET.get('issue'),
         'url_date': request.GET.get('date'),
         'issue': Issue.objects.filter(display=True).filter(issue=request.GET.get('issue')),
