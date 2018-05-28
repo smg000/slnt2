@@ -17,11 +17,25 @@
             });
             </script>
             {% for issue in issues %}
-                <div class="row row-table">
+                <div class="row ">
                     <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
                         <p class="row-title">{{ issue.issue }} ▾</p>
                     </div>
-                    <div class="col-12 justify-content-start row-table-text">
+                    <div class="col-12 summary-text-main">
+                        <p>{{ issue.summary_main }}</p>
+                    </div>
+                </div>
+
+                {% if forloop.first %}
+                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"><!-- Expand card for first issue -->
+                {% else %}
+                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"><!-- Collapse card for all other issues -->
+                {% endif %}
+
+
+                <div class="row ">
+                    <div class="col-12"><hr class="summary-line"></div>
+                    <div class="col-12 row-table">
                         {% for article in articles %}
                             {% if article.issue == issue %}
                                 <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
@@ -29,12 +43,18 @@
                         {% endfor %}
                     </div>
                 </div>
-                {% if forloop.first %}
-                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"><!-- Expand card for first issue -->
-                {% else %}
-                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"><!-- Collapse card for all other issues -->
-                {% endif %}
-                        <hr class="summary-line">
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-12"><hr class="summary-line"></div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6 summary-text-left">
@@ -46,11 +66,11 @@
                                     {{ issue.summary_right }}
                                 </div>
                             </div>
-                            <hr>
+                            <div class="col-12"><hr class="summary-line"></div>
                             <div class="col-sm-12 comment-row">
                                 <p class="comment-text"><a href="/issue/?issue={{ issue.issue }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">🗨️ Join the conversation ></a></p>
                             </div>
-                            <hr>
+                            <div class="col-12"><hr class="summary-line-top-padding"></div>
                         </div>
                     </div>
             {% endfor %}

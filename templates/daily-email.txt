@@ -1,0 +1,39 @@
+the daily skeww
+The best news commentary from the left, right, and center.
+{{ date|date:"l, F d, Y" }}
+theskeww.com
+{% for issue in issues %}
+{{ issue.issue }}
+
+What the left is saying:
+{{ issue.summary_left }}
+
+What the right is saying:
+{{ issue.summary_right }}
+
+Links from the left:
+{% for article in articles %}
+{% if article.issue == issue and article.bias < 40 %}
+{{ article.title | truncatechars:55 }} ({{ article.publication_name }})
+{% endif %}
+{% endfor %}
+
+Links from the center:
+{% for article in articles %}
+{% if article.issue == issue and article.bias >= 40 and article.bias <= 60 %}
+{{ article.title | truncatechars:55 }} ({{ article.publication_name }})
+{% endif %}
+{% endfor %}
+
+Links from the right:
+{% for article in articles %}
+{% if article.issue == issue and article.bias > 60 %}
+{{ article.title | truncatechars:55 }} ({{ article.publication_name }})
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+Proudly made in the Upper Valley.
+© 2018 the skeww
+8 Curtis Road
+Hopkinton, MA 01748

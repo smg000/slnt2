@@ -129,7 +129,7 @@ html, body {
 .row-table {
     /*display: table;*/
     width: 100%;
-    height: 6em;
+    height: 3em;
 }
 
 hr {
@@ -198,12 +198,20 @@ hr {
     border-top-color: purple;
 }
 
+.summary-text-main {
+    padding: 1em 1em 1em 1em;
+}
+
 .card-body {
     padding: 0px;
 }
 
 .summary-line {
     margin-top: 0px;
+}
+
+.summary-line-top-padding {
+    margin-top: 1em;
 }
 
 .summary-text-left {
