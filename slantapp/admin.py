@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ('issue', 'date', 'display', 'order')
+    list_display = ('id', 'issue', 'date', 'display', 'order')
     ordering = ('-display', 'issue', 'date',)
+    readonly_fields = ('id',)
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('issue', 'publication_name', 'title', 'scrape_date', 'bias', 'topic_keywords', 'display')

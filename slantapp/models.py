@@ -11,7 +11,7 @@ class Issue(models.Model):
     display = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
     def __str__(self):
-        return "%s" % (self.issue)
+        return "%s:\t %s" % (self.id, self.issue)
 
 class Publication(models.Model):
     publication_name = models.CharField(max_length=250)
