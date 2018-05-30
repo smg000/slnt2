@@ -24,13 +24,17 @@
                     </div>
                     <div class="col-12 summary-text-main">
                         <p>{{ issue.summary_main }}</p>
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
+                        <a class="twitter-share-button" href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=http://theskeww.com"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/facebook.png"></a>
                     </div>
                 </div>
 
                 {% if forloop.first %}
-                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"><!-- Expand card for first issue -->
+                    <!-- Expand card for first issue -->
+                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 {% else %}
-                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"><!-- Collapse card for all other issues -->
+                    <!-- Collapse card for all other issues -->
+                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 {% endif %}
                 <div class="row ">
                     <div class="col-12"><hr class="summary-line"></div>
@@ -44,6 +48,9 @@
                     </div>
                 </div>
                     <div class="col-12"><hr class="summary-line"></div>
+
+                    {% if issue.issue != "The Long Tail" %}
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6 summary-text-left">
@@ -61,10 +68,14 @@
                         </div>
                         <div class="col-12"><hr class="summary-line-top-padding"></div>
                     </div>
+
+                    {% endif %}
+
                 </div>
             {% endfor %}
             <hr>
             <br>
+
             <!-- Begin MailChimp Signup Form -->
             <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
             <style type="text/css">
@@ -84,6 +95,20 @@
             </form>
             </div>
             <!--End mc_embed_signup-->
+
+            <!-- MailChimp newsletter popup -->
+            <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"eb4eb06d700162088aa250614","lid":"797ef6d1dc"}) })</script>
+
+            <!-- Facebook share button script -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
         </div>
     {% include 'footer.html' %}
     {%  endblock %}

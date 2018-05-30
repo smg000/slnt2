@@ -49,6 +49,12 @@ def rate(request):
 def why(request):
     return render(request, 'why.html')
 
+def privacy_policy(request):
+    return render(request, 'privacy-policy.html')
+
+def terms_of_service(request):
+    return render(request, 'terms-of-service.html')
+
 def daily_email(request):
     issues = Issue.objects.filter(display=True)
     articles = Article.objects.filter(display=True, issue__in=issues)

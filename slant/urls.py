@@ -27,6 +27,9 @@ from slantapp.views import why
 from slantapp.views import daily_email
 from slantapp.views import contact_form
 from slantapp.views import thankyou
+from slantapp.views import privacy_policy
+from slantapp.views import terms_of_service
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,5 +41,7 @@ urlpatterns = [
     url(r'^contact/$', contact_form),
     url(r'^thank-you/$', thankyou),
     url(r'^index_test/$', index_test),
+    url(r'^privacy-policy/$', privacy_policy),
+    url(r'^terms-of-service/$', terms_of_service),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
 ]

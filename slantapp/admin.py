@@ -13,7 +13,7 @@ class ArticleAdmin(admin.ModelAdmin):
         ('date', admin.DateFieldListFilter),
         ('issue', admin.RelatedFieldListFilter),
     )
-    search_fields = ['topic_keywords']
+    search_fields = ['topic_keywords', 'title']
 
 class PublicationAdmin(admin.ModelAdmin):
     list_display = ('publication_name', 'url_root', 'publication_logo', 'scrape')

@@ -3,7 +3,7 @@
     {% include 'nav.html' %}
         <div class="wrapper">
             <div class="title-wrapper">
-                <h1 class="page-heading">The conversation<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
+                <h1 class="page-heading">the conversation<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
                 <p>{% for issue in issues %}{% if issue.issue == url_issue %}{{ issue.issue }}{% endif %}{% endfor %}</p>
             </div>
             <div class="row row-header">
@@ -16,13 +16,23 @@
                 $('[data-toggle="tooltip"]').tooltip();
             });
             </script>
+
+
             {% for issue in issues %}
                 {% if issue.issue == url_issue %}
-                    <div class="row row-table">
+                    <div class="row ">
                         <div class="col-12 row-table-text-issue">
                             <p class="row-title row-title-issue">{{ issue.issue }}</p>
                         </div>
-                        <div class="col-12 justify-content-start row-table-text">
+                        <div class="col-12 summary-text-main">
+                            <p>{{ issue.summary_main }}</p>
+                        </div>
+                    </div>
+                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"><!-- Expand card for first issue -->
+                    <div class="row ">
+                        <div class="col-12"><hr class="summary-line"></div>
+                        <div class="col-12 row-table">
+                            <!-- Per views.py, articles limited to those that have display=True -->
                             {% for article in articles %}
                                 {% if article.issue == issue %}
                                     <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
@@ -30,8 +40,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div id="{{ issue.issue }}"></div>
-                    <hr class="summary-line">
+                        <div class="col-12"><hr class="summary-line"></div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6 summary-text-left">

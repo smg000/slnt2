@@ -35,6 +35,7 @@
                                     {% for issue in issues %}
                                         <h2><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.issue }}</span></h2>
                                         <table cellpadding="4" width="600">
+                                            <tr><td colspan="3"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.summary_main }}</span></p></td></tr>
                                             <tr>
                                                 <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the left is saying:<br></strong>{{ issue.summary_left }}</span></p></td>
                                                 <td width="4%" valign="top"></td>
