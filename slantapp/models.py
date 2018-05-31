@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django import utils
 import datetime
 
 class Issue(models.Model):
@@ -35,6 +36,7 @@ class Article(models.Model):
     url = models.URLField(max_length=500, unique=True) # Added unique=True
     text = models.TextField(blank=True, null=True)
     scrape_date = models.DateField(blank=True, null=True, default=datetime.date(1900, 1, 1))
+    scrape_timestamp = models.DateField(blank=True, null=True, default=utils.timezone.now)
     topic_keywords = models.TextField(blank=True, null=True)
     # TODO: add entities_sentiment
     bias = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)], help_text='Select a number between 0 and 100, where 0 is extremely liberal, and 100 is extremely conservative.')

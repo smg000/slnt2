@@ -28,6 +28,9 @@ def issue(request):
     }
     return render(request, 'issue.html', context)
 
+def about(request):
+    return render(request, 'about.html')
+
 def why(request):
     return render(request, 'why.html')
 

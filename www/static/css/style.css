@@ -356,3 +356,17 @@ select {
     height: 1em;
     vertical-align: baseline;
 }
+
+.contact-icon {
+    height: 1.5em;
+}
+
+.team-photo {
+    height: 10em;
+    width: 10em;
+    margin: 0em 0em 1em 0em;
+}
+
+#website-text {
+    margin-bottom: 1em !important;
+}

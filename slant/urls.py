@@ -29,12 +29,14 @@ from slantapp.views import contact_form
 from slantapp.views import thankyou
 from slantapp.views import privacy_policy
 from slantapp.views import terms_of_service
+from slantapp.views import about
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^issue/$', issue),
+    url(r'^about/$', about),
     url(r'^rate/$', rate),
     url(r'^why/$', why),
     url(r'^the-daily-skeww/$', daily_email),
