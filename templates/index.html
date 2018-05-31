@@ -17,6 +17,7 @@
             });
             </script>
             <!-- Per views.py, issues limited to those that have display=True -->
+
             {% for issue in issues %}
                 <div class="row ">
                     <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
@@ -24,8 +25,8 @@
                     </div>
                     <div class="col-12 summary-text-main">
                         <p>{{ issue.summary_main }}</p>
-                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
-                        <a class="twitter-share-button" href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=http://theskeww.com"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/facebook.png"></a>
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww&quote=Thisismyquote."><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
+{#                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ "http://theskeww.com/issue/?issue="|urlencode }}{{ issue.issue|urlencode }}{{ "&date="|urlencode }}{{ issue.date|date:"Y-m-d"|urlencode }}{{ "#disqus_thread"|urlencode }}&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>#}
                     </div>
                 </div>
 
@@ -42,7 +43,9 @@
                         <!-- Per views.py, articles limited to those that have display=True -->
                         {% for article in articles %}
                             {% if article.issue == issue %}
-                                <a href="{{ article.url }}" target="_blank"><img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br> <i>{{ article.title }}</i> <br> {{ article.date }}"></a>
+                                <a href="{{ article.url }}" target="_blank">
+                                    <img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br><i>{{ article.title }}</i><br>{{ article.date }}">
+                                </a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -64,7 +67,7 @@
                         </div>
                         <div class="col-12"><hr class="summary-line"></div>
                         <div class="col-sm-12 comment-row">
-                            <p class="comment-text"><a href="/issue/?issue={{ issue.issue }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">🗨️ Join the conversation ></a></p>
+                            <p class="comment-text"><a href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">🗨️ Join the conversation ></a></p>
                         </div>
                         <div class="col-12"><hr class="summary-line-top-padding"></div>
                     </div>
@@ -100,14 +103,6 @@
             <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"eb4eb06d700162088aa250614","lid":"797ef6d1dc"}) })</script>
 
             <!-- Facebook share button script -->
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
 
         </div>
     {% include 'footer.html' %}

@@ -28,44 +28,8 @@ def issue(request):
     }
     return render(request, 'issue.html', context)
 
-def index_test(request):
-    issues = Issue.objects.filter(display=True)
-    articles = Article.objects.filter(display=True, issue__in=issues)
-    context = {
-        'issues': issues,
-        'articles': articles,
-    }
-    return render(request, 'index_test.html', context)
-
-def rate(request):
-    issues = Issue.objects.filter(display=True)
-    articles = Article.objects.filter(display=True, issue__in=issues)
-    context = {
-        'issues': issues,
-        'articles': articles,
-    }
-    return render(request, 'rate.html', context)
-
 def why(request):
     return render(request, 'why.html')
-
-def privacy_policy(request):
-    return render(request, 'privacy-policy.html')
-
-def terms_of_service(request):
-    return render(request, 'terms-of-service.html')
-
-def daily_email(request):
-    issues = Issue.objects.filter(display=True)
-    articles = Article.objects.filter(display=True, issue__in=issues)
-    context = {
-        'issues': issues,
-        'articles': articles,
-        'date': datetime.date.today(),
-        'test_issue': 'U.S. Embassy in Jerusalem',
-        'test_date': datetime.date.today().strftime('%Y-%m-%d'),
-    }
-    return render(request, 'the-daily-skeww.html', context)
 
 def contact_form(request):
   to_email = 'hi@theskeww.com'
@@ -96,3 +60,39 @@ def contact_form_thank_you(request):
 
 def thankyou(request):
     return render(request, 'thank-you.html')
+
+def privacy_policy(request):
+    return render(request, 'privacy-policy.html')
+
+def terms_of_service(request):
+    return render(request, 'terms-of-service.html')
+
+""" UNUSED AND/OR FUTURE VIEWS """
+
+def index_test(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+    }
+    return render(request, 'index_test.html', context)
+
+def daily_email(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+        'date': datetime.date.today(),
+    }
+    return render(request, 'the-daily-skeww.html', context)
+
+def rate(request):
+    issues = Issue.objects.filter(display=True)
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'issues': issues,
+        'articles': articles,
+    }
+    return render(request, 'rate.html', context)

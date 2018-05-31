@@ -312,13 +312,13 @@ select {
     position: relative;
     display: table;
     margin-top: -50px;
-    height: 100px;
+    height: 150px;
     background-color: white;
     color: white;
     text-align: center;
     width: 100%;
     border-top: 1px solid #bfbfbf;
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0px 50px 0px;
 }
 
 .footer-container {
