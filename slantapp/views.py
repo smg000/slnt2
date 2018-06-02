@@ -82,14 +82,14 @@ def index_test(request):
     return render(request, 'index_test.html', context)
 
 def daily_email(request):
-    issues = Issue.objects.filter(display=True)
+    issues = Issue.objects.filter(display=True).order_by('order')
     articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
     }
-    return render(request, 'the-daily-skeww.html', context)
+    return render(request, 'daily-email.html', context)
 
 def rate(request):
     issues = Issue.objects.filter(display=True)

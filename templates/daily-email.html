@@ -19,7 +19,7 @@
                                     <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">The best news commentary from the left, right, and center.</span></p>
                                     <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ date|date:"l, F d, Y" }}</span></p>
                                     <p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="http://theskeww.com">theskeww.com</a></span></p>
-                                    <hr style="border-style: solid; border: 3px purple solid;">
+                                    <hr style="border-style: solid; border: 3px purple solid; margin: 1em;">
                                 </td>
                             </tr>
                         </table>
@@ -33,34 +33,46 @@
                             <tr>
                                 <td align="center" valign="top">
                                     {% for issue in issues %}
-                                        <h2><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.issue }}</span></h2>
-                                        <table cellpadding="4" width="600">
-                                            <tr><td colspan="3"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.summary_main }}</span></p></td></tr>
-                                            <tr>
-                                                <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the left is saying:<br></strong>{{ issue.summary_left }}</span></p></td>
-                                                <td width="4%" valign="top"></td>
-                                                <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the right is saying:<br></strong>{{ issue.summary_right }}</span></p></td>
-                                            </tr>
-                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the left:</strong></span></p></td></tr>
-                                                {% for article in articles %}
-                                                        {% if article.issue == issue and article.bias < 40 %}
-                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
-                                                        {% endif %}
-                                                {% endfor %}
-                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the center:</strong></span></p></td></tr>
-                                                {% for article in articles %}
-                                                        {% if article.issue == issue and article.bias >= 40 and article.bias <= 60 %}
-                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
-                                                        {% endif %}
-                                                {% endfor %}
-                                            <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the right:</strong></span></p></td></tr>
-                                                {% for article in articles %}
-                                                        {% if article.issue == issue and article.bias > 60 %}
-                                                                <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:55 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
-                                                        {% endif %}
-                                                {% endfor %}
-                                        </table>
-                                    <hr style="border-style: solid; border: 1px purple solid;">
+                                        {% if issue.issue != "The Long Tail" %}
+                                            <h2><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.issue }}</span></h2>
+                                            <table cellpadding="4" width="600">
+                                                <tr><td colspan="3"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.summary_main }} </span><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww" target="_blank"><span><img style="height: 1em; width: 1em; vertical-align: baseline;" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></span></a></p></td></tr>
+                                                <tr>
+                                                    <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the left is saying:<br></strong>{{ issue.summary_left }}</span></p></td>
+                                                    <td width="4%" valign="top"></td>
+                                                    <td width="48%" valign="top"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>What the right is saying:<br></strong>{{ issue.summary_right }}</span></p></td>
+                                                </tr>
+                                                <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the left:</strong></span></p></td></tr>
+                                                    {% for article in articles %}
+                                                            {% if article.issue == issue and article.bias < 40 %}
+                                                                    <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:50 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                            {% endif %}
+                                                    {% endfor %}
+                                                <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the center:</strong></span></p></td></tr>
+                                                    {% for article in articles %}
+                                                            {% if article.issue == issue and article.bias >= 40 and article.bias <= 60 %}
+                                                                    <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:50 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                            {% endif %}
+                                                    {% endfor %}
+                                                <tr><td><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><strong>Links from the right:</strong></span></p></td></tr>
+                                                    {% for article in articles %}
+                                                            {% if article.issue == issue and article.bias > 60 %}
+                                                                    <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:50 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                            {% endif %}
+                                                    {% endfor %}
+                                            </table>
+                                        {% else %}
+                                            <h2><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.issue }}</span></h2>
+                                            <table cellpadding="4" width="600">
+                                                <tr><td colspan="3"><p><span style="font-family: Avenir, PT Sans, Helvetica, Arial;">{{ issue.summary_main }} </span><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww" target="_blank"><span><img style="height: 1em; width: 1em; vertical-align: baseline;" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></span></a></p></td></tr>
+                                                    {% for article in articles %}
+                                                            {% if article.issue == issue %}
+                                                                    <tr><td colspan="3"><span style="font-family: Avenir, PT Sans, Helvetica, Arial;"><a href="{{ article.url }}">{{ article.title | truncatechars:50 }}</a> (<i>{{ article.publication_name }}</i>)</span></td></tr>
+                                                            {% endif %}
+                                                    {% endfor %}
+                                            </table>
+                                        {% endif %}
+                                        <hr style="border-style: solid; border: 1px purple solid;">
                                     {% endfor %}
                                 </td>
                             </tr>
@@ -85,8 +97,5 @@
         </td>
     </tr>
 </table>
-
-<!-- Google Analytics tracking pixel -->
-<img src="https://www.google-analytics.com/collect?v=1&tid=UA-117258095-1&t=event&ec=email&ea=open&dp=%2FEmail%2F{{ date|date:"Y-m-d" }}&dt=Daily%20Skeww">
 
 </body>
