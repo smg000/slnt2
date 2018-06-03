@@ -13,7 +13,11 @@
             </div>
             <script>
             $(document).ready(function(){
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip({
+                    {#container: 'body',#}
+                    placement: 'top',
+                    offset: 0,
+                });
             });
             </script>
             <!-- Per views.py, issues limited to those that have display=True -->
@@ -79,28 +83,71 @@
             <hr>
             <br>
 
-            <!-- Begin MailChimp Signup Form -->
-            <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-            <style type="text/css">
-                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
-                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-            </style>
-            <div id="mc_embed_signup">
-            <form action="https://theslnt.us18.list-manage.com/subscribe/post?u=eb4eb06d700162088aa250614&amp;id=797ef6d1dc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <div id="mc_embed_signup_scroll">
-                <label for="mce-EMAIL">Escape the filter bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</label>
-                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_eb4eb06d700162088aa250614_797ef6d1dc" tabindex="-1" value=""></div>
-                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button mailchimp-button"></div>
-                </div>
-            </form>
+            <div class="subscription-text">
+                <p>Escape the filter bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</p>
             </div>
-            <!--End mc_embed_signup-->
+            <div class="subscription-form">
+                <form action='' method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+                    <input type='submit' value='Send' class="subscription-form"/>
+                </form>
+            </div>
 
-            <!-- MailChimp newsletter popup -->
-            <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"eb4eb06d700162088aa250614","lid":"797ef6d1dc"}) })</script>
+            <!-- Modal -->
+            <div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title">Ready to escape the filter bubble?</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body modal-subscribe subscription-text">
+                            <p>Get the <i>skeww</i> delivered to your inbox daily.</p>
+                            <div class="subscription-form">
+                                <form action='' method='post'>
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                        {{ field }}
+                                    {% endfor %}
+                                <input type='submit' value='Send' class="subscription-form"/>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+{#                        Future footer content.#}
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+{#            <!-- Begin MailChimp Signup Form -->#}
+{#            <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">#}
+{#            <style type="text/css">#}
+{#                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}#}
+{#                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.#}
+{#                   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */#}
+{#            </style>#}
+{#            <div id="mc_embed_signup">#}
+{#            <form action="https://theslnt.us18.list-manage.com/subscribe/post?u=eb4eb06d700162088aa250614&amp;id=797ef6d1dc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>#}
+{#                <div id="mc_embed_signup_scroll">#}
+{#                <label for="mce-EMAIL">Escape the filter bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</label>#}
+{#                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>#}
+{#                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->#}
+{#                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_eb4eb06d700162088aa250614_797ef6d1dc" tabindex="-1" value=""></div>#}
+{#                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button mailchimp-button"></div>#}
+{#                </div>#}
+{#            </form>#}
+{#            </div>#}
+{#            <!--End mc_embed_signup-->#}
+
+{#            <!-- MailChimp newsletter popup -->#}
+{#            <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"eb4eb06d700162088aa250614","lid":"797ef6d1dc"}) })</script>#}
 
             <!-- Facebook share button script -->
 

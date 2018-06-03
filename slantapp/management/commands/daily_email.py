@@ -42,6 +42,8 @@ class Command(BaseCommand):
             }
         )
 
+        """ MailChimp begins...
+        
         # Get email addresses from MailChimp
         mailchimp_user = os.environ.get('MAILCHIMP_USER')
         mailchimp_api = os.environ.get('MAILCHIMP_API')
@@ -57,6 +59,24 @@ class Command(BaseCommand):
         email_list = []
         for item in email_dictionary['members']:
             email_list.append(item['email_address'])
+        
+        ... and ends """
+
+        email_list = []
+
+        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+        # Limit of 1000 emails per call
+        for i in range(1, 1000000):
+            try:
+                params = {'page': 1, 'page_size': 999, }
+                response = sg.client.contactdb.recipients.get(query_params=params)
+                json_response = json.loads(response.body)
+                for item in json_response['recipients']:
+                    email_list.append(item['email'])
+            finally:
+                break
+
+        print(email_list)
 
         # Split list into sublists
         list_max = 999

@@ -2,8 +2,10 @@ import datetime
 from django.shortcuts import render
 from django.template import loader
 from .models import Issue, Article
-from .forms import ContactForm
+from .forms import ContactForm, SignUpForm
 from django.core.mail import send_mail, BadHeaderError
+import sendgrid
+import os
 
 def index(request):
     issues = Issue.objects.filter(display=True).order_by('order')
@@ -12,7 +14,30 @@ def index(request):
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
+        'form': SignUpForm,
     }
+    # Subscription form
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                data = [
+                    {
+                        "email": email,
+                    }
+                ]
+                response = sg.client.contactdb.recipients.post(request_body=data)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # TODO Add Ajax to send without page reload
+            return render(request, 'index.html', context)
+    # else:
+    #     form = SignUpForm
     return render(request, 'index.html', context)
 
 def issue(request):

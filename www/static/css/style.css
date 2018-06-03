@@ -35,6 +35,13 @@ html, body {
     margin: 0 auto !important;
 }
 
+@-moz-document url-prefix() {
+html, body {
+    max-width: 9999px;
+    width: 100%
+  }
+}
+
 .navbar {
     padding: 4px 4px 4px 4px;
     background-color: white;
@@ -204,6 +211,18 @@ hr {
     border-top-color: purple;
 }
 
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-bottom .arrow::before {
+    border-bottom-color: purple;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-left .arrow::before {
+    border-left-color: purple;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-right .arrow::before {
+    border-right-color: purple;
+}
+
 .summary-text-main {
     padding: 1em 1em 1em 1em;
 }
@@ -369,4 +388,42 @@ select {
 
 #website-text {
     margin-bottom: 1em !important;
+}
+.subscription-text {
+    margin: 0em 0em 1em 0em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subscription-form {
+    width: 20em;
+    margin: .5em auto 0em auto;
+}
+
+/*Center placeholder text in subscription form*/
+
+/* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+/* Firefox 19+ */
+::-moz-placeholder {
+  text-align: center;
+}
+
+/* IE 10+ */
+:-ms-input-placeholder {
+  text-align: center;
+}
+
+/* Firefox 18- */
+:-moz-placeholder {
+  text-align: center;
+}
+
+/*End the craziness*/
+
+.modal-subscribe {
+    text-align: center;
 }
