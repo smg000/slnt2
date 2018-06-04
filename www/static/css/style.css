@@ -93,11 +93,20 @@ html, body {
     /*max-width: 1000px;*/
 }
 
-.page-heading {
+.title-logo {
     margin-top: 35px;
+    height: 5em;
+}
+
+.page-heading {
+    margin-top: 5px;
     font-size: 2em;
     font-weight: 900;
     text-align: center;
+}
+
+.prettyDate {
+    font-weight: bold;
 }
 
 .title-wrapper{

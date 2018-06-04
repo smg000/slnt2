@@ -15,6 +15,7 @@ def index(request):
         'articles': articles,
         'date': datetime.date.today(),
         'form': SignUpForm,
+        'prettyDate': datetime.date.today().strftime("%B %d, %Y"),
     }
     # Subscription form
     sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
