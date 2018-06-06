@@ -8,9 +8,11 @@ import sendgrid
 import os
 
 def index(request):
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
     issues = Issue.objects.filter(display=True).order_by('order')
     articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
+        'navbar_issues': navbar_issues,
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
@@ -42,9 +44,12 @@ def index(request):
     return render(request, 'index.html', context)
 
 def issue(request):
-    issues = Issue.objects.filter(display=True).order_by('order')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    # issues = Issue.objects.filter(display=True).order_by('order')
+    issues = Issue.objects.order_by('order')
     articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
+        'navbar_issues': navbar_issues,
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
@@ -54,47 +59,104 @@ def issue(request):
     }
     return render(request, 'issue.html', context)
 
+def archive(request):
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    issues = Issue.objects.order_by('order')
+    def create_date_list():
+        date_list = []
+        dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-8, 0)] # Last 7 days will always include last 5 weekdays
+        for date in dates:
+            if date.weekday() < 5: # Saturday = 5, Sunday = 6
+                date_list.append(date)
+        date_list.sort(reverse=True)
+        #TODO Increase daily until archive list is built
+        return date_list[:2] # Display last 10 weekdays
+    def create_date_issue_dictionary():
+        date_issue_dictionary = {}
+        date_list = create_date_list()
+        for date in date_list:
+            date_issue_dictionary[date] = Issue.objects.filter(date=date).order_by('order')
+        return date_issue_dictionary
+    context = {
+        'navbar_issues': navbar_issues,
+        'articles': Article.objects.filter(display=True, issue__in=issues),
+        'date_issue_dictionary': create_date_issue_dictionary(),
+    }
+    return render(request, 'archive.html', context)
+
 def about(request):
-    return render(request, 'about.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context ={
+        'navbar_issues': navbar_issues,
+    }
+    return render(request, 'about.html', context)
 
 def why(request):
-    return render(request, 'why.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context = {
+        'navbar_issues': navbar_issues,
+    }
+    return render(request, 'why.html', context)
 
 def contact_form(request):
-  to_email = 'hi@theskeww.com'
-  if request.method == 'POST':
-    form = ContactForm(request.POST)
-    if form.is_valid():
-      name = form.cleaned_data['name']
-      from_email = form.cleaned_data['email']
-      message = form.cleaned_data['message']
-      try:
-        send_mail(
-            'Contact Form Email',
-            message,
-			from_email,
-            [to_email,],
-            fail_silently = False,
-            )
-      except BadHeaderError:
-        return HttpResponse('Invalid header found.')
-      return render(request, 'thank-you.html')
-  else:
-    form = ContactForm
-  return render(request, 'contact.html', {'form': form})
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    to_email = 'hi@theskeww.com'
+    context = {
+        'navbar_issues': navbar_issues,
+    }
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            from_email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(
+                    'Contact Form Email',
+                    message,
+                    from_email,
+                    [to_email, ],
+                    fail_silently=False,
+                )
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return render(request, 'thank-you.html', context)
+    else:
+        form = ContactForm
+        context = {
+            'navbar_issues': navbar_issues,
+            'form': form,
+        }
+    return render(request, 'contact.html', context)
 
 def contact_form_thank_you(request):
-  return HttpResponse('Thank you!')
-  return render(request, 'thank-you.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context = {
+      'navbar_issues': navbar_issues,
+    }
+    return HttpResponse('Thank you!')
+    return render(request, 'thank-you.html', context)
 
 def thankyou(request):
-    return render(request, 'thank-you.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context = {
+        'navbar_issues': navbar_issues,
+    }
+    return render(request, 'thank-you.html', context)
 
 def privacy_policy(request):
-    return render(request, 'privacy-policy.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context = {
+        'navbar_issues': navbar_issues,
+    }
+    return render(request, 'privacy-policy.html', context)
 
 def terms_of_service(request):
-    return render(request, 'terms-of-service.html')
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    context = {
+        'navbar_issues': navbar_issues,
+    }
+    return render(request, 'terms-of-service.html', context)
 
 """ UNUSED AND/OR FUTURE VIEWS """
 

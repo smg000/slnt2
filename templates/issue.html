@@ -3,7 +3,8 @@
     {% include 'nav.html' %}
         <div class="wrapper">
             <div class="title-wrapper">
-                <h1 class="page-heading">the conversation<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
+                <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
+                <h1 class="page-heading">the discussion<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
                 <p>{% for issue in issues %}{% if issue.issue == url_issue %}{{ issue.issue }}{% endif %}{% endfor %}</p>
             </div>
             <div class="row row-header">

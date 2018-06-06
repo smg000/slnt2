@@ -449,3 +449,13 @@ select {
 .modal-subscribe {
     text-align: center;
 }
+
+.archive-text-date {
+    line-height: 2;
+    font-weight: bold;
+}
+
+.navbar-dropdown-text {
+    padding: 0em 24px 0em 24px !important;
+    font-weight: bold;
+}

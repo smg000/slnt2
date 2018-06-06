@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+            <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
+            <h1 class="page-heading">the <i>skeww</i> archives</h1>
+            <hr>
+{#            <br>#}
+            <div class="container">
+                {% for date, issues in date_issue_dictionary.items %}
+                    <h5><b>{{ date|date:'l, F d' }}</b></h5>
+{#                    <p class="archive-text-date">{{ date|date:'l, F d' }}:</p>#}
+                            <br>
+                            {% for issue in issues %}
+                                {% if forloop.last %}
+                                    <p>and {{ issue.issue }}</p>
+                                    <br><br>
+                                    <p><span style="font-weight: bold;">
+                                        <a href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}">Read</a></img>
+                                        |
+                                        Listen
+                                    </span></p>
+                                    <hr>
+                                {% else %}
+                                    <p>{{ issue.issue }};</p>
+
+                                {% endif %}
+                            {% endfor %}
+{#                        <br><br>#}
+                {% endfor %}
+            </div>
+    {% include 'footer.html' %}
+    {%  endblock %}
