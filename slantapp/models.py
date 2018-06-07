@@ -9,6 +9,7 @@ class Issue(models.Model):
     summary_main = models.TextField(blank=True, null=True, default='', help_text='Add short summary of the topic.')
     summary_left = models.TextField(blank=True, null=True, default='', help_text='Add summary of the left.')
     summary_right = models.TextField(blank=True, null=True, default='', help_text='Add summary of the right.')
+    stage = models.BooleanField(default=False)
     display = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
     def __str__(self):

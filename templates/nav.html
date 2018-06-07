@@ -16,9 +16,12 @@
                 <p class="navbar-dropdown-text">today's issues</p>
                 <div class="dropdown-divider"></div>
                 {% for issue in navbar_issues %}
-                    <a class="dropdown-item" href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">{{ issue.issue }}</a>
+                    <a class="dropdown-item" href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">▸ {{ issue.issue }}</a>
                 {% endfor %}
             </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">podcast</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/archive">archive</a>

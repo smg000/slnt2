@@ -43,6 +43,43 @@ def index(request):
     #     form = SignUpForm
     return render(request, 'index.html', context)
 
+#TODO Figure out a better way to do this without violating DRY; only change is stage=True
+def stage(request):
+    navbar_issues = Issue.objects.filter(stage=True).order_by('order')
+    issues = Issue.objects.filter(stage=True).order_by('order')
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'navbar_issues': navbar_issues,
+        'issues': issues,
+        'articles': articles,
+        'date': datetime.date.today(),
+        'form': SignUpForm,
+        'prettyDate': datetime.date.today().strftime("%A, %B %d, %Y"),
+    }
+    # Subscription form
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                data = [
+                    {
+                        "email": email,
+                    }
+                ]
+                response = sg.client.contactdb.recipients.post(request_body=data)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # TODO Add Ajax to send without page reload
+            return render(request, 'index.html', context)
+    # else:
+    #     form = SignUpForm
+    return render(request, 'index.html', context)
+
 def issue(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
     # issues = Issue.objects.filter(display=True).order_by('order')

@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from slantapp.views import index
+from slantapp.views import stage
 from slantapp.views import issue
 from slantapp.views import archive
 from slantapp.views import index_test
@@ -36,6 +37,7 @@ from slantapp.views import about
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^stage/$', stage),
     url(r'^issue/$', issue),
     url(r'^archive/$', archive),
     url(r'^about/$', about),

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ('id', 'issue', 'date', 'display', 'order')
+    list_display = ('id', 'issue', 'date', 'stage', 'display', 'order')
     ordering = ('-display', 'issue', 'date',)
     readonly_fields = ('id',)
 

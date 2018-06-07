@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+            <div class="title-wrapper">
+                <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
+                <h1 class="page-heading">the <i>skeww</i></h1>
+                <p>The best news commentary from the left, right, and center.</p>
+                <br><br>
+                <p class="prettyDate">{{ prettyDate }}</p>
+            </div>
+            <div class="row row-header">
+                <div class="col-4 table-header"><h2 style="text-align: left"><span style="color:blue;">Left</span></h2></div>
+                <div class="col-4 table-header"><span style="text-align: center;"><h2 style="text-align: center"><span style="color:purple;">Center</span></h2></span></div>
+                <div class="col-4 table-header"><h2 style="text-align: right"><span style="color:red;">Right</span></h2></div>
+            </div>
+            <script>
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip({
+                    {#container: 'body',#}
+                    placement: 'top',
+                    offset: 0,
+                });
+            });
+            </script>
+            <!-- Per views.py, issues limited to those that have display=True -->
+
+            {% for issue in issues %}
+                <div class="row ">
+                    <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
+                        <p class="row-title">{{ issue.issue }} ▾</p>
+                    </div>
+                    <div class="col-12 summary-text-main">
+                        <p>{{ issue.summary_main }}</p>
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww" target="_blank"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
+{#                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ "http://theskeww.com/issue/?issue="|urlencode }}{{ issue.issue|urlencode }}{{ "&date="|urlencode }}{{ issue.date|date:"Y-m-d"|urlencode }}{{ "#disqus_thread"|urlencode }}&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>#}
+                    </div>
+                </div>
+
+                {% if forloop.first %}
+                    <!-- Expand card for first issue -->
+                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                {% else %}
+                    <!-- Collapse card for all other issues -->
+                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                {% endif %}
+                <div class="row ">
+                    <div class="col-12"><hr class="summary-line"></div>
+                    <div class="col-12 row-table">
+                        <!-- Per views.py, articles limited to those that have display=True -->
+                        {% for article in articles %}
+                            {% if article.issue == issue %}
+                                <a href="{{ article.url }}" target="_blank">
+                                    <img src="https://slantappbucket.s3.us-east-2.amazonaws.com/media/{{ article.publication_name.publication_logo }}" class="logo" style="margin-left: {{ article.bias }}%;" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ article.publication_name }}</b><br><i>{{ article.title }}</i><br>{{ article.date }}">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="col-12"><hr class="summary-line"></div>
+
+                    {% if issue.issue != "The Long Tail" %}
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6 summary-text-left">
+                                <h2 style="text-align: left"><span style="color:blue;">What the left is saying</span></h2>
+                                {{ issue.summary_left }}
+                            </div>
+                            <div class="col-sm-6 summary-text-right">
+                                <h2 style="text-align: left"><span style="color:red;">What the right is saying</span></h2>
+                                {{ issue.summary_right }}
+                            </div>
+                        </div>
+                        <div class="col-12"><hr class="summary-line"></div>
+                        <div class="col-sm-12 comment-row">
+                            <p class="comment-text"><a href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">🗨️ What are you saying? Join the discussion. ></a></p>
+                        </div>
+                        <div class="col-12"><hr class="summary-line-top-padding"></div>
+                    </div>
+
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+            <hr>
+            <br>
+
+            <div class="subscription-text">
+                <p>Escape the filter bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</p>
+            </div>
+            <div class="subscription-form">
+                <form action='' method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+                    <input type='submit' value='Send' class="subscription-form"/>
+                </form>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ready to escape the filter bubble?</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body modal-subscribe subscription-text">
+                            <p>Get the <i>skeww</i> delivered to your inbox daily.</p>
+                            <div class="subscription-form">
+                                <form action='' method='post'>
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                        {{ field }}
+                                    {% endfor %}
+                                <input type='submit' value='Send' class="subscription-form"/>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+{#                        Future footer content.#}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% include 'footer.html' %}
+    {%  endblock %}
