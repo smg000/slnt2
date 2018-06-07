@@ -50,4 +50,5 @@ urlpatterns = [
     url(r'^privacy-policy/$', privacy_policy),
     url(r'^terms-of-service/$', terms_of_service),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
+    path('podcast/', include('podcast.urls')), # From django-applepodcasts documentation
 ]

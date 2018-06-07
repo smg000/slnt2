@@ -25,3 +25,4 @@ spacy-nightly==2.0.0rc2
 ftfy==4.4.3
 mailchimp3==3.0.1
 sendgrid==5.3.0
+django-applepodcast==0.3.7

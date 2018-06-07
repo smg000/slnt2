@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'storages',
     'django_extensions',
     'slantapp',
+    'podcast',
 ]
 
 MIDDLEWARE = [
