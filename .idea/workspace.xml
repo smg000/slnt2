@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -83,6 +76,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
               <caret line="43" column="90" selection-start-line="43" selection-start-column="90" selection-end-line="43" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/slant/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding>
+                <element signature="e#364#373#0" expanded="true" />
+                <marker date="1528401943000" expanded="true" signature="4353:4457" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,8 +186,8 @@
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/Pipfile" />
-        <option value="$PROJECT_DIR$/slant/settings.py" />
         <option value="$PROJECT_DIR$/slant/urls.py" />
+        <option value="$PROJECT_DIR$/slant/settings.py" />
       </list>
     </option>
   </component>
@@ -859,17 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slant/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-          <folding>
-            <element signature="e#364#373#0" expanded="true" />
-            <marker date="1528395737000" expanded="true" signature="4352:4456" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/nav.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -891,6 +886,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slant/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="e#364#373#0" expanded="true" />
+            <marker date="1528401943000" expanded="true" signature="4353:4457" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
