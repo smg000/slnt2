@@ -41,8 +41,8 @@
                     <!-- Expand card for first issue -->
                     <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 {% else %}
-                    <!-- Collapse card for all other issues -->
-                    <div id="{{ issue.issue }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <!-- Do not collapse card for all other issues to make staging easier -->
+                    <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 {% endif %}
                 <div class="row ">
                     <div class="col-12"><hr class="summary-line"></div>
