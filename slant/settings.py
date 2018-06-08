@@ -28,7 +28,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ.get('SLNT_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
@@ -183,6 +183,7 @@ elif MODE == 'prod':
     # STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     STATIC_URL = '/static/'
     PODCAST_NO_ARTWORK = 'podcast/img/no_artwork.png'
+    # SITE_ID = 1
 else:
     pass
 
