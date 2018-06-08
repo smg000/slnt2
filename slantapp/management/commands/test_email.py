@@ -25,7 +25,7 @@ class Command(BaseCommand):
         # Create email variables
         subject = "the daily skeww | " + datetime.date.today().strftime("%B %d, %Y")
         from_email = Email('hi@theskeww.com', "Sean and Keal @ the skeww")
-        to_email = Email('web-roxyn@mail-tester.com')
+        to_email = Email('sean.graber@gmail.com')
         # TODO Check message_txt for accuracy
         message_txt = render_to_string(
             'daily-email.txt',

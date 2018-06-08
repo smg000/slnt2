@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+            <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
+            <h1 class="page-heading">404 error<i></i></h1>
+            <hr>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <h3><b>oh no...</b></h3>
+                    <p id="website-text">
+                        We're so sorry, but it looks like you've reached this page in error.
+                        <br><br>
+                        But, while we've got you here... Maybe you want to read the latest commentary from the left, right, and center? Listen to our podcast? Or subscribe to our newsletter?
+                        <br><br>
+                        Also, please also feel free to drop us a line to let us know if something is wrong with the site. Or just to say hi.
+                    </p>
+                </div>
+            </div>
+    {% include 'footer.html' %}
+    {%  endblock %}

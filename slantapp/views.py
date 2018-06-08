@@ -107,7 +107,7 @@ def archive(request):
                 date_list.append(date)
         date_list.sort(reverse=True)
         #TODO Increase daily until archive list is built
-        return date_list[:3] # Display last 10 weekdays
+        return date_list[:4] # Display last 10 weekdays
     def create_date_issue_dictionary():
         date_issue_dictionary = {}
         date_list = create_date_list()

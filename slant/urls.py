@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.conf import settings
-from django.conf.urls import url, include
+from django.conf.urls import url, include, handler404
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -50,5 +50,5 @@ urlpatterns = [
     url(r'^privacy-policy/$', privacy_policy),
     url(r'^terms-of-service/$', terms_of_service),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
-    path('podcast/', include('podcast.urls')), # From django-applepodcasts documentation
+    path('podcast/', include('podcast.urls')),
 ]
