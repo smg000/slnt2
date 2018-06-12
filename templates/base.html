@@ -15,6 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="the skeww is a news website that uses a combination of machine learning and human judgement to curate news articles based on their political bias and to summarize opposing views on key political and economic issues.">
     <meta name="keywords" content="News,News Bias,Media Bias,Fake News,Politics,Filter Bubble,Conservative,Liberal,Editorial,Op-Ed,Commentary">
+
+    <meta property="og:url" content="http://theskeww.com/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}" />
+    <meta property="og:title" content="{{ issue.issue }}" />
+    <meta property="og:description" content="{{ issue.summary_main }} See what the left and right are saying at the skeww." />
+    <meta property="og:image" content="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-transparent-fb-share-small.png" />
+    <meta property="fb:appid" content="251573308734831" />
+
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>the skeww | objectively biased</title>
