@@ -5,7 +5,7 @@
             <div class="title-wrapper">
                 <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
                 <h1 class="page-heading">the <i>skeww</i></h1>
-                <p>No frills. Just the best commentary from the left, right, and center.</p>
+                <p>No frills. Just the best commentary from the left, right, and center. Read, listen, and subscribe.</p>
                 <br><br>
                 <p class="prettyDate">{{ prettyDate }}</p>
             </div>
@@ -23,7 +23,7 @@
                 });
             });
             </script>
-            <!-- Per views.py, issues limited to those that have display=True -->
+            <!-- Per views.py, issues limited to those that have date=datetime.date(year, month, day)-->
 
             {% for issue in issues %}
                 <div class="row ">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-12 summary-text-main">
                         <p>{{ issue.summary_main }}</p>
-                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}&via=theskeww" target="_blank"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com&via=theskeww" target="_blank"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
 {#                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ "http://theskeww.com/issue/?issue="|urlencode }}{{ issue.issue|urlencode }}{{ "&date="|urlencode }}{{ issue.date|date:"Y-m-d"|urlencode }}{{ "#disqus_thread"|urlencode }}&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>#}
                     </div>
                 </div>
@@ -87,7 +87,7 @@
             <br>
 
             <div class="subscription-text">
-                <p>Escape the bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</p>
+                <p>Escape the filter bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</p>
             </div>
             <div class="subscription-form">
                 <form action='' method='post'>
@@ -104,35 +104,13 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Welcome to the skeww!</h4>
+                            <h4 class="modal-title">Ready to escape the filter bubble?</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
-                        <div class="modal-body">
-                            <p>
-                                Here's how it works:
-                                <br><br>
-                                <ul>
-                                    <li class="modal-list">We scrape articles from 100+ news sites and blogs.</li>
-                                    <li class="modal-list">Then, we use algorithms to identify trending issues and assign each article a bias score.</li>
-                                    <li class="modal-list">We select the best articles for each issue and position them on a specturm, from very liberal on the left to very conservative on the right. Mouse over/click the logos for more information.</li>
-                                    <li class="modal-list">Click the blue-red bar to expand each issue section. At the bottom, there is a link to the discussion.</li>
-                                </ul>
-                                Enjoy!
-                                <br><br>
-                                –Sean & Keal
-                            </p>
-                        </div>
-
-                    <div class="modal-footer">
                         <div class="modal-body modal-subscribe subscription-text">
-                            <p>
-                                Like what you see?
-                                <br>
-                                Get the <i>skeww</i> delivered to your inbox daily.
-                            </p>
+                            <p>Get the <i>skeww</i> delivered to your inbox daily.</p>
                             <div class="subscription-form">
                                 <form action='' method='post'>
                                     {% csrf_token %}
@@ -143,6 +121,8 @@
                                 </form>
                             </div>
                         </div>
+                    <div class="modal-footer">
+{#                        Future footer content.#}
                     </div>
                 </div>
             </div>

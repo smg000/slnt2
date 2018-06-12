@@ -123,7 +123,7 @@ html, body {
 }
 
 .title-wrapper{
-    max-width: 75%;
+    max-width: 65%;
     /*background-color: purple;*/
     color: black;
     text-align: center;
@@ -445,6 +445,15 @@ select {
 }
 
 /*End the craziness*/
+
+/*.modal-header {*/
+    /*text-align: center;*/
+    /*margin: 0 auto;*/
+/*}*/
+
+.modal-list {
+    margin: 0em 0em 0em 2em;
+}
 
 .modal-subscribe {
     text-align: center;

@@ -5,7 +5,8 @@
             <div class="title-wrapper">
                 <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
                 <h1 class="page-heading">the discussion<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
-                <p>{% for issue in issues %}{% if issue.issue == url_issue %}{{ issue.issue }}{% endif %}{% endfor %}</p>
+{#                {{  }}#}
+                {#                <p>{% for issue in issues %}{% if issue.issue == url_issue %}{{ issue.issue }}{% endif %}{% endfor %}</p>#}
             </div>
             <div class="row row-header">
                 <div class="col-4 table-header"><h2 style="text-align: left"><span style="color:blue;">Left</span></h2></div>
@@ -18,8 +19,8 @@
             });
             </script>
 
-            {% for issue in issues %}
-                {% if issue.issue == url_issue %}
+{#            {% for issue in issues %}#}
+{#                {% if issue.issue == url_issue %}#}
                     <div class="row ">
                         <div class="col-12 row-table-text-issue">
                             <p class="row-title row-title-issue">{{ issue.issue }}</p>
@@ -54,8 +55,8 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
-            {% endfor %}
+{#                {% endif %}#}
+{#            {% endfor %}#}
             <hr>
             <br>
 

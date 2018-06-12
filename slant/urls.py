@@ -26,15 +26,13 @@ from slantapp.views import index
 from slantapp.views import stage
 from slantapp.views import issue
 from slantapp.views import archive
-from slantapp.views import index_test
-from slantapp.views import rate
-from slantapp.views import why
 from slantapp.views import daily_email
 from slantapp.views import contact_form
 from slantapp.views import thankyou
 from slantapp.views import privacy_policy
 from slantapp.views import terms_of_service
 from slantapp.views import about
+from slantapp.views import archive_result
 
 
 urlpatterns = [
@@ -44,20 +42,19 @@ urlpatterns = [
     url(r'^issue/$', issue),
     url(r'^archive/$', archive),
     url(r'^about/$', about),
-    url(r'^rate/$', rate),
-    url(r'^why/$', why),
     url(r'^the-daily-skeww/$', daily_email),
     url(r'^contact/$', contact_form),
     url(r'^thank-you/$', thankyou),
-    url(r'^index_test/$', index_test),
     url(r'^privacy-policy/$', privacy_policy),
     url(r'^terms-of-service/$', terms_of_service),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
     path('podcast/', include('podcast.urls')),
+    path('archive/<int:year>/<int:month>/<int:day>/', archive_result),
+    path('issue/<str:issue>/<int:year>/<int:month>/<int:day>/', issue),
 ]
 
 # Static/media for local development
-if getattr(settings, 'DEBUG', False):
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += [path('__debug__/', include('debug_toolbar.toolbar'))]
+# if getattr(settings, 'DEBUG', False):
+#     urlpatterns += staticfiles_urlpatterns()
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#     urlpatterns += [path('__debug__/', include('debug_toolbar.toolbar'))]

@@ -1,11 +1,16 @@
 import datetime
+from urllib.parse import unquote
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.template import loader
+from django.utils.text import slugify
 from .models import Issue, Article
 from .forms import ContactForm, SignUpForm
 from django.core.mail import send_mail, BadHeaderError
 import sendgrid
 import os
+
+#TODO Encapsulate subscription form; kwargs = page to render, e.g., index.html
 
 def index(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
@@ -80,19 +85,29 @@ def stage(request):
     #     form = SignUpForm
     return render(request, 'index.html', context)
 
-def issue(request):
+def issue(request, issue, year, month, day):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
-    # issues = Issue.objects.filter(display=True).order_by('order')
     issues = Issue.objects.order_by('order')
+
+    def get_issue():
+        for iss in Issue.objects.order_by('order'):
+            if slugify(iss.issue) == issue and iss.date == datetime.date(year, month, day):
+                return iss
+                break
+        else:
+            raise Http404("No MyModel matches the given query.")
+
+
+
     articles = Article.objects.filter(display=True, issue__in=issues)
     context = {
         'navbar_issues': navbar_issues,
-        'issues': issues,
+        'issues': issues, # All issues objects
+        'issue': get_issue(),  # The specific issue that matches name and date; unique
         'articles': articles,
-        'date': datetime.date.today(),
-        'url_issue': request.GET.get('issue'),
-        'url_date': request.GET.get('date'),
-        'issue': Issue.objects.filter(display=True).filter(issue=request.GET.get('issue')),
+        'year': year,
+        'month': month,
+        'day': day,
     }
     return render(request, 'issue.html', context)
 
@@ -103,11 +118,11 @@ def archive(request):
         date_list = []
         dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-8, 0)] # Last 7 days will always include last 5 weekdays
         for date in dates:
-            if date.weekday() < 5: # Saturday = 5, Sunday = 6
+            if date.weekday() < 5: # Limit to weekdays; Saturday = 5, Sunday = 6
                 date_list.append(date)
         date_list.sort(reverse=True)
         #TODO Increase daily until archive list is built
-        return date_list[:4] # Display last 10 weekdays
+        return date_list[:6] # Display last 10 weekdays
     def create_date_issue_dictionary():
         date_issue_dictionary = {}
         date_list = create_date_list()
@@ -118,8 +133,45 @@ def archive(request):
         'navbar_issues': navbar_issues,
         'articles': Article.objects.filter(display=True, issue__in=issues),
         'date_issue_dictionary': create_date_issue_dictionary(),
+        'archive_dates': create_date_list(),
     }
     return render(request, 'archive.html', context)
+
+def archive_result(request, year, month, day):
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    issues = Issue.objects.filter(date=datetime.date(year, month, day)).order_by('order')
+    articles = Article.objects.filter(display=True, issue__in=issues)
+    context = {
+        'navbar_issues': navbar_issues,
+        'issues': issues,
+        'articles': articles,
+        'date': datetime.date.today(),
+        'form': SignUpForm,
+        'prettyDate': datetime.date(year, month, day).strftime("%A, %B %d, %Y"),
+    }
+    # Subscription form
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                data = [
+                    {
+                        "email": email,
+                    }
+                ]
+                response = sg.client.contactdb.recipients.post(request_body=data)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # TODO Add Ajax to send without page reload
+            return render(request, 'archive_result.html', context)
+    # else:
+    #     form = SignUpForm
+    return render(request, 'archive_result.html', context)
 
 def about(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
@@ -127,13 +179,6 @@ def about(request):
         'navbar_issues': navbar_issues,
     }
     return render(request, 'about.html', context)
-
-def why(request):
-    navbar_issues = Issue.objects.filter(display=True).order_by('order')
-    context = {
-        'navbar_issues': navbar_issues,
-    }
-    return render(request, 'why.html', context)
 
 def contact_form(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
@@ -195,16 +240,7 @@ def terms_of_service(request):
     }
     return render(request, 'terms-of-service.html', context)
 
-""" UNUSED AND/OR FUTURE VIEWS """
-
-def index_test(request):
-    issues = Issue.objects.filter(display=True)
-    articles = Article.objects.filter(display=True, issue__in=issues)
-    context = {
-        'issues': issues,
-        'articles': articles,
-    }
-    return render(request, 'index_test.html', context)
+""" FUTURE VIEWS """
 
 def daily_email(request):
     issues = Issue.objects.filter(display=True).order_by('order')
@@ -215,12 +251,3 @@ def daily_email(request):
         'date': datetime.date.today(),
     }
     return render(request, 'daily-email.html', context)
-
-def rate(request):
-    issues = Issue.objects.filter(display=True)
-    articles = Article.objects.filter(display=True, issue__in=issues)
-    context = {
-        'issues': issues,
-        'articles': articles,
-    }
-    return render(request, 'rate.html', context)
