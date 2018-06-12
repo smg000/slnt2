@@ -27,6 +27,8 @@
                         </div>
                         <div class="col-12 summary-text-main">
                             <p>{{ issue.summary_main }}</p>
+                            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ issue.summary_main|urlencode }} See what the left and right are saying at:&url=http%3A%2F%2Ftheskeww.com/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}&via=theskeww" target="_blank"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/twitter.png"></a>
+                            <a class="twitter-share-button" href="https://www.facebook.com/dialog/share?app_id=251573308734831&display=popup&href=http%3A%2F%2Ftheskeww.com/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}&redirect_uri=http%3A%2F%2Ftheskeww.com" target="_blank"><img class="social-icon-main" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/social_icons/facebook.png"></a>
                         </div>
                     </div>
                     <div id="{{ issue.issue }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"><!-- Expand card for first issue -->
