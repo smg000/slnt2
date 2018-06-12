@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/issue.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/issue.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,20 +29,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" column="171" selection-start-line="18" selection-start-column="171" selection-end-line="18" selection-end-column="171" />
+            <state relative-caret-position="88">
+              <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="35" column="456" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="35" selection-end-column="456" />
+            <state relative-caret-position="337">
+              <caret line="35" column="278" selection-start-line="35" selection-start-column="278" selection-end-line="35" selection-end-column="278" />
             </state>
           </provider>
         </entry>
@@ -50,8 +50,8 @@
       <file leaf-file-name="issue.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/issue.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="355">
+              <caret line="30" column="282" selection-start-line="30" selection-start-column="282" selection-end-line="30" selection-end-column="282" />
               <folding>
                 <element signature="e#693#717#0#HTML" expanded="true" />
                 <element signature="e#724#743#0#HTML" expanded="true" />
@@ -226,10 +226,10 @@
         <option value="$PROJECT_DIR$/www/static/admin/js/skeww-jquery.js" />
         <option value="$PROJECT_DIR$/templates/nav.html" />
         <option value="$PROJECT_DIR$/slantapp/admin.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/slant/settings.py" />
-        <option value="$PROJECT_DIR$/templates/issue.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/issue.html" />
       </list>
     </option>
   </component>
@@ -243,7 +243,7 @@
     <option name="x" value="157" />
     <option name="y" value="151" />
     <option name="width" value="1274" />
-    <option name="height" value="737" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -516,7 +516,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="157" y="151" width="1274" height="737" extended-state="0" />
+    <frame x="157" y="151" width="1274" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896462" />
@@ -890,24 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="35" column="456" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="35" selection-end-column="456" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/issue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding>
-            <element signature="e#693#717#0#HTML" expanded="true" />
-            <element signature="e#724#743#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/nav.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -931,8 +913,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="171" selection-start-line="18" selection-start-column="171" selection-end-line="18" selection-end-column="171" />
+        <state relative-caret-position="88">
+          <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/issue.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="30" column="282" selection-start-line="30" selection-start-column="282" selection-end-line="30" selection-end-column="282" />
+          <folding>
+            <element signature="e#693#717#0#HTML" expanded="true" />
+            <element signature="e#724#743#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="35" column="278" selection-start-line="35" selection-start-column="278" selection-end-line="35" selection-end-column="278" />
         </state>
       </provider>
     </entry>
