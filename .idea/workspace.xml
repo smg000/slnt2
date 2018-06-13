@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
+      <change beforePath="$PROJECT_DIR$/templates/archive_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/archive_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/issue.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/issue.html" afterDir="false" />
     </list>
@@ -41,8 +42,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="35" column="278" selection-start-line="35" selection-start-column="278" selection-end-line="35" selection-end-column="278" />
+            <state relative-caret-position="-255">
+              <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -50,12 +51,21 @@
       <file leaf-file-name="issue.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/issue.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="30" column="282" selection-start-line="30" selection-start-column="282" selection-end-line="30" selection-end-column="282" />
+            <state relative-caret-position="271">
+              <caret line="30" column="512" selection-start-line="30" selection-start-column="512" selection-end-line="30" selection-end-column="512" />
               <folding>
                 <element signature="e#693#717#0#HTML" expanded="true" />
                 <element signature="e#724#743#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="archive_result.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/archive_result.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="35" column="508" selection-start-line="35" selection-start-column="508" selection-end-line="35" selection-end-column="508" />
             </state>
           </provider>
         </entry>
@@ -113,18 +123,6 @@
               <caret line="18" column="176" selection-start-line="18" selection-start-column="176" selection-end-line="18" selection-end-column="176" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slantapp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1136">
-              <caret line="124" column="27" selection-start-line="124" selection-start-column="27" selection-end-line="124" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -219,7 +217,6 @@
         <option value="$PROJECT_DIR$/slantapp/models.py" />
         <option value="$PROJECT_DIR$/slantapp/management/commands/test_email.py" />
         <option value="$PROJECT_DIR$/slantapp/management/commands/issues.py" />
-        <option value="$PROJECT_DIR$/templates/archive_result.html" />
         <option value="$PROJECT_DIR$/slantapp/views.py" />
         <option value="$PROJECT_DIR$/templates/archive.html" />
         <option value="$PROJECT_DIR$/www/static/css/style.css" />
@@ -228,8 +225,9 @@
         <option value="$PROJECT_DIR$/slantapp/admin.py" />
         <option value="$PROJECT_DIR$/slant/settings.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/archive_result.html" />
         <option value="$PROJECT_DIR$/templates/issue.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
   </component>
@@ -832,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/archive_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slantapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1136">
@@ -918,10 +909,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/archive_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="35" column="508" selection-start-line="35" selection-start-column="508" selection-end-line="35" selection-end-column="508" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/issue.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="30" column="282" selection-start-line="30" selection-start-column="282" selection-end-line="30" selection-end-column="282" />
+        <state relative-caret-position="271">
+          <caret line="30" column="512" selection-start-line="30" selection-start-column="512" selection-end-line="30" selection-end-column="512" />
           <folding>
             <element signature="e#693#717#0#HTML" expanded="true" />
             <element signature="e#724#743#0#HTML" expanded="true" />
@@ -931,8 +929,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="35" column="278" selection-start-line="35" selection-start-column="278" selection-end-line="35" selection-end-column="278" />
+        <state relative-caret-position="-255">
+          <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
         </state>
       </provider>
     </entry>
