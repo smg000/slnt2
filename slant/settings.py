@@ -164,7 +164,10 @@ elif MODE == 'prod':
     # s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
     AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
     AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
+
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    # MEDIAFILES_PATH = 'media'  # Delete
+    # MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_PATH)  # Delete
 
     # Static files settings from prod that don't work.
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -177,6 +180,8 @@ elif MODE == 'prod':
     ]
     STATIC_URL = '/static/'
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    # STATICFILES_PATH = 'static'  # Delete
 
     MEDIAFILES_LOCATION = 'media'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
@@ -199,3 +204,6 @@ elif MODE == 'prod':
     EMAIL_USE_TLS = True
 else:
     pass
+
+# PODCAST_ID = 2
+# PODCAST_SINGULAR = False

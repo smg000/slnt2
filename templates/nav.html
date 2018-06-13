@@ -8,18 +8,20 @@
         <li class="nav-item">
             <a class="nav-link" href="/">home</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                discuss
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <p class="navbar-dropdown-text">today's issues</p>
-                <div class="dropdown-divider"></div>
-                {% for issue in navbar_issues %}
-                    <a class="dropdown-item" href="/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}#disqus_thread">▸ {{ issue.issue }}</a>
-                {% endfor %}
-            </div>
-        </li>
+
+{#        <li class="nav-item dropdown">#}
+{#            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                discuss#}
+{#            </a>#}
+{#            <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#                <p class="navbar-dropdown-text">today's issues</p>#}
+{#                <div class="dropdown-divider"></div>#}
+{#                {% for issue in navbar_issues %}#}
+{#                    <a class="dropdown-item" href="/issue/?issue={{ issue.issue|urlencode }}&date={{ issue.date|date:"Y-m-d" }}#disqus_thread">▸ {{ issue.issue }}</a>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </li>#}
+
         <li class="nav-item">
             <a class="nav-link disabled" href="#"><span style="color: lightgray;">podcast</span></a>
         </li>
