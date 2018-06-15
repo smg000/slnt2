@@ -11,7 +11,7 @@ from sendgrid.helpers.mail import *
 
 
 class Command(BaseCommand):
-    help = 'Sends daily email to MailChimp subscribers.'
+    help = 'Sends daily email to SendGrid subscribers.'
 
     def add_arguments(self, parser):
         # parser.add_argument('--subject', type=str, required=True)

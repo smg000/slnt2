@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'storages',
     'django_extensions',
     'slantapp',
-    'podcast',
+    # 'podcast',  # I couldn't get this to work; 404 errors on /podcast
 ]
 
 MIDDLEWARE = [
@@ -204,6 +204,3 @@ elif MODE == 'prod':
     EMAIL_USE_TLS = True
 else:
     pass
-
-# PODCAST_ID = 2
-# PODCAST_SINGULAR = False

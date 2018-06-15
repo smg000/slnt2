@@ -48,13 +48,6 @@ urlpatterns = [
     url(r'^privacy-policy/$', privacy_policy),
     url(r'^terms-of-service/$', terms_of_service),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
-    path('podcast/', include('podcast.urls')),
     path('archive/<int:year>/<int:month>/<int:day>/', archive_result),
     path('issue/<str:issue>/<int:year>/<int:month>/<int:day>/', issue),
 ]
-
-# Static/media for local development
-# if getattr(settings, 'DEBUG', False):
-#     urlpatterns += staticfiles_urlpatterns()
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#     urlpatterns += [path('__debug__/', include('debug_toolbar.toolbar'))]
