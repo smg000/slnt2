@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b3a5ff3-112a-41b1-82a3-b48bd21960fb" name="Default" comment="Freaking Heroku">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/slant/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slantapp/management/commands/test_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/management/commands/test_email.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/daily-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/daily-email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slantapp/management/commands/issues.py" beforeDir="false" afterPath="$PROJECT_DIR$/slantapp/management/commands/issues.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +24,8 @@
       <file leaf-file-name="issues.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slantapp/management/commands/issues.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+            <state relative-caret-position="374">
+              <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -130,8 +127,8 @@
       <file leaf-file-name="nav.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/nav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="25" column="85" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
+            <state relative-caret-position="256">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -232,10 +229,10 @@
         <option value="$PROJECT_DIR$/templates/issue.html" />
         <option value="$PROJECT_DIR$/templates/archive_result.html" />
         <option value="$PROJECT_DIR$/templates/daily-email.html" />
-        <option value="$PROJECT_DIR$/slantapp/management/commands/issues.py" />
         <option value="$PROJECT_DIR$/slantapp/management/commands/test_email.py" />
         <option value="$PROJECT_DIR$/slant/settings.py" />
         <option value="$PROJECT_DIR$/slant/urls.py" />
+        <option value="$PROJECT_DIR$/slantapp/management/commands/issues.py" />
         <option value="$PROJECT_DIR$/templates/nav.html" />
       </list>
     </option>
@@ -870,23 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/management/commands/issues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slantapp/management/commands/test_email.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slant/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3075">
@@ -918,10 +898,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/management/commands/test_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slantapp/management/commands/issues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="25" column="85" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
+        <state relative-caret-position="256">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
         </state>
       </provider>
     </entry>
