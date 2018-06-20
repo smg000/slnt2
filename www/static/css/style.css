@@ -205,6 +205,10 @@ hr {
     cursor: pointer;
 }
 
+.no-pointer {
+    cursor: default;
+}
+
 .row-title-issue {
     cursor: default !important;
 }

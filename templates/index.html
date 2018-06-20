@@ -25,6 +25,19 @@
             </script>
             <!-- Per views.py, issues limited to those that have display=True -->
 
+            <!-- START SPECIAL SECTION -->
+
+            <div class="row ">
+                <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">
+                    <p class="row-title no-pointer">Immigration Controversy Continues...</p>
+                </div>
+                <div class="col-12 summary-text-main">
+                    <p>As the immigration controversy continues, please see our previous coverage: <a href="http://www.theskeww.com/issue/bordering-on-insanity/2018/06/19/">Bordering on Insanity</a> and <a href="http://www.theskeww.com/issue/separation-anxiety/2018/06/15/">Separation Anxiety</a>. For the latest, find us on Twitter <a href="https://twitter.com/theskeww" target="_blank">@theskeww</a>.</p>
+                </div>
+            </div>
+
+            <!-- END SPECIAL SECTION -->
+
             {% for issue in issues %}
                 <div class="row ">
                     <div class="col-12 row-table-text-issue" data-toggle="collapse" data-target="#{{ issue.issue }}" aria-expanded="false" aria-controls="collapseOne">

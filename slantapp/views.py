@@ -116,7 +116,7 @@ def archive(request):
     issues = Issue.objects.order_by('order')
     def create_date_list():
         date_list = []
-        dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-8, 0)] # Last 7 days will always include last 5 weekdays
+        dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-11, 0)] # Last 7 days will always include last 5 weekdays
         for date in dates:
             if date.weekday() < 5: # Limit to weekdays; Saturday = 5, Sunday = 6
                 date_list.append(date)
