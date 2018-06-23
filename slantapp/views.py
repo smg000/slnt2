@@ -15,7 +15,12 @@ import os
 
 def index(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
-    issues = Issue.objects.filter(display=True).order_by('order', 'weekend_order')
+    issues = Issue.objects.filter(display=True)
+    date = datetime.date.today()
+    if date.weekday() < 5:
+        issues.order_by('order')
+    else:
+        issues.order_by('weekend_order')
     articles = Article.objects.filter(display=True, issue__in=issues)
     def pretty_date():
         date = datetime.date.today()
