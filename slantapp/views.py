@@ -15,13 +15,14 @@ import os
 
 def index(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
-    issues = Issue.objects.filter(display=True)
-    date = datetime.date.today()
-    if date.weekday() < 5:
-        issues.order_by('order')
-    else:
-        issues.order_by('weekend_order')
-    articles = Article.objects.filter(display=True, issue__in=issues)
+    def issues():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            issues = Issue.objects.filter(display=True).order_by('order')
+        else:
+            issues = Issue.objects.filter(display=True).order_by('weekend_order')
+        return issues
+    articles = Article.objects.filter(display=True, issue__in=issues())
     def pretty_date():
         date = datetime.date.today()
         if date.weekday() < 5:
@@ -42,7 +43,7 @@ def index(request):
             return monday.strftime("%A, %B %d, %Y") + " to " + friday.strftime("%A, %B %d, %Y")
     context = {
         'navbar_issues': navbar_issues,
-        'issues': issues,
+        'issues': issues(),
         'articles': articles,
         'date': datetime.date.today(),
         'form': SignUpForm,
