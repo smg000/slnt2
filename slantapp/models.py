@@ -12,6 +12,7 @@ class Issue(models.Model):
     stage = models.BooleanField(default=False)
     display = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
+    weekend_order = models.IntegerField(default=0)
     def __str__(self):
         # return "%s:\t %s" % (self.id, self.issue)
         return self.issue

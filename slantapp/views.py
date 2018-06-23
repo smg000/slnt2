@@ -1,5 +1,6 @@
 import datetime
 from urllib.parse import unquote
+from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.template import loader
@@ -14,15 +15,34 @@ import os
 
 def index(request):
     navbar_issues = Issue.objects.filter(display=True).order_by('order')
-    issues = Issue.objects.filter(display=True).order_by('order')
+    issues = Issue.objects.filter(display=True).order_by('order', 'weekend_order')
     articles = Article.objects.filter(display=True, issue__in=issues)
+    def pretty_date():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            return datetime.date.today().strftime("%A, %B %d, %Y")
+        else:
+            return "Week in Review:"
+    def weekend_dates():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            pass
+        elif date.weekday() == 5:
+            monday = date - datetime.timedelta(days=5)
+            friday = date - datetime.timedelta(days=1)
+            return monday.strftime("%A, %B %d, %Y") + " to " + friday.strftime("%A, %B %d, %Y")
+        else:  # Weekday == 6
+            monday = date - datetime.timedelta(days=6)
+            friday = date - datetime.timedelta(days=2)
+            return monday.strftime("%A, %B %d, %Y") + " to " + friday.strftime("%A, %B %d, %Y")
     context = {
         'navbar_issues': navbar_issues,
         'issues': issues,
         'articles': articles,
         'date': datetime.date.today(),
         'form': SignUpForm,
-        'prettyDate': datetime.date.today().strftime("%A, %B %d, %Y"),
+        'prettyDate': pretty_date(),
+        'weekendDates': weekend_dates(),
     }
     # Subscription form
     sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
