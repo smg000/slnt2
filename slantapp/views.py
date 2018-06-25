@@ -32,7 +32,7 @@ def index(request):
     def weekend_dates():
         date = datetime.date.today()
         if date.weekday() < 5:
-            pass
+            return ""
         elif date.weekday() == 5:
             monday = date - datetime.timedelta(days=5)
             friday = date - datetime.timedelta(days=1)
