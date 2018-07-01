@@ -26,7 +26,8 @@ from slantapp.views import index
 from slantapp.views import stage
 from slantapp.views import issue
 from slantapp.views import archive
-from slantapp.views import daily_email
+from slantapp.views import daily_email  # This should probably be deleted.
+from slantapp.views import daily_skeww
 from slantapp.views import contact_form
 from slantapp.views import thankyou
 from slantapp.views import privacy_policy
@@ -42,7 +43,8 @@ urlpatterns = [
     url(r'^issue/$', issue),
     url(r'^archive/$', archive),
     url(r'^about/$', about),
-    url(r'^the-daily-skeww/$', daily_email),
+    url(r'^the-daily-skeww/$', daily_email),  # This should probably be deleted.
+    url(r'^daily-skeww/$', daily_skeww),
     url(r'^contact/$', contact_form),
     url(r'^thank-you/$', thankyou),
     url(r'^privacy-policy/$', privacy_policy),

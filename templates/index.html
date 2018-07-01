@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-12"><hr class="summary-line"></div>
                         <div class="col-sm-12 comment-row">
-                            <p class="comment-text"><a href="/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}#disqus_thread">🗨️ What are you saying? Join the discussion. ></a></p>
+                            <p class="comment-text"><a href="/issue/{{ issue.issue|slugify }}/{{ issue.date|date:'Y' }}/{{ issue.date|date:'m' }}/{{ issue.date|date:'d' }}">Permanent link: {{ issue.issue }} ></a></p>
                         </div>
                         <div class="col-12"><hr class="summary-line-top-padding"></div>
                     </div>
@@ -110,7 +110,7 @@
                     {% for field in form %}
                         {{ field }}
                     {% endfor %}
-                    <input type='submit' value='Send' class="subscription-form"/>
+                    <input type='submit' value='sign up' class="subscription-form"/>
                 </form>
             </div>
 
@@ -154,7 +154,7 @@
                                     {% for field in form %}
                                         {{ field }}
                                     {% endfor %}
-                                <input type='submit' value='Send' class="subscription-form"/>
+                                <input type='submit' value='sign up' class="subscription-form"/>
                                 </form>
                             </div>
                         </div>

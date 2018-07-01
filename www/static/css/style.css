@@ -422,7 +422,7 @@ select {
 }
 
 .subscription-form {
-    width: 20em;
+    width: 18em;
     margin: .5em auto 0em auto;
 }
 
@@ -476,3 +476,20 @@ select {
 .dropdown-item {
     line-height: 1 !important;
 }
+
+.email-preview-container {
+    margin-bottom: 7em;
+}
+
+.email-preview {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid lightgray;
+    box-shadow: 10px 10px 5px lightgrey;
+}
+

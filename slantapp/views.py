@@ -69,7 +69,7 @@ def index(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             # TODO Add Ajax to send without page reload
-            return render(request, 'index.html', context)
+            return render(request, 'subscription-thank-you.html', context)
     # else:
     #     form = SignUpForm
     return render(request, 'index.html', context)
@@ -106,7 +106,7 @@ def stage(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             # TODO Add Ajax to send without page reload
-            return render(request, 'index.html', context)
+            return render(request, 'subscription-thank-you.html', context)
     # else:
     #     form = SignUpForm
     return render(request, 'index.html', context)
@@ -142,13 +142,16 @@ def archive(request):
     issues = Issue.objects.order_by('order')
     def create_date_list():
         date_list = []
-        dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-11, 0)] # Last 7 days will always include last 5 weekdays
+        first_edition_date = datetime.date(2018, 6, 4)  # The farthest back the archives can go.
+        today = datetime.date.today()
+        number_of_archives = (today - first_edition_date).days  # Number of days elapsed between first edition and now; integer.
+        dates = [datetime.date.today() + datetime.timedelta(days=i) for i in range(-number_of_archives, 0)] # Last 7 days will always include last 5 weekdays
         for date in dates:
             if date.weekday() < 5: # Limit to weekdays; Saturday = 5, Sunday = 6
                 date_list.append(date)
         date_list.sort(reverse=True)
         #TODO Increase daily until archive list is built
-        return date_list[:10] # Display last 10 weekdays
+        return date_list # Display last 10 weekdays
     def create_date_issue_dictionary():
         date_issue_dictionary = {}
         date_list = create_date_list()
@@ -194,7 +197,7 @@ def archive_result(request, year, month, day):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             # TODO Add Ajax to send without page reload
-            return render(request, 'archive_result.html', context)
+            return render(request, 'subscription-thank-you.html', context)
     # else:
     #     form = SignUpForm
     return render(request, 'archive_result.html', context)
@@ -277,3 +280,64 @@ def daily_email(request):
         'date': datetime.date.today(),
     }
     return render(request, 'daily-email.html', context)
+
+def daily_skeww(request):
+    navbar_issues = Issue.objects.filter(display=True).order_by('order')
+    def issues():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            issues = Issue.objects.filter(display=True).order_by('order')
+        else:
+            issues = Issue.objects.filter(display=True).order_by('weekend_order')
+        return issues
+    articles = Article.objects.filter(display=True, issue__in=issues())
+    def pretty_date():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            return datetime.date.today().strftime("%A, %B %d, %Y")
+        else:
+            return "Week in Review:"
+    def weekend_dates():
+        date = datetime.date.today()
+        if date.weekday() < 5:
+            return ""
+        elif date.weekday() == 5:
+            monday = date - datetime.timedelta(days=5)
+            friday = date - datetime.timedelta(days=1)
+            return monday.strftime("%A, %B %d, %Y") + " to " + friday.strftime("%A, %B %d, %Y")
+        else:  # Weekday == 6
+            monday = date - datetime.timedelta(days=6)
+            friday = date - datetime.timedelta(days=2)
+            return monday.strftime("%A, %B %d, %Y") + " to " + friday.strftime("%A, %B %d, %Y")
+    context = {
+        'navbar_issues': navbar_issues,
+        'issues': issues(),
+        'articles': articles,
+        'date': datetime.date.today(),
+        'form': SignUpForm,
+        'prettyDate': pretty_date(),
+        'weekendDates': weekend_dates(),
+    }
+    # Subscription form
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                data = [
+                    {
+                        "email": email,
+                    }
+                ]
+                response = sg.client.contactdb.recipients.post(request_body=data)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # TODO Add Ajax to send without page reload
+            return render(request, 'subscription-thank-you.html', context)
+    # else:
+    #     form = SignUpForm
+    return render(request, 'daily-skeww.html', context)

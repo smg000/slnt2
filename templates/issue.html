@@ -4,9 +4,10 @@
         <div class="wrapper">
             <div class="title-wrapper">
                 <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
-                <h1 class="page-heading">the discussion<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
+                <h1 class="page-heading">{{ issue.issue }}<i></i></h1><!-- Extra italics to create consistent spacing with index.html -->
 {#                {{  }}#}
                 {#                <p>{% for issue in issues %}{% if issue.issue == url_issue %}{{ issue.issue }}{% endif %}{% endfor %}</p>#}
+                {{ issue.date }}
             </div>
             <div class="row row-header">
                 <div class="col-4 table-header"><h2 style="text-align: left"><span style="color:blue;">Left</span></h2></div>
@@ -59,34 +60,34 @@
                     </div>
 {#                {% endif %}#}
 {#            {% endfor %}#}
-            <hr>
-            <br>
+{#            <hr>#}
+{#            <br>#}
 
-            <!-- DISQUS START -->
-            <div id="disqus_thread"></div>
-            <script>
-
-            /**
-            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-            /*
-            var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            */
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://http-theskeww-com.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            <!-- DISQUS END -->
-
-            <!-- INSIDE BODY TAG -->
-            <script id="dsq-count-scr" src="//http-theskeww-com.disqus.com/count.js" async></script>
+{#            <!-- DISQUS START -->#}
+{#            <div id="disqus_thread"></div>#}
+{#            <script>#}
+{##}
+{#            /**#}
+{#            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.#}
+{#            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/#}
+{#            /*#}
+{#            var disqus_config = function () {#}
+{#            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable#}
+{#            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable#}
+{#            };#}
+{#            */#}
+{#            (function() { // DON'T EDIT BELOW THIS LINE#}
+{#            var d = document, s = d.createElement('script');#}
+{#            s.src = 'https://http-theskeww-com.disqus.com/embed.js';#}
+{#            s.setAttribute('data-timestamp', +new Date());#}
+{#            (d.head || d.body).appendChild(s);#}
+{#            })();#}
+{#            </script>#}
+{#            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>#}
+{##}
+{#            <!-- INSIDE BODY TAG -->#}
+{#            <script id="dsq-count-scr" src="//http-theskeww-com.disqus.com/count.js" async></script>#}
+{#            <!-- DISQUS END -->#}
 
         </div>
     {% include 'footer.html' %}

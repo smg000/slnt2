@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% include 'nav.html' %}
+        <div class="wrapper">
+            <div class="title-wrapper">
+                <img class="title-logo" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/logos/logo-curves-white.jpg">
+                <h1 class="page-heading">newsletter<i></i></h1>
+                <p>The best opinions from the left, right, and center.</p>
+            </div>
+
+            <hr>
+
+            <div class="subscription-text">
+                <p>Escape the bubble.<br>Get the <i>skeww</i> delivered to your inbox daily.</p>
+            </div>
+            <div class="subscription-form">
+                <form action='' method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+                    <input type='submit' value='sign up' class="subscription-form"/>
+                </form>
+            </div>
+
+            <hr>
+            <div class="email-preview-container">
+                <img class="email-preview" src="https://s3.us-east-2.amazonaws.com/slantappbucket/media/images/daily-skeww-preview.png">
+            </div>
+
+{#            <!-- Modal -->#}
+{#            <div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">#}
+{#                <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#                    <div class="modal-content">#}
+{#                        <div class="modal-header">#}
+{#                            <h4 class="modal-title">Welcome to the skeww!</h4>#}
+{#                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                                <span aria-hidden="true">&times;</span>#}
+{#                            </button>#}
+{#                        </div>#}
+{##}
+{#                        <div class="modal-body">#}
+{#                            <p>#}
+{#                                Here's how it works:#}
+{#                                <br><br>#}
+{#                                <ul>#}
+{#                                    <li class="modal-list">We scrape articles from 100+ news sites and blogs.</li>#}
+{#                                    <li class="modal-list">Then, we use algorithms to identify trending issues and assign each article a bias score.</li>#}
+{#                                    <li class="modal-list">We select the best articles for each issue and position them on a specturm, from very liberal on the left to very conservative on the right. Mouse over/click the logos for more information.</li>#}
+{#                                    <li class="modal-list">Click the blue-red bar to expand each issue section. At the bottom, there is a link to the discussion.</li>#}
+{#                                </ul>#}
+{#                                Enjoy!#}
+{#                                <br><br>#}
+{#                                –Sean & Keal#}
+{#                            </p>#}
+{#                        </div>#}
+{##}
+{#                    <div class="modal-footer">#}
+{#                        <div class="modal-body modal-subscribe subscription-text">#}
+{#                            <p>#}
+{#                                Like what you see?#}
+{#                                <br>#}
+{#                                Get the <i>skeww</i> delivered to your inbox daily.#}
+{#                            </p>#}
+{#                            <div class="subscription-form">#}
+{#                                <form action='' method='post'>#}
+{#                                    {% csrf_token %}#}
+{#                                    {% for field in form %}#}
+{#                                        {{ field }}#}
+{#                                    {% endfor %}#}
+{#                                <input type='submit' value='Send' class="subscription-form"/>#}
+{#                                </form>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+            </div>
+        </div>
+    {% include 'footer.html' %}
+    {%  endblock %}
