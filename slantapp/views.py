@@ -150,7 +150,10 @@ def archive(request):
             if date.weekday() < 5: # Limit to weekdays; Saturday = 5, Sunday = 6
                 date_list.append(date)
         date_list.sort(reverse=True)
-        #TODO Increase daily until archive list is built
+        # Remove specific dates
+        date_list.remove(datetime.date(2018, 7, 4))
+        date_list.remove(datetime.date(2018, 7, 5))
+        date_list.remove(datetime.date(2018, 7, 6))
         return date_list # Display last 10 weekdays
     def create_date_issue_dictionary():
         date_issue_dictionary = {}
