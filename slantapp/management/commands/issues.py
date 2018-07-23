@@ -42,7 +42,7 @@ class Command(BaseCommand):
             FROM slantapp_article
             WHERE
                 topic_keywords IS NOT NULL
-                AND scrape_timestamp >= CURRENT_DATE - 1
+                AND scrape_timestamp >= CURRENT_DATE - 2
             ;
             """)
         data = cursor.fetchall()
