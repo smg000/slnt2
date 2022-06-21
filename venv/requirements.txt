@@ -33,7 +33,7 @@ murmurhash==0.28.0
 mutagen==1.40.0
 newspaper3k==0.2.6
 nltk==3.2.5
-numpy==1.14.3
+numpy==1.22.0
 pathlib==1.0.1
 Pillow==5.0.0
 plac==0.9.6
